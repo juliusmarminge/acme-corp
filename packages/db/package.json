@@ -1,0 +1,26 @@
+{
+  "name": "@acme/db",
+  "version": "0.1.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "db:generate": "pnpm with-env prisma generate && tsx prisma/postgenerate.ts",
+    "db:push": "pnpm with-env prisma db push --skip-generate",
+    "dev": "pnpm with-env prisma studio --port 5556",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@planetscale/database": "^1.5.0",
+    "kysely": "^0.23.4",
+    "kysely-planetscale": "^1.3.0",
+    "nanoid": "^4.0.1"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.2.1",
+    "prisma": "^4.12.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.4"
+  }
+}

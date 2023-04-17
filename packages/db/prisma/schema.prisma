@@ -1,0 +1,19 @@
+generator kysely {
+    provider = "npx prisma-generator-kysely"
+    output   = "./types"
+}
+
+datasource db {
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
+}
+
+model Post {
+    id      String @id @default(cuid())
+    userId  String
+    title   String
+    content String
+
+    @@index([userId])
+}
