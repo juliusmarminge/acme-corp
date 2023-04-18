@@ -1,7 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { withClerkMiddleware } from "@clerk/nextjs/server";
+import { getAuth, withClerkMiddleware } from "@clerk/nextjs/server";
 
-export default withClerkMiddleware((_req: NextRequest) => {
+export default withClerkMiddleware((req: NextRequest) => {
+  const { userId } = getAuth(req);
+  if (userId) {
+    const url = new URL("/dashboard", req.url);
+    NextResponse.redirect(url);
+  }
+
   return NextResponse.next();
 });
 

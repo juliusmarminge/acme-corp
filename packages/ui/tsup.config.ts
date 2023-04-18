@@ -1,11 +1,12 @@
 import { readFile, writeFile } from "fs/promises";
 import { defineConfig, type Options } from "tsup";
 
-const entry = [
+// TODO: Would be nice not having to split up the client and server
+// and just have esbuild keep the directives so that components with
+// the directive stays a client component and the rest is server...
+const client = [
   "./src/avatar.tsx",
-  "./src/button.tsx",
   "./src/calendar.tsx",
-  "./src/card.tsx",
   "./src/command.tsx",
   "./src/dialog.tsx",
   "./src/dropdown-menu.tsx",
@@ -14,9 +15,15 @@ const entry = [
   "./src/popover.tsx",
   "./src/select.tsx",
   "./src/tabs.tsx",
-  "./src/toast.tsx",
   "./src/toaster.tsx",
   "./src/use-toast.tsx",
+];
+
+const server = [
+  "./src/button.tsx",
+  "./src/icons.tsx",
+  "./src/card.tsx",
+  "./src/toast.tsx",
 ];
 
 export default defineConfig((opts) => {
@@ -32,11 +39,11 @@ export default defineConfig((opts) => {
     {
       // separate not to inject the banner
       ...common,
-      entry: ["./src/index.ts", "./src/icons.tsx"],
+      entry: ["./src/index.ts", ...server],
     },
     {
       ...common,
-      entry,
+      entry: client,
       esbuildOptions: (opts) => {
         opts.banner = {
           js: '"use client";',
@@ -51,17 +58,12 @@ export default defineConfig((opts) => {
         pkgJson.exports = {
           "./package.json": "./package.json",
           "./styles.css": "./dist/index.css",
-          // These two are bundled above without banner => not part of `entry` array
           ".": {
             import: "./dist/index.mjs",
             types: "./dist/index.d.ts",
           },
-          "./icons": {
-            import: "./dist/icons.mjs",
-            types: "./dist/icons.d.ts",
-          },
         };
-        entry
+        [...client, ...server]
           .filter((e) => e.endsWith(".tsx"))
           .forEach((entry) => {
             const file = entry.replace("./src/", "").replace(".tsx", "");

@@ -55,25 +55,13 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
-    "./icons": {
-      "import": "./dist/icons.mjs",
-      "types": "./dist/icons.d.ts"
-    },
     "./avatar": {
       "import": "./dist/avatar.mjs",
       "types": "./dist/avatar.d.ts"
     },
-    "./button": {
-      "import": "./dist/button.mjs",
-      "types": "./dist/button.d.ts"
-    },
     "./calendar": {
       "import": "./dist/calendar.mjs",
       "types": "./dist/calendar.d.ts"
-    },
-    "./card": {
-      "import": "./dist/card.mjs",
-      "types": "./dist/card.d.ts"
     },
     "./command": {
       "import": "./dist/command.mjs",
@@ -107,10 +95,6 @@
       "import": "./dist/tabs.mjs",
       "types": "./dist/tabs.d.ts"
     },
-    "./toast": {
-      "import": "./dist/toast.mjs",
-      "types": "./dist/toast.d.ts"
-    },
     "./toaster": {
       "import": "./dist/toaster.mjs",
       "types": "./dist/toaster.d.ts"
@@ -118,6 +102,22 @@
     "./use-toast": {
       "import": "./dist/use-toast.mjs",
       "types": "./dist/use-toast.d.ts"
+    },
+    "./button": {
+      "import": "./dist/button.mjs",
+      "types": "./dist/button.d.ts"
+    },
+    "./icons": {
+      "import": "./dist/icons.mjs",
+      "types": "./dist/icons.d.ts"
+    },
+    "./card": {
+      "import": "./dist/card.mjs",
+      "types": "./dist/card.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast.mjs",
+      "types": "./dist/toast.d.ts"
     }
   }
 }

@@ -19,8 +19,14 @@ export async function UserNav() {
   const user = await currentUser();
   if (!user) redirect("/signin");
 
-  const initials = `${user.firstName?.[0]}${user.lastName?.[0]}`;
-  console.log({ user, initials });
+  const fullname = `${user.firstName} ${user.lastName}`;
+  const initials = fullname
+    .split(" ")
+    .map((n) => n[0])
+    .join("");
+  const email = user.emailAddresses.find(
+    (e) => e.id === user.primaryEmailAddressId,
+  )?.emailAddress;
 
   return (
     <DropdownMenu>
@@ -38,9 +44,11 @@ export async function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">shadcn</p>
+            <p className="text-sm font-medium leading-none">
+              {user.firstName} {user.lastName}
+            </p>
             <p className="text-xs leading-none text-muted-foreground">
-              m@example.com
+              {email}
             </p>
           </div>
         </DropdownMenuLabel>

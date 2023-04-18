@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import {
   Activity,
   CreditCard,
@@ -34,7 +35,10 @@ export default function DashboardPage() {
             <MainNav className="mx-6" />
             <div className="ml-auto flex items-center space-x-4">
               <Search />
-              <UserNav />
+              <Suspense fallback="...">
+                {/* @ts-expect-error - Async Server Component */}
+                <UserNav />
+              </Suspense>
             </div>
           </div>
         </div>
