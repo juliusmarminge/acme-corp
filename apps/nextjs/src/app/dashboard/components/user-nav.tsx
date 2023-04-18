@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs/app-beta";
 import { CreditCard, LogOut, PlusCircle, Settings, User } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@acme/ui/avatar";
@@ -13,14 +15,23 @@ import {
   DropdownMenuTrigger,
 } from "@acme/ui/dropdown-menu";
 
-export function UserNav() {
+export async function UserNav() {
+  const user = await currentUser();
+  if (!user) redirect("/signin");
+
+  const initials = `${user.firstName?.[0]}${user.lastName?.[0]}`;
+  console.log({ user, initials });
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback>SC</AvatarFallback>
+            <AvatarImage
+              src={user?.profileImageUrl}
+              alt={user?.username ?? ""}
+            />
+            <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

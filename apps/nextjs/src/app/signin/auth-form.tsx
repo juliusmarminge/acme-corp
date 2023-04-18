@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
+import { useClerk } from "@clerk/nextjs";
 
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
@@ -22,6 +24,14 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     }, 3000);
   }
 
+  const { openSignIn, session } = useClerk();
+  const router = useRouter();
+
+  function handleSignin() {
+    if (session) router.push("/dashboard");
+    openSignIn();
+  }
+
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
@@ -40,7 +50,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
             />
           </div>
-          <Button disabled={isLoading}>
+          <Button disabled={isLoading} onClick={() => handleSignin()}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
@@ -58,7 +68,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
+      <Button
+        variant="outline"
+        disabled={isLoading}
+        onClick={() => handleSignin()}
+      >
         {isLoading ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
