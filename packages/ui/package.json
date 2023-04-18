@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "main": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./dist/index.mjs",
-    "./styles.css": "./dist/index.css"
-  },
   "scripts": {
     "build": "tsup",
     "clean": "git clean -xdf dist .turbo node_modules",
@@ -22,12 +18,18 @@
     "@radix-ui/react-popover": "^1.0.5",
     "@radix-ui/react-select": "^1.2.0",
     "@radix-ui/react-tabs": "^1.0.3",
+    "@radix-ui/react-toast": "^1.1.3",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
     "lucide-react": "^0.122.0",
-    "react-day-picker": "^8.7.1",
-    "tailwind-merge": "^1.9.1",
+    "tailwind-merge": "^1.9.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-day-picker": "^8.0.0",
+    "tailwindcss": "^3.3.0",
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
@@ -39,8 +41,83 @@
     "postcss": "^8.4.22",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-day-picker": "^8.7.1",
     "tailwindcss": "^3.3.1",
+    "tailwindcss-animate": "^1.0.5",
     "tsup": "^6.7.0",
+    "date-fns": "^2.29.3",
     "typescript": "^5.0.4"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./styles.css": "./dist/index.css",
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./avatar": {
+      "import": "./dist/avatar.mjs",
+      "types": "./dist/avatar.d.ts"
+    },
+    "./button": {
+      "import": "./dist/button.mjs",
+      "types": "./dist/button.d.ts"
+    },
+    "./calendar": {
+      "import": "./dist/calendar.mjs",
+      "types": "./dist/calendar.d.ts"
+    },
+    "./card": {
+      "import": "./dist/card.mjs",
+      "types": "./dist/card.d.ts"
+    },
+    "./command": {
+      "import": "./dist/command.mjs",
+      "types": "./dist/command.d.ts"
+    },
+    "./dialog": {
+      "import": "./dist/dialog.mjs",
+      "types": "./dist/dialog.d.ts"
+    },
+    "./dropdown-menu": {
+      "import": "./dist/dropdown-menu.mjs",
+      "types": "./dist/dropdown-menu.d.ts"
+    },
+    "./icons": {
+      "import": "./dist/icons.mjs",
+      "types": "./dist/icons.d.ts"
+    },
+    "./input": {
+      "import": "./dist/input.mjs",
+      "types": "./dist/input.d.ts"
+    },
+    "./label": {
+      "import": "./dist/label.mjs",
+      "types": "./dist/label.d.ts"
+    },
+    "./popover": {
+      "import": "./dist/popover.mjs",
+      "types": "./dist/popover.d.ts"
+    },
+    "./select": {
+      "import": "./dist/select.mjs",
+      "types": "./dist/select.d.ts"
+    },
+    "./tabs": {
+      "import": "./dist/tabs.mjs",
+      "types": "./dist/tabs.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast.mjs",
+      "types": "./dist/toast.d.ts"
+    },
+    "./toaster": {
+      "import": "./dist/toaster.mjs",
+      "types": "./dist/toaster.d.ts"
+    },
+    "./use-toast": {
+      "import": "./dist/use-toast.mjs",
+      "types": "./dist/use-toast.d.ts"
+    }
   }
 }

@@ -3,11 +3,10 @@
 import * as React from "react";
 import { Check, ChevronsUpDown, PlusCircle } from "lucide-react";
 
+import { cn } from "@acme/ui";
+import { Avatar, AvatarFallback, AvatarImage } from "@acme/ui/avatar";
+import { Button } from "@acme/ui/button";
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Button,
   Command,
   CommandEmpty,
   CommandGroup,
@@ -15,6 +14,8 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
+} from "@acme/ui/command";
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -22,18 +23,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Input,
-  Label,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
+} from "@acme/ui/dialog";
+import { Input } from "@acme/ui/input";
+import { Label } from "@acme/ui/label";
+import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-  cn,
-} from "@acme/ui";
+} from "@acme/ui/select";
 
 const groups = [
   {

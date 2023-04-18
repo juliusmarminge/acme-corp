@@ -1,4 +1,4 @@
-import { Input } from "@acme/ui";
+import { Input } from "@acme/ui/input";
 
 export function Search() {
   return (

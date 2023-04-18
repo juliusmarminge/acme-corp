@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Command } from "lucide-react";
 
-import { UserAuthForm } from "~/components/auth-form";
+import { UserAuthForm } from "~/app/signin/auth-form";
 
 export default function AuthenticationPage() {
   return (

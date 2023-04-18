@@ -6,26 +6,23 @@ import {
   Users,
 } from "lucide-react";
 
+import { Button } from "@acme/ui/button";
 import {
-  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@acme/ui";
+} from "@acme/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
 
-import { CalendarDateRangePicker } from "~/components/dashboard/date-range-picker";
-import { MainNav } from "~/components/dashboard/main-nav";
-import { Overview } from "~/components/dashboard/overview";
-import { RecentSales } from "~/components/dashboard/recent-sales";
-import { Search } from "~/components/dashboard/search";
-import { TeamSwitcher } from "~/components/dashboard/team-switcher";
-import { UserNav } from "~/components/dashboard/user-nav";
+import { CalendarDateRangePicker } from "~/app/dashboard/components/date-range-picker";
+import { MainNav } from "~/app/dashboard/components/main-nav";
+import { Overview } from "~/app/dashboard/components/overview";
+import { RecentSales } from "~/app/dashboard/components/recent-sales";
+import { Search } from "~/app/dashboard/components/search";
+import { TeamSwitcher } from "~/app/dashboard/components/team-switcher";
+import { UserNav } from "~/app/dashboard/components/user-nav";
 
 export default function DashboardPage() {
   return (

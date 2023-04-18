@@ -1,6 +1,12 @@
+"use client";
+
 import * as React from "react";
 
-import { Button, Icons, Input, Label, cn } from "@acme/ui";
+import { cn } from "@acme/ui";
+import { Button } from "@acme/ui/button";
+import { Icons } from "@acme/ui/icons";
+import { Input } from "@acme/ui/input";
+import { Label } from "@acme/ui/label";
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 

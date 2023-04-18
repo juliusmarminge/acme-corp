@@ -5,6 +5,10 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+  "eslint.workingDirectories": [
+    { "pattern": "apps/*/" },
+    { "pattern": "packages/*/" }
+  ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts"
 }

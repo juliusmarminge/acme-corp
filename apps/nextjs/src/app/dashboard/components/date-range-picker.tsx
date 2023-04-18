@@ -4,15 +4,10 @@ import * as React from "react";
 import { addDays, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
-import {
-  Button,
-  Calendar,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  cn,
-  type DateRange,
-} from "@acme/ui";
+import { cn } from "@acme/ui";
+import { Button } from "@acme/ui/button";
+import { Calendar, type DateRange } from "@acme/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 
 export function CalendarDateRangePicker({
   className,

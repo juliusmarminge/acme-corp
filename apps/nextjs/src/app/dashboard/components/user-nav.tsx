@@ -1,10 +1,8 @@
 import { CreditCard, LogOut, PlusCircle, Settings, User } from "lucide-react";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@acme/ui/avatar";
+import { Button } from "@acme/ui/button";
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -13,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@acme/ui";
+} from "@acme/ui/dropdown-menu";
 
 export function UserNav() {
   return (
