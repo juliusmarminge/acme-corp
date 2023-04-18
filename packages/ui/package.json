@@ -55,6 +55,10 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
+    "./icons": {
+      "import": "./dist/icons.mjs",
+      "types": "./dist/icons.d.ts"
+    },
     "./avatar": {
       "import": "./dist/avatar.mjs",
       "types": "./dist/avatar.d.ts"
@@ -82,10 +86,6 @@
     "./dropdown-menu": {
       "import": "./dist/dropdown-menu.mjs",
       "types": "./dist/dropdown-menu.d.ts"
-    },
-    "./icons": {
-      "import": "./dist/icons.mjs",
-      "types": "./dist/icons.d.ts"
     },
     "./input": {
       "import": "./dist/input.mjs",

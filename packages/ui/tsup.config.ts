@@ -9,7 +9,6 @@ const entry = [
   "./src/command.tsx",
   "./src/dialog.tsx",
   "./src/dropdown-menu.tsx",
-  "./src/icons.tsx",
   "./src/input.tsx",
   "./src/label.tsx",
   "./src/popover.tsx",
@@ -33,7 +32,7 @@ export default defineConfig((opts) => {
     {
       // separate not to inject the banner
       ...common,
-      entry: ["./src/index.ts"],
+      entry: ["./src/index.ts", "./src/icons.tsx"],
     },
     {
       ...common,
@@ -52,9 +51,14 @@ export default defineConfig((opts) => {
         pkgJson.exports = {
           "./package.json": "./package.json",
           "./styles.css": "./dist/index.css",
+          // These two are bundled above without banner => not part of `entry` array
           ".": {
             import: "./dist/index.mjs",
             types: "./dist/index.d.ts",
+          },
+          "./icons": {
+            import: "./dist/icons.mjs",
+            types: "./dist/icons.d.ts",
           },
         };
         entry

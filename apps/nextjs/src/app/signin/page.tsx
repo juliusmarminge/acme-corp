@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Command } from "lucide-react";
+
+import { Icons } from "@acme/ui/icons";
 
 import { UserAuthForm } from "~/app/signin/auth-form";
 
@@ -16,7 +17,7 @@ export default function AuthenticationPage() {
             }}
           />
           <div className="relative z-20 flex items-center text-lg font-medium">
-            <Command className="mr-2 h-6 w-6" /> Acme Inc
+            <Icons.logo className="mr-2 h-6 w-6" /> Acme Corp
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
