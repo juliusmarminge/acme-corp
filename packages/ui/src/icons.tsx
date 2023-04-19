@@ -246,7 +246,7 @@ export const Icons = {
         height="128"
         rx="16"
         stroke="#121212"
-        stroke-width="4"
+        strokeWidth="4"
       />
       <defs>
         <clipPath id="clip0_8_3">

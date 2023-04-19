@@ -19,7 +19,10 @@ const fontSans = Inter({
   variable: "--font-sans",
 });
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout(props: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}) {
   return (
     <>
       <ClerkProvider>
@@ -33,7 +36,10 @@ export default function RootLayout(props: { children: React.ReactNode }) {
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               <div className="relative flex min-h-screen flex-col">
                 {/* <SiteHeader /> */}
-                <div className="flex-1">{props.children}</div>
+                <div className="flex-1">
+                  {props.children}
+                  {props.modal}
+                </div>
                 <SiteFooter />
               </div>
               <TailwindIndicator />
