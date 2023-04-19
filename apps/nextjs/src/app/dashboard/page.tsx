@@ -17,13 +17,13 @@ import {
 } from "@acme/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
 
+import { UserNav } from "~/components/user-nav";
 import { CalendarDateRangePicker } from "~/app/dashboard/components/date-range-picker";
 import { MainNav } from "~/app/dashboard/components/main-nav";
 import { Overview } from "~/app/dashboard/components/overview";
 import { RecentSales } from "~/app/dashboard/components/recent-sales";
 import { Search } from "~/app/dashboard/components/search";
 import { TeamSwitcher } from "~/app/dashboard/components/team-switcher";
-import { UserNav } from "~/app/dashboard/components/user-nav";
 
 export default function DashboardPage() {
   return (
