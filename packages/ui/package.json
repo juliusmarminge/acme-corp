@@ -51,6 +51,7 @@
   "exports": {
     "./package.json": "./package.json",
     "./styles.css": "./dist/index.css",
+    "./dist/index.css": "./dist/index.css",
     ".": {
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
@@ -118,6 +119,58 @@
     "./toast": {
       "import": "./dist/toast.mjs",
       "types": "./dist/toast.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "toast": [
+        "dist/toast.d.ts"
+      ],
+      "avatar": [
+        "dist/avatar.d.ts"
+      ],
+      "calendar": [
+        "dist/calendar.d.ts"
+      ],
+      "command": [
+        "dist/command.d.ts"
+      ],
+      "dialog": [
+        "dist/dialog.d.ts"
+      ],
+      "dropdown-menu": [
+        "dist/dropdown-menu.d.ts"
+      ],
+      "input": [
+        "dist/input.d.ts"
+      ],
+      "label": [
+        "dist/label.d.ts"
+      ],
+      "popover": [
+        "dist/popover.d.ts"
+      ],
+      "select": [
+        "dist/select.d.ts"
+      ],
+      "tabs": [
+        "dist/tabs.d.ts"
+      ],
+      "toaster": [
+        "dist/toaster.d.ts"
+      ],
+      "use-toast": [
+        "dist/use-toast.d.ts"
+      ],
+      "button": [
+        "dist/button.d.ts"
+      ],
+      "icons": [
+        "dist/icons.d.ts"
+      ],
+      "card": [
+        "dist/card.d.ts"
+      ]
     }
   }
 }

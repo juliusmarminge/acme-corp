@@ -1,8 +1,7 @@
-import "@acme/ui/styles.css";
+import "@acme/ui/dist/index.css";
 import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
-// @ts-expect-error - Seems to be some issue with `moduleResolution: nodenext` and `@vercel/analytics`
 import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@acme/ui";

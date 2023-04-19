@@ -1,7 +1,3 @@
-// import { Github, Twitter } from "@/components/shared/icons";
-// import { DEPLOY_URL } from "@/lib/constants";
-// import { nFormatter } from "@/lib/utils";
-
 import { Suspense } from "react";
 import Balancer from "react-wrap-balancer";
 

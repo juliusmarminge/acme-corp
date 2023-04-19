@@ -3,11 +3,14 @@
  * and puts them + instantiates the Kysely instance into `~/server/db.ts`
  */
 
-import { readFile, rmdir, writeFile } from "fs/promises";
+import { readFile, rm, writeFile } from "fs/promises";
 import path from "path";
 
-const generatedFile = path.join(__dirname, "types/database-types.ts");
-const outputFile = path.join(__dirname, "../index.ts");
+const generatedFile = path.join(
+  process.cwd(),
+  "prisma/types/database-types.ts",
+);
+const outputFile = path.join(process.cwd(), "index.ts");
 
 (async () => {
   const dbTypes = await readFile(generatedFile, "utf-8");
@@ -30,7 +33,7 @@ export const genId = nanoid;
 `;
 
   await writeFile(outputFile, output, "utf-8");
-  await rmdir(path.join(__dirname, "types"), { recursive: true });
+  await rm(path.join(process.cwd(), "prisma/types"), { recursive: true });
 })().catch((e) => {
   console.error(e);
   process.exit(1);

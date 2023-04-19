@@ -80,25 +80,6 @@
   }
 }
 
-@layer utilities {
-  .step {
-    counter-increment: step;
-  }
-
-  .step:before {
-    @apply absolute inline-flex h-8 w-8 items-center justify-center rounded-full bg-muted text-center -indent-px text-base font-medium;
-    @apply ml-[-41px];
-    content: counter(step);
-  }
-}
-
-/** Prevent scrolling on body when modal is open */
-body[style*="pointer-events: none"] .overflow-auto,
-body[style*="pointer-events: none"] .overflow-y-auto,
-body[style*="pointer-events: none"] .overflow-x-auto {
-  overflow: hidden !important;
-}
-
 @media (max-width: 640px) {
   .container {
     @apply px-4;

@@ -1,12 +1,16 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "moduleResolution": "nodenext",
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     },
-    "plugins": [{ "name": "next" }]
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "exclude": [],
   "include": [

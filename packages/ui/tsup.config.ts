@@ -58,7 +58,9 @@ export default defineConfig((opts) => {
         pkgJson.exports = {
           "./package.json": "./package.json",
           "./styles.css": "./dist/index.css",
+          "./dist/index.css": "./dist/index.css",
           ".": {
+            // default: "./dist/index.mjs",
             import: "./dist/index.mjs",
             types: "./dist/index.d.ts",
           },
@@ -68,9 +70,11 @@ export default defineConfig((opts) => {
           .forEach((entry) => {
             const file = entry.replace("./src/", "").replace(".tsx", "");
             pkgJson.exports["./" + file] = {
+              // default: "./dist/" + file + ".mjs",
               import: "./dist/" + file + ".mjs",
               types: "./dist/" + file + ".d.ts",
             };
+            pkgJson.typesVersions["*"][file] = ["dist/" + file + ".d.ts"];
           });
 
         await writeFile("./package.json", JSON.stringify(pkgJson, null, 2));
@@ -82,6 +86,7 @@ export default defineConfig((opts) => {
 type PackageJson = {
   name: string;
   exports: Record<string, { import: string; types: string } | string>;
+  typesVersions: Record<"*", Record<string, string[]>>;
   files: string[];
   dependencies: Record<string, string>;
   pnpm: {
