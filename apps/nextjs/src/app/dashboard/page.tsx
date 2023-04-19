@@ -43,10 +43,10 @@ export default function DashboardPage() {
           </div>
         </div>
         <div className="flex-1 space-y-4 p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
+          <div className="flex flex-col justify-between space-y-2 md:flex-row md:items-center">
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-            <div className="flex items-center space-x-2">
-              <CalendarDateRangePicker />
+            <div className="flex items-center gap-2">
+              <CalendarDateRangePicker align="start" />
               <Button size="sm">
                 <Download className="mr-2 h-4 w-4" />
                 Download

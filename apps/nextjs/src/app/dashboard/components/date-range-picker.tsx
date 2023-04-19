@@ -11,7 +11,10 @@ import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 
 export function CalendarDateRangePicker({
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
+  align = "end",
+}: React.HTMLAttributes<HTMLDivElement> & {
+  align?: "center" | "end" | "start";
+}) {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(2023, 0, 20),
     to: addDays(new Date(2023, 0, 20), 20),
@@ -45,7 +48,7 @@ export function CalendarDateRangePicker({
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="end">
+        <PopoverContent className="w-auto p-0" align={align}>
           <Calendar
             initialFocus
             mode="range"

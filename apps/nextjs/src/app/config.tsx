@@ -7,6 +7,25 @@ export const siteConfig = {
   twitter: "https://twitter.com/jullerino",
 };
 
+export const navItems = [
+  {
+    href: "/dashboard",
+    title: "Overview",
+  },
+  {
+    href: "/dashboard",
+    title: "Customers",
+  },
+  {
+    href: "/dashboard",
+    title: "Products",
+  },
+  {
+    href: "/dashboard",
+    title: "Settings",
+  },
+];
+
 export const marketingFeatures = [
   {
     icon: <Component />,
@@ -65,7 +84,7 @@ export const marketingFeatures = [
         <Icons.prisma className="h-8 w-8" />
       </div>
     ),
-    extraClassNames: "col-span-2",
+    extraClassNames: "md:col-span-2",
     title: "Full-stack Typesafety",
     body: (
       <>
