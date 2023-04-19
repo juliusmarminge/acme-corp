@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-import { UserAuthForm } from "./auth-form";
+import { EmailSignIn } from "./email-signin";
+import { OAuthSignIn } from "./oauth-signin";
 
 export default function AuthenticationPage() {
   return (
@@ -13,7 +14,23 @@ export default function AuthenticationPage() {
           Enter your email below to create your account
         </p>
       </div>
-      <UserAuthForm />
+      <div className="grid gap-6">
+        <EmailSignIn />
+
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
+          </div>
+        </div>
+
+        <OAuthSignIn />
+      </div>
+
       <p className="px-8 text-center text-sm text-muted-foreground">
         By clicking continue, you agree to our{" "}
         <Link

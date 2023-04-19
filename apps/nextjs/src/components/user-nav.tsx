@@ -29,9 +29,9 @@ export async function UserNav() {
   if (!user) {
     return (
       <Link href="/signin">
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+        <Button variant="ghost" className="relative h-8 w-8 rounded">
           <Avatar className="h-8 w-8">
-            <AvatarFallback>
+            <AvatarFallback className="bg-transparent">
               <LogIn className="h-6 w-6" />
             </AvatarFallback>
           </Avatar>
