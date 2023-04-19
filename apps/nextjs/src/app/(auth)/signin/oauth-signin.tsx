@@ -22,15 +22,14 @@ export function OAuthSignIn() {
         redirectUrl: "/sso-callback",
         redirectUrlComplete: "/dashboard",
       });
-      setIsLoading(null);
     } catch (cause) {
       console.error(cause);
+      setIsLoading(null);
       toast({
         variant: "destructive",
         title: "Error",
         description: "Something went wrong, please try again.",
       });
-      setIsLoading(null);
     }
   };
 

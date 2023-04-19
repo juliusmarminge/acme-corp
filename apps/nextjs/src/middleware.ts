@@ -1,25 +1,29 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getAuth, withClerkMiddleware } from "@clerk/nextjs/server";
 
+const publicPaths = ["/", "/signin*"] as const;
+
+const isPublic = (path: string) => {
+  return publicPaths.find((x) =>
+    path.match(new RegExp(`^${x}$`.replace("*$", "($|/)"))),
+  );
+};
+
 export default withClerkMiddleware((req: NextRequest) => {
+  if (isPublic(req.nextUrl.pathname)) {
+    return NextResponse.next();
+  }
+
   const { userId } = getAuth(req);
-  const url = new URL(req.url);
-  if (userId && url.searchParams.get("redirect") !== "false") {
-    NextResponse.redirect(new URL("/dashboard", url.origin));
+  if (!userId) {
+    const signInUrl = new URL("/signin", req.url);
+    // signInUrl.searchParams.set("redirect_url", req.url);
+    return NextResponse.redirect(signInUrl);
   }
 
   return NextResponse.next();
 });
 
-// Stop Middleware running on static files
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next
-     * - static (static files)
-     * - favicon.ico (favicon file)
-     */
-    "/(.*?trpc.*?|(?!static|.*\\..*|_next|favicon.ico).*)",
-  ],
+  matcher: ["/(.*?trpc.*?|(?!static|.*\\..*|_next|favicon.ico).*)"],
 };
