@@ -1,6 +1,13 @@
-import { redirect } from "next/navigation";
+import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/app-beta";
-import { CreditCard, LogOut, PlusCircle, Settings, User } from "lucide-react";
+import {
+  CreditCard,
+  LogIn,
+  LogOut,
+  PlusCircle,
+  Settings,
+  User,
+} from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@acme/ui/avatar";
 import { Button } from "@acme/ui/button";
@@ -17,7 +24,21 @@ import {
 
 export async function UserNav() {
   const user = await currentUser();
-  if (!user) redirect("/signin");
+  // if (!user) redirect("/signin");
+
+  if (!user) {
+    return (
+      <Link href="/signin">
+        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+          <Avatar className="h-8 w-8">
+            <AvatarFallback>
+              <LogIn className="h-6 w-6" />
+            </AvatarFallback>
+          </Avatar>
+        </Button>
+      </Link>
+    );
+  }
 
   const fullname = `${user.firstName} ${user.lastName}`;
   const initials = fullname
@@ -33,10 +54,7 @@ export async function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage
-              src={user?.profileImageUrl}
-              alt={user?.username ?? ""}
-            />
+            <AvatarImage src={user.profileImageUrl} alt={user.username ?? ""} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>
@@ -75,10 +93,12 @@ export async function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        <DropdownMenuItem asChild>
+          <Link href="/signout">
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

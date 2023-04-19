@@ -12,6 +12,7 @@ import { Toaster } from "@acme/ui/toaster";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
 import { ThemeToggle } from "~/components/theme-toggle";
+import { siteConfig } from "./config";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -58,7 +59,7 @@ export function SiteFooter() {
           <p className="text-center text-sm/7 text-muted-foreground md:text-left">
             Built by{" "}
             <a
-              href="https://twitter.com/jullerino"
+              href={siteConfig.twitter}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
@@ -76,7 +77,7 @@ export function SiteFooter() {
             </a>
             . The source code is available on{" "}
             <a
-              href="https://github.com/juliusmarminge/acme-corp"
+              href={siteConfig.github}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

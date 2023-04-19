@@ -3,9 +3,9 @@ import { getAuth, withClerkMiddleware } from "@clerk/nextjs/server";
 
 export default withClerkMiddleware((req: NextRequest) => {
   const { userId } = getAuth(req);
-  if (userId) {
-    const url = new URL("/dashboard", req.url);
-    NextResponse.redirect(url);
+  const url = new URL(req.url);
+  if (userId && url.searchParams.get("redirect") !== "false") {
+    NextResponse.redirect(new URL("/dashboard", url.origin));
   }
 
   return NextResponse.next();
