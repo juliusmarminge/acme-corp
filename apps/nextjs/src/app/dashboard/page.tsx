@@ -26,6 +26,7 @@ import { Search } from "~/app/dashboard/components/search";
 import { TeamSwitcher } from "~/app/dashboard/components/team-switcher";
 
 // export const runtime = "edge";
+export const dynamic = "force-dynamic";
 
 export default function DashboardPage() {
   return (
@@ -37,8 +38,7 @@ export default function DashboardPage() {
             <MainNav className="mx-6" />
             <div className="ml-auto flex items-center space-x-4">
               <Search />
-              <Suspense fallback="...">
-                {/* @ts-expect-error - Async Server Component */}
+              <Suspense>
                 <UserNav />
               </Suspense>
             </div>

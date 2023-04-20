@@ -9,6 +9,6 @@
     { "pattern": "apps/*/" },
     { "pattern": "packages/*/" }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules/.pnpm/typescript@5.1.0/node_modules/typescript/lib",
   "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts"
 }

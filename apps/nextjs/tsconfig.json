@@ -15,6 +15,7 @@
   "exclude": [],
   "include": [
     "next-env.d.ts",
+    "async-jsx.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",

@@ -56,6 +56,7 @@ const data = [
 export function Overview() {
   return (
     <ResponsiveContainer width="100%" height={350}>
+      {/* @ts-expect-error - My Experimental JSX Type broke Class Components... who cares  */}
       <BarChart data={data}>
         <XAxis
           dataKey="name"
@@ -71,6 +72,7 @@ export function Overview() {
           axisLine={false}
           tickFormatter={(value) => `$${value}`}
         />
+        {/* @ts-expect-error - My Experimental JSX Type broke Class Components... who cares  */}
         <Bar dataKey="total" fill="#adfa1d" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
