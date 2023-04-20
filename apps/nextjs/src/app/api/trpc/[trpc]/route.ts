@@ -3,9 +3,7 @@ import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 import { appRouter, createTRPCContext } from "@acme/api";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
 const handler = (req: NextRequest) =>
   fetchRequestHandler({
