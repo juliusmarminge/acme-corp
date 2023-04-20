@@ -17,6 +17,8 @@ import { UserNav } from "~/components/user-nav";
 import { marketingFeatures, siteConfig } from "~/app/config";
 import { MainNav } from "~/app/dashboard/components/main-nav";
 
+export const runtime = "edge";
+
 export default function Home() {
   return (
     <>

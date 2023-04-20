@@ -5,6 +5,9 @@ import { useClerk } from "@clerk/nextjs";
 
 import { Button } from "@acme/ui/button";
 
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
 export default function AuthenticationPage() {
   const { signOut } = useClerk();
   const router = useRouter();

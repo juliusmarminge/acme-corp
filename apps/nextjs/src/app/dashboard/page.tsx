@@ -25,6 +25,8 @@ import { RecentSales } from "~/app/dashboard/components/recent-sales";
 import { Search } from "~/app/dashboard/components/search";
 import { TeamSwitcher } from "~/app/dashboard/components/team-switcher";
 
+// export const runtime = "edge";
+
 export default function DashboardPage() {
   return (
     <div className="flex min-h-screen overflow-hidden rounded-[0.5rem] bg-background">

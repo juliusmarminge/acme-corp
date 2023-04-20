@@ -3,6 +3,9 @@ import Link from "next/link";
 import { EmailSignIn } from "./email-signin";
 import { OAuthSignIn } from "./oauth-signin";
 
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
 export default function AuthenticationPage() {
   return (
     <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">

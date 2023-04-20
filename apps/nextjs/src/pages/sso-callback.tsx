@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { ClerkProvider, useClerk } from "@clerk/nextjs";
 import type { HandleOAuthCallbackParams } from "@clerk/types";
 
+export const runtime = "experimental-edge";
+
 /**
  * TODO: Check if this can be a server component or api route
  */
