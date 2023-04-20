@@ -20,7 +20,7 @@ export const postRouter = createTRPCRouter({
         .selectFrom("Post")
         .selectAll()
         .where("Post.id", "=", input.id)
-        .execute();
+        .executeTakeFirst();
     }),
 
   create: protectedProcedure
