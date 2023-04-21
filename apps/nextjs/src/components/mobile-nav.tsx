@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import { Button } from "@acme/ui/button";
@@ -11,10 +10,7 @@ import { ScrollArea } from "@acme/ui/scroll-area";
 
 import { navItems } from "~/app/config";
 import { Search } from "~/app/dashboard/components/search";
-
-const ThemeToggle = dynamic(() => import("~/components/theme-toggle"), {
-  ssr: false,
-});
+import ThemeToggle from "./theme-toggle";
 
 export function MobileDropdown() {
   const [isOpen, setIsOpen] = React.useState(false);
