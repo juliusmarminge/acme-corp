@@ -7,7 +7,7 @@
     "build": "tsup",
     "clean": "git clean -xdf dist .turbo node_modules",
     "dev": "tsup --watch",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "@radix-ui/react-dropdown-menu": "^2.0.2",
     "@radix-ui/react-label": "^2.0.0",
     "@radix-ui/react-popover": "^1.0.5",
+    "@radix-ui/react-scroll-area": "^1.0.3",
     "@radix-ui/react-select": "^1.2.0",
     "@radix-ui/react-tabs": "^1.0.3",
     "@radix-ui/react-toast": "^1.1.3",
@@ -27,8 +28,8 @@
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "react-day-picker": "^8.0.0",
+    "react-dom": "^18.0.0",
     "tailwindcss": "^3.3.0",
     "tailwindcss-animate": "^1.0.5"
   },
@@ -37,15 +38,15 @@
     "@acme/tailwind-config": "0.1.0",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "date-fns": "^2.29.3",
     "eslint": "^8.38.0",
     "postcss": "^8.4.22",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
     "react-day-picker": "^8.7.1",
+    "react-dom": "18.2.0",
     "tailwindcss": "^3.3.1",
     "tailwindcss-animate": "^1.0.5",
     "tsup": "^6.7.0",
-    "date-fns": "^2.29.3",
     "typescript": "^5.1.0-beta"
   },
   "exports": {
@@ -53,130 +54,137 @@
     "./styles.css": "./dist/index.css",
     "./dist/index.css": "./dist/index.css",
     ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
     },
     "./avatar": {
-      "import": "./dist/avatar.mjs",
-      "types": "./dist/avatar.d.ts"
+      "import": "./src/avatar.tsx",
+      "types": "./src/avatar.tsx"
     },
     "./calendar": {
-      "import": "./dist/calendar.mjs",
-      "types": "./dist/calendar.d.ts"
+      "import": "./src/calendar.tsx",
+      "types": "./src/calendar.tsx"
     },
     "./command": {
-      "import": "./dist/command.mjs",
-      "types": "./dist/command.d.ts"
+      "import": "./src/command.tsx",
+      "types": "./src/command.tsx"
     },
     "./dialog": {
-      "import": "./dist/dialog.mjs",
-      "types": "./dist/dialog.d.ts"
+      "import": "./src/dialog.tsx",
+      "types": "./src/dialog.tsx"
     },
     "./dropdown-menu": {
-      "import": "./dist/dropdown-menu.mjs",
-      "types": "./dist/dropdown-menu.d.ts"
+      "import": "./src/dropdown-menu.tsx",
+      "types": "./src/dropdown-menu.tsx"
     },
     "./input": {
-      "import": "./dist/input.mjs",
-      "types": "./dist/input.d.ts"
+      "import": "./src/input.tsx",
+      "types": "./src/input.tsx"
     },
     "./label": {
-      "import": "./dist/label.mjs",
-      "types": "./dist/label.d.ts"
+      "import": "./src/label.tsx",
+      "types": "./src/label.tsx"
     },
     "./popover": {
-      "import": "./dist/popover.mjs",
-      "types": "./dist/popover.d.ts"
+      "import": "./src/popover.tsx",
+      "types": "./src/popover.tsx"
+    },
+    "./scroll-area": {
+      "import": "./src/scroll-area.tsx",
+      "types": "./src/scroll-area.tsx"
     },
     "./select": {
-      "import": "./dist/select.mjs",
-      "types": "./dist/select.d.ts"
+      "import": "./src/select.tsx",
+      "types": "./src/select.tsx"
     },
     "./sheet": {
-      "import": "./dist/sheet.mjs",
-      "types": "./dist/sheet.d.ts"
+      "import": "./src/sheet.tsx",
+      "types": "./src/sheet.tsx"
     },
     "./tabs": {
-      "import": "./dist/tabs.mjs",
-      "types": "./dist/tabs.d.ts"
+      "import": "./src/tabs.tsx",
+      "types": "./src/tabs.tsx"
     },
     "./toaster": {
-      "import": "./dist/toaster.mjs",
-      "types": "./dist/toaster.d.ts"
+      "import": "./src/toaster.tsx",
+      "types": "./src/toaster.tsx"
     },
     "./use-toast": {
-      "import": "./dist/use-toast.mjs",
-      "types": "./dist/use-toast.d.ts"
+      "import": "./src/use-toast.tsx",
+      "types": "./src/use-toast.tsx"
     },
     "./button": {
-      "import": "./dist/button.mjs",
-      "types": "./dist/button.d.ts"
+      "import": "./src/button.tsx",
+      "types": "./src/button.tsx"
     },
     "./icons": {
-      "import": "./dist/icons.mjs",
-      "types": "./dist/icons.d.ts"
+      "import": "./src/icons.tsx",
+      "types": "./src/icons.tsx"
     },
     "./card": {
-      "import": "./dist/card.mjs",
-      "types": "./dist/card.d.ts"
+      "import": "./src/card.tsx",
+      "types": "./src/card.tsx"
     },
     "./toast": {
-      "import": "./dist/toast.mjs",
-      "types": "./dist/toast.d.ts"
+      "import": "./src/toast.tsx",
+      "types": "./src/toast.tsx"
     }
   },
   "typesVersions": {
     "*": {
       "toast": [
-        "dist/toast.d.ts"
+        "src/toast.tsx"
       ],
       "avatar": [
-        "dist/avatar.d.ts"
+        "src/avatar.tsx"
       ],
       "calendar": [
-        "dist/calendar.d.ts"
+        "src/calendar.tsx"
       ],
       "command": [
-        "dist/command.d.ts"
+        "src/command.tsx"
       ],
       "dialog": [
-        "dist/dialog.d.ts"
+        "src/dialog.tsx"
       ],
       "dropdown-menu": [
-        "dist/dropdown-menu.d.ts"
+        "src/dropdown-menu.tsx"
       ],
       "input": [
-        "dist/input.d.ts"
+        "src/input.tsx"
       ],
       "label": [
-        "dist/label.d.ts"
+        "src/label.tsx"
       ],
       "popover": [
-        "dist/popover.d.ts"
+        "src/popover.tsx"
       ],
       "select": [
-        "dist/select.d.ts"
+        "src/select.tsx"
       ],
       "tabs": [
-        "dist/tabs.d.ts"
+        "src/tabs.tsx"
       ],
       "toaster": [
-        "dist/toaster.d.ts"
+        "src/toaster.tsx"
       ],
       "use-toast": [
-        "dist/use-toast.d.ts"
+        "src/use-toast.tsx"
       ],
       "button": [
-        "dist/button.d.ts"
+        "src/button.tsx"
       ],
       "icons": [
-        "dist/icons.d.ts"
+        "src/icons.tsx"
       ],
       "card": [
-        "dist/card.d.ts"
+        "src/card.tsx"
       ],
       "sheet": [
-        "dist/sheet.d.ts"
+        "src/sheet.tsx"
+      ],
+      "scroll-area": [
+        "src/scroll-area.tsx"
       ]
     }
   }

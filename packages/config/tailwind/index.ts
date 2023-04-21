@@ -3,7 +3,11 @@ import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
-  content: ["src/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+  content: [
+    "src/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}",
+    "../../packages/ui/src/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -13,6 +17,9 @@ export default {
       },
     },
     extend: {
+      borderColor: {
+        DEFAULT: "hsl(var(--border) / <alpha-value>)",
+      },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",

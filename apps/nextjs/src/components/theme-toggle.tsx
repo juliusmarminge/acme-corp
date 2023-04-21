@@ -12,19 +12,32 @@ import {
 } from "@acme/ui/dropdown-menu";
 import { Icons } from "@acme/ui/icons";
 
-export function ThemeToggle() {
-  const { setTheme } = useTheme();
+export default function ThemeToggle(props: {
+  align?: "center" | "start" | "end";
+  side?: "top" | "bottom";
+}) {
+  const { setTheme, theme } = useTheme();
+
+  const triggerIcon = {
+    light: <Icons.sun />,
+    dark: <Icons.moon />,
+    system: <Icons.system className="h-6 w-6" />,
+  }[theme as "light" | "dark" | "system"];
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="w-9 px-0">
-          <Icons.sun className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Icons.moon className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="gap-1 px-2 text-lg font-semibold md:text-base"
+        >
+          {triggerIcon}
+          <span className="capitalize">{theme}</span>
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align={props.align} side={props.side}>
         <DropdownMenuItem onClick={() => setTheme("light")}>
           <Icons.sun className="mr-2 h-4 w-4" />
           <span>Light</span>

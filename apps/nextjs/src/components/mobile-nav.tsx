@@ -1,15 +1,32 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 
 import { Button } from "@acme/ui/button";
 import { Icons } from "@acme/ui/icons";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@acme/ui/sheet";
+import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
+import { ScrollArea } from "@acme/ui/scroll-area";
 
 import { navItems } from "~/app/config";
+import { Search } from "~/app/dashboard/components/search";
 
-export function MobileNav() {
+const ThemeToggle = React.lazy(() => import("~/components/theme-toggle"));
+
+export function MobileDropdown() {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isOpen]);
+
   return (
-    <Sheet>
-      <SheetTrigger asChild>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
         <Button
           variant="ghost"
           className="mr-2 px-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
@@ -17,24 +34,25 @@ export function MobileNav() {
           <Icons.logo className="mr-2 h-6 w-6" />
           <span className="text-lg font-bold tracking-tight">Acme Corp</span>
         </Button>
-      </SheetTrigger>
-      <SheetContent size="lg" position="left" className="pr-0">
-        <SheetClose className="flex items-center">
-          <Icons.logo className="mr-2 h-6 w-6" />
-          <span className="text-lg font-bold">Acme Corp</span>
-        </SheetClose>
-        {navItems.map((item) => (
-          <SheetClose asChild key={item.href}>
+      </PopoverTrigger>
+      <PopoverContent className="z-40 mt-2 h-[calc(100vh-4rem)] w-screen animate-none rounded-none border-none transition-transform">
+        <Search />
+        <ScrollArea className="py-8">
+          {navItems.map((item) => (
             <Link
+              key={item.href}
               href={item.href}
               // className="mt-2 flex items-center text-lg font-semibold sm:text-sm"
-              className="flex text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="flex py-1 text-base font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {item.title}
             </Link>
-          </SheetClose>
-        ))}
-      </SheetContent>
-    </Sheet>
+          ))}
+        </ScrollArea>
+        <div className="border-t pt-4">
+          <ThemeToggle side="top" align="start" />
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }

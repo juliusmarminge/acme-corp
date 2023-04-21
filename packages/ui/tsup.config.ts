@@ -13,6 +13,7 @@ const client = [
   "./src/input.tsx",
   "./src/label.tsx",
   "./src/popover.tsx",
+  "./src/scroll-area.tsx",
   "./src/select.tsx",
   "./src/sheet.tsx",
   "./src/tabs.tsx",
@@ -60,10 +61,14 @@ export default defineConfig((opts) => {
           "./package.json": "./package.json",
           "./styles.css": "./dist/index.css",
           "./dist/index.css": "./dist/index.css",
+          // ".": {
+          //   // default: "./dist/index.mjs",
+          //   import: "./dist/index.mjs",
+          //   types: "./dist/index.d.ts",
+          // },
           ".": {
-            // default: "./dist/index.mjs",
-            import: "./dist/index.mjs",
-            types: "./dist/index.d.ts",
+            import: "./src/index.ts",
+            types: "./src/index.ts",
           },
         };
         [...client, ...server]
@@ -72,10 +77,13 @@ export default defineConfig((opts) => {
             const file = entry.replace("./src/", "").replace(".tsx", "");
             pkgJson.exports["./" + file] = {
               // default: "./dist/" + file + ".mjs",
-              import: "./dist/" + file + ".mjs",
-              types: "./dist/" + file + ".d.ts",
+              // import: "./dist/" + file + ".mjs",
+              // types: "./dist/" + file + ".d.ts",
+              import: "./src/" + file + ".tsx",
+              types: "./src/" + file + ".tsx",
             };
-            pkgJson.typesVersions["*"][file] = ["dist/" + file + ".d.ts"];
+            // pkgJson.typesVersions["*"][file] = ["dist/" + file + ".d.ts"];
+            pkgJson.typesVersions["*"][file] = ["src/" + file + ".tsx"];
           });
 
         await writeFile("./package.json", JSON.stringify(pkgJson, null, 2));
