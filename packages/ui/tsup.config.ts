@@ -60,15 +60,9 @@ export default defineConfig((opts) => {
         pkgJson.exports = {
           "./package.json": "./package.json",
           "./styles.css": "./dist/index.css",
-          "./dist/index.css": "./dist/index.css",
-          // ".": {
-          //   // default: "./dist/index.mjs",
-          //   import: "./dist/index.mjs",
-          //   types: "./dist/index.d.ts",
-          // },
           ".": {
-            import: "./src/index.ts",
-            types: "./src/index.ts",
+            import: "./dist/index.mjs",
+            types: "./dist/index.d.ts",
           },
         };
         [...client, ...server]
@@ -76,14 +70,10 @@ export default defineConfig((opts) => {
           .forEach((entry) => {
             const file = entry.replace("./src/", "").replace(".tsx", "");
             pkgJson.exports["./" + file] = {
-              // default: "./dist/" + file + ".mjs",
-              // import: "./dist/" + file + ".mjs",
-              // types: "./dist/" + file + ".d.ts",
-              import: "./src/" + file + ".tsx",
-              types: "./src/" + file + ".tsx",
+              import: "./dist/" + file + ".mjs",
+              types: "./dist/" + file + ".d.ts",
             };
-            // pkgJson.typesVersions["*"][file] = ["dist/" + file + ".d.ts"];
-            pkgJson.typesVersions["*"][file] = ["src/" + file + ".tsx"];
+            pkgJson.typesVersions["*"][file] = ["dist/" + file + ".d.ts"];
           });
 
         await writeFile("./package.json", JSON.stringify(pkgJson, null, 2));
