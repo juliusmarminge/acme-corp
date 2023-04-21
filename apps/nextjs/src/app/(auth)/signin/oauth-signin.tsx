@@ -32,7 +32,8 @@ export function OAuthSignIn() {
         description: "Something went wrong, please try again.",
       });
     }
-    console.log("oauthSignIn done2?", signIn);
+    console.log("oauthSignIn done2?");
+    console.log(signIn);
   };
 
   return (
