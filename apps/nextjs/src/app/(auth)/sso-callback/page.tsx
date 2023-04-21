@@ -16,9 +16,14 @@ export default function SSOCallback(props: {
   const { handleRedirectCallback } = useClerk();
 
   useEffect(() => {
-    void handleRedirectCallback(props.searchParams).catch((err) =>
-      console.error("SSO handleRedirectCallback error", err),
-    );
+    void new Promise((res) => {
+      setTimeout(res, 1000);
+    }).then(() => {
+      void handleRedirectCallback(props.searchParams).catch((err) =>
+        console.error("SSO handleRedirectCallback error", err),
+      );
+      console.log("Callback done");
+    });
   }, [props, handleRedirectCallback]);
   return <div>Loading....</div>;
 }
