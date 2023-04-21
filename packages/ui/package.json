@@ -40,7 +40,7 @@
     "@types/react-dom": "^18.0.11",
     "date-fns": "^2.29.3",
     "eslint": "^8.38.0",
-    "postcss": "^8.4.22",
+    "postcss": "^8.4.23",
     "react": "18.2.0",
     "react-day-picker": "^8.7.1",
     "react-dom": "18.2.0",
