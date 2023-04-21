@@ -73,34 +73,12 @@ export default function Home() {
             style={{ animationDelay: "0.40s", animationFillMode: "forwards" }}
           >
             <a
-              className={cn(buttonVariants({ variant: "ghost" }))}
-              href={"https://vercel.com"}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg
-                className="mr-1 h-4 w-4"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 4L20 20H4L12 4Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>Deploy to Vercel</span>
-            </a>
-            <a
               className={cn(buttonVariants({ variant: "default" }))}
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Icons.gitHub className=" mr-1 h-4 w-4" />
+              <Icons.gitHub className="mr-1 h-4 w-4" />
               <span>Star on GitHub</span>
             </a>
           </div>

@@ -2,6 +2,10 @@ import Link from "next/link";
 
 import { cn } from "@acme/ui";
 
+import { navItems } from "~/app/config";
+
+// TODO: idx not needed as key when all items have unique hrefs
+// also, the active link should be filtered by href and not idx
 export function MainNav({
   className,
   ...props
@@ -14,30 +18,18 @@ export function MainNav({
       )}
       {...props}
     >
-      <Link
-        href="/dashboard"
-        className="text-sm font-medium transition-colors hover:text-primary"
-      >
-        Overview
-      </Link>
-      <Link
-        href="/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Customers
-      </Link>
-      <Link
-        href="/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Products
-      </Link>
-      <Link
-        href="/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Settings
-      </Link>
+      {navItems.map((item, idx) => (
+        <Link
+          href={item.href}
+          key={`${item.href}-${idx}`}
+          className={cn(
+            "text-sm font-medium transition-colors hover:text-primary",
+            idx !== 0 && "text-muted-foreground",
+          )}
+        >
+          {item.title}
+        </Link>
+      ))}
     </nav>
   );
 }
