@@ -32,6 +32,11 @@ export function EmailSignIn() {
       })
       .catch((error) => {
         console.log("sign-in error", JSON.stringify(error));
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Something went wrong, please try again.",
+        });
       });
 
     const firstFactor = signIn.supportedFirstFactors.find(
