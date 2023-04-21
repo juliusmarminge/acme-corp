@@ -52,139 +52,138 @@
   "exports": {
     "./package.json": "./package.json",
     "./styles.css": "./dist/index.css",
-    "./dist/index.css": "./dist/index.css",
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     },
     "./avatar": {
-      "import": "./src/avatar.tsx",
-      "types": "./src/avatar.tsx"
+      "import": "./dist/avatar.mjs",
+      "types": "./dist/avatar.d.ts"
     },
     "./calendar": {
-      "import": "./src/calendar.tsx",
-      "types": "./src/calendar.tsx"
+      "import": "./dist/calendar.mjs",
+      "types": "./dist/calendar.d.ts"
     },
     "./command": {
-      "import": "./src/command.tsx",
-      "types": "./src/command.tsx"
+      "import": "./dist/command.mjs",
+      "types": "./dist/command.d.ts"
     },
     "./dialog": {
-      "import": "./src/dialog.tsx",
-      "types": "./src/dialog.tsx"
+      "import": "./dist/dialog.mjs",
+      "types": "./dist/dialog.d.ts"
     },
     "./dropdown-menu": {
-      "import": "./src/dropdown-menu.tsx",
-      "types": "./src/dropdown-menu.tsx"
+      "import": "./dist/dropdown-menu.mjs",
+      "types": "./dist/dropdown-menu.d.ts"
     },
     "./input": {
-      "import": "./src/input.tsx",
-      "types": "./src/input.tsx"
+      "import": "./dist/input.mjs",
+      "types": "./dist/input.d.ts"
     },
     "./label": {
-      "import": "./src/label.tsx",
-      "types": "./src/label.tsx"
+      "import": "./dist/label.mjs",
+      "types": "./dist/label.d.ts"
     },
     "./popover": {
-      "import": "./src/popover.tsx",
-      "types": "./src/popover.tsx"
+      "import": "./dist/popover.mjs",
+      "types": "./dist/popover.d.ts"
     },
     "./scroll-area": {
-      "import": "./src/scroll-area.tsx",
-      "types": "./src/scroll-area.tsx"
+      "import": "./dist/scroll-area.mjs",
+      "types": "./dist/scroll-area.d.ts"
     },
     "./select": {
-      "import": "./src/select.tsx",
-      "types": "./src/select.tsx"
+      "import": "./dist/select.mjs",
+      "types": "./dist/select.d.ts"
     },
     "./sheet": {
-      "import": "./src/sheet.tsx",
-      "types": "./src/sheet.tsx"
+      "import": "./dist/sheet.mjs",
+      "types": "./dist/sheet.d.ts"
     },
     "./tabs": {
-      "import": "./src/tabs.tsx",
-      "types": "./src/tabs.tsx"
+      "import": "./dist/tabs.mjs",
+      "types": "./dist/tabs.d.ts"
     },
     "./toaster": {
-      "import": "./src/toaster.tsx",
-      "types": "./src/toaster.tsx"
+      "import": "./dist/toaster.mjs",
+      "types": "./dist/toaster.d.ts"
     },
     "./use-toast": {
-      "import": "./src/use-toast.tsx",
-      "types": "./src/use-toast.tsx"
+      "import": "./dist/use-toast.mjs",
+      "types": "./dist/use-toast.d.ts"
     },
     "./button": {
-      "import": "./src/button.tsx",
-      "types": "./src/button.tsx"
+      "import": "./dist/button.mjs",
+      "types": "./dist/button.d.ts"
     },
     "./icons": {
-      "import": "./src/icons.tsx",
-      "types": "./src/icons.tsx"
+      "import": "./dist/icons.mjs",
+      "types": "./dist/icons.d.ts"
     },
     "./card": {
-      "import": "./src/card.tsx",
-      "types": "./src/card.tsx"
+      "import": "./dist/card.mjs",
+      "types": "./dist/card.d.ts"
     },
     "./toast": {
-      "import": "./src/toast.tsx",
-      "types": "./src/toast.tsx"
+      "import": "./dist/toast.mjs",
+      "types": "./dist/toast.d.ts"
     }
   },
   "typesVersions": {
     "*": {
       "toast": [
-        "src/toast.tsx"
+        "dist/toast.d.ts"
       ],
       "avatar": [
-        "src/avatar.tsx"
+        "dist/avatar.d.ts"
       ],
       "calendar": [
-        "src/calendar.tsx"
+        "dist/calendar.d.ts"
       ],
       "command": [
-        "src/command.tsx"
+        "dist/command.d.ts"
       ],
       "dialog": [
-        "src/dialog.tsx"
+        "dist/dialog.d.ts"
       ],
       "dropdown-menu": [
-        "src/dropdown-menu.tsx"
+        "dist/dropdown-menu.d.ts"
       ],
       "input": [
-        "src/input.tsx"
+        "dist/input.d.ts"
       ],
       "label": [
-        "src/label.tsx"
+        "dist/label.d.ts"
       ],
       "popover": [
-        "src/popover.tsx"
+        "dist/popover.d.ts"
       ],
       "select": [
-        "src/select.tsx"
+        "dist/select.d.ts"
       ],
       "tabs": [
-        "src/tabs.tsx"
+        "dist/tabs.d.ts"
       ],
       "toaster": [
-        "src/toaster.tsx"
+        "dist/toaster.d.ts"
       ],
       "use-toast": [
-        "src/use-toast.tsx"
+        "dist/use-toast.d.ts"
       ],
       "button": [
-        "src/button.tsx"
+        "dist/button.d.ts"
       ],
       "icons": [
-        "src/icons.tsx"
+        "dist/icons.d.ts"
       ],
       "card": [
-        "src/card.tsx"
+        "dist/card.d.ts"
       ],
       "sheet": [
-        "src/sheet.tsx"
+        "dist/sheet.d.ts"
       ],
       "scroll-area": [
-        "src/scroll-area.tsx"
+        "dist/scroll-area.d.ts"
       ]
     }
   }

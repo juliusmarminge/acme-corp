@@ -1,4 +1,4 @@
-// import "@acme/ui/dist/index.css";
+import "@acme/ui/styles.css";
 import "../styles/globals.css";
 import * as React from "react";
 import { Inter } from "next/font/google";

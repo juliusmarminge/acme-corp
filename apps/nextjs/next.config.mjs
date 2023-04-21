@@ -8,12 +8,7 @@
 const config = {
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
-  transpilePackages: [
-    "@acme/api",
-    "@acme/db",
-    "@acme/tailwind-config",
-    "@acme/ui",
-  ],
+  transpilePackages: ["@acme/api", "@acme/db"],
 
   experimental: {
     appDir: true,
