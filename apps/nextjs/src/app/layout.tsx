@@ -1,6 +1,6 @@
 import "@acme/ui/styles.css";
 import "../styles/globals.css";
-import * as React from "react";
+import dynamic from "next/dynamic";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import { Analytics } from "@vercel/analytics/react";
@@ -52,7 +52,9 @@ export default function RootLayout(props: {
   );
 }
 
-const ThemeToggle = React.lazy(() => import("~/components/theme-toggle"));
+const ThemeToggle = dynamic(() => import("~/components/theme-toggle"), {
+  ssr: false,
+});
 
 function SiteFooter() {
   return (
@@ -94,9 +96,8 @@ function SiteFooter() {
             .
           </p>
         </div>
-        <React.Suspense>
-          <ThemeToggle />
-        </React.Suspense>
+
+        <ThemeToggle />
       </div>
     </footer>
   );
