@@ -16,10 +16,11 @@ export default function SSOCallback(props: {
   const { handleRedirectCallback } = useClerk();
 
   useEffect(() => {
-    void new Promise((res) => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    new Promise((res) => {
       setTimeout(res, 1000);
     }).then(() => {
-      void handleRedirectCallback(props.searchParams).catch((err) =>
+      handleRedirectCallback(props.searchParams).catch((err) =>
         console.error("SSO handleRedirectCallback error", err),
       );
       console.log("Callback done");

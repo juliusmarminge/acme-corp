@@ -22,6 +22,7 @@ export function OAuthSignIn() {
         redirectUrl: "/sso-callback",
         redirectUrlComplete: "/dashboard",
       });
+      console.log("oauthSignIn done?");
     } catch (cause) {
       console.error(cause);
       setIsLoading(null);
@@ -31,6 +32,7 @@ export function OAuthSignIn() {
         description: "Something went wrong, please try again.",
       });
     }
+    console.log("oauthSignIn done2?");
   };
 
   return (

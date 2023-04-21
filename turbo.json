@@ -16,7 +16,7 @@
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
-      "outputs": [".next/**", ".expo/**"]
+      "outputs": [".next/**", ".expo/**", "dist/**"]
     },
     "lint": {},
     "lint:fix": {},
