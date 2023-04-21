@@ -6,7 +6,7 @@ export default {
   content: [
     "src/**/*.{ts,tsx}",
     "components/**/*.{ts,tsx}",
-    "../../packages/ui/**/*.{ts,tsx,js,mjs}",
+    "../../packages/ui/src/*.{ts,tsx}",
   ],
   theme: {
     container: {

@@ -71,15 +71,14 @@
 }
 
 @layer base {
+  :root * {
+    @apply border-border;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-}
-
-* {
-  /* @apply border-border; */
-  border-color: green;
 }
 
 @media (max-width: 640px) {

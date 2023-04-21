@@ -22,7 +22,7 @@ export const runtime = "edge";
 export default function Home() {
   return (
     <>
-      <div className="fixed left-0 right-0 z-50 border-b">
+      <div className="fixed left-0 right-0 z-50 border-b bg-background">
         <div className="mx-auto flex h-16 max-w-4xl items-center px-4">
           <div className="mr-8 hidden items-center md:flex">
             <Icons.logo className="mr-2 h-6 w-6" />
