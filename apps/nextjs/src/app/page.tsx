@@ -22,7 +22,7 @@ export const runtime = "edge";
 export default function Home() {
   return (
     <>
-      <div className="fixed left-0 right-0 z-50 border-b bg-background">
+      <nav className="fixed left-0 right-0 z-50 border-b bg-background">
         <div className="mx-auto flex h-16 max-w-4xl items-center px-4">
           <div className="mr-8 hidden items-center md:flex">
             <Icons.logo className="mr-2 h-6 w-6" />
@@ -36,8 +36,8 @@ export default function Home() {
             </Suspense>
           </div>
         </div>
-      </div>
-      <main className="flex min-h-screen w-full flex-col items-center justify-center pt-48">
+      </nav>
+      <main className="container flex min-h-screen w-full flex-col items-center justify-center pt-48">
         <div className="z-10 min-h-[50vh] w-full max-w-4xl px-5 xl:px-0">
           {/* <a
           href="https://twitter.com/steventey/status/1613928948915920896"
