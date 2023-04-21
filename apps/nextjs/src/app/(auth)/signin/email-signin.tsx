@@ -31,7 +31,7 @@ export function EmailSignIn() {
         redirectUrl: `${window.location.origin}/`,
       })
       .catch((error) => {
-        console.log(JSON.stringify(error));
+        console.log("sign-in error", JSON.stringify(error));
       });
 
     const firstFactor = signIn.supportedFirstFactors.find(
@@ -53,11 +53,19 @@ export function EmailSignIn() {
       const response = await startMagicLinkFlow({
         emailAddressId: emailAddressId,
         redirectUrl: `${window.location.origin}/`,
-      });
+      })
+        .catch(() => {
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Something went wrong, please try again.",
+          });
+        })
+        .then((res) => res);
 
-      const verification = response.firstFactorVerification;
+      const verification = response?.firstFactorVerification;
 
-      if (verification.status === "expired") {
+      if (verification?.status === "expired") {
         toast({
           variant: "destructive",
           title: "Link Expired",
@@ -67,7 +75,7 @@ export function EmailSignIn() {
 
       cancelMagicLinkFlow();
 
-      if (response.status === "complete") {
+      if (response?.status === "complete") {
         await setSession(
           response.createdSessionId,
           () => void router.push(`/dashboard`),
@@ -81,11 +89,25 @@ export function EmailSignIn() {
       });
       const { startMagicLinkFlow } = signUp.createMagicLinkFlow();
 
+      setIsLoading(false);
+      setEmail("");
+      toast({
+        title: "Email Sent",
+        description: "Check your inbox for a verification email.",
+      });
       const response = await startMagicLinkFlow({
         redirectUrl: `${window.location.origin}/`,
-      });
+      })
+        .catch(() => {
+          toast({
+            variant: "destructive",
+            title: "Error",
+            description: "Something went wrong, please try again.",
+          });
+        })
+        .then((res) => res);
 
-      if (response.status === "complete") {
+      if (response?.status === "complete") {
         await setSession(signUp.createdSessionId, () => router.push("/"));
         return;
       }
