@@ -21,6 +21,12 @@ export default withClerkMiddleware((req: NextRequest) => {
     return NextResponse.redirect(signInUrl);
   }
 
+  if (req.nextUrl.pathname === "/signin") {
+    // Redirect to home page if user is already signed in
+    const homeUrl = new URL("/", req.url);
+    return NextResponse.redirect(homeUrl);
+  }
+
   return NextResponse.next();
 });
 

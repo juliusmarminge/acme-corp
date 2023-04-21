@@ -4,11 +4,10 @@ import { useEffect } from "react";
 import { useClerk } from "@clerk/nextjs/app-beta/client";
 import type { HandleOAuthCallbackParams } from "@clerk/types";
 
-// export const runtime = "edge";
+import { Icons } from "@acme/ui/icons";
 
-/**
- * TODO: Check if this can be a server component or api route
- */
+export const runtime = "edge";
+
 export default function SSOCallback(props: {
   searchParams: HandleOAuthCallbackParams;
 }) {
@@ -16,15 +15,12 @@ export default function SSOCallback(props: {
   const { handleRedirectCallback } = useClerk();
 
   useEffect(() => {
-    void new Promise((res) => {
-      setTimeout(res, 1000);
-    }).then(() => {
-      void handleRedirectCallback(props.searchParams).catch((err) =>
-        console.error("SSO handleRedirectCallback error", err),
-      );
-      console.log("Callback done");
-    });
+    void handleRedirectCallback(props.searchParams);
   }, [props, handleRedirectCallback]);
 
-  return <div>Loading....</div>;
+  return (
+    <div className="flex items-center justify-center">
+      <Icons.spinner className="mr-2 h-16 w-16 animate-spin" />
+    </div>
+  );
 }
