@@ -33,7 +33,7 @@ export function OAuthSignIn() {
       });
     }
     console.log("oauthSignIn done2?");
-    console.log(signIn);
+    console.log(JSON.stringify(signIn, null, 4));
   };
 
   return (
