@@ -1,5 +1,6 @@
-import "@acme/ui/dist/index.css";
-import "~/styles/globals.css";
+// import "@acme/ui/dist/index.css";
+import "../styles/globals.css";
+import * as React from "react";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs/app-beta";
 import { Analytics } from "@vercel/analytics/react";
@@ -10,7 +11,6 @@ import { Toaster } from "@acme/ui/toaster";
 
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { ThemeProvider } from "~/components/theme-provider";
-import { ThemeToggle } from "~/components/theme-toggle";
 import { siteConfig } from "./config";
 
 const fontSans = Inter({
@@ -52,6 +52,8 @@ export default function RootLayout(props: {
   );
 }
 
+const ThemeToggle = React.lazy(() => import("~/components/theme-toggle"));
+
 function SiteFooter() {
   return (
     <footer className="border-t py-6 md:py-0">
@@ -92,7 +94,9 @@ function SiteFooter() {
             .
           </p>
         </div>
-        <ThemeToggle />
+        <React.Suspense>
+          <ThemeToggle />
+        </React.Suspense>
       </div>
     </footer>
   );

@@ -12,7 +12,7 @@ import {
 } from "@acme/ui/card";
 import { Icons } from "@acme/ui/icons";
 
-import { MobileNav } from "~/components/mobile-nav";
+import { MobileDropdown } from "~/components/mobile-nav";
 import { UserNav } from "~/components/user-nav";
 import { marketingFeatures, siteConfig } from "~/app/config";
 import { MainNav } from "~/app/dashboard/components/main-nav";
@@ -22,13 +22,13 @@ export const runtime = "edge";
 export default function Home() {
   return (
     <>
-      <div className="border-b">
+      <div className="fixed left-0 right-0 z-50 border-b">
         <div className="mx-auto flex h-16 max-w-4xl items-center px-4">
           <div className="mr-8 hidden items-center md:flex">
             <Icons.logo className="mr-2 h-6 w-6" />
             <span className="text-lg font-bold tracking-tight">Acme Corp</span>
           </div>
-          <MobileNav />
+          <MobileDropdown />
           <MainNav />
           <div className="ml-auto flex items-center space-x-4">
             <Suspense>
