@@ -60,7 +60,7 @@ function SiteFooter() {
       <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <div className="flex items-center text-lg font-medium">
-            <Icons.logo className="mr-2 h-6 w-6" />
+            <Icons.logo className="mr-2 h-6 w-5" />
             Acme Corp
           </div>
           <p className="text-center text-sm/7 text-muted-foreground md:text-left">
