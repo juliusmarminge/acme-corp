@@ -1,6 +1,7 @@
 # Acme Corp
 
-> Warning! This is a work-in-progress and not the finished product.
+> **Warning**
+> This is a work-in-progress and not the finished product.
 >
 > Feel free to leave feature suggestions but please don't open issues for bugs or support requests just yet.
 
