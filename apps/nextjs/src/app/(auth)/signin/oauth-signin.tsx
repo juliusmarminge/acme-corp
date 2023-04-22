@@ -38,7 +38,11 @@ export function OAuthSignIn() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Button variant="outline" onClick={() => oauthSignIn("oauth_github")}>
+      <Button
+        variant="outline"
+        className="bg-background"
+        onClick={() => oauthSignIn("oauth_github")}
+      >
         {isLoading === "oauth_github" ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
@@ -46,7 +50,11 @@ export function OAuthSignIn() {
         )}
         Github
       </Button>
-      <Button variant="outline" onClick={() => oauthSignIn("oauth_google")}>
+      <Button
+        variant="outline"
+        className="bg-background"
+        onClick={() => oauthSignIn("oauth_google")}
+      >
         {isLoading === "oauth_google" ? (
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (

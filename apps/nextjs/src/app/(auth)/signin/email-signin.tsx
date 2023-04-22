@@ -126,6 +126,7 @@ export function EmailSignIn() {
           autoCorrect="off"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
+          className="bg-background"
         />
       </div>
       <Button disabled={isLoading} onClick={() => signInWithLink()}>

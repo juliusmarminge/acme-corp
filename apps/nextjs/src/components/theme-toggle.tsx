@@ -19,8 +19,8 @@ export default function ThemeToggle(props: {
   const { setTheme, theme } = useTheme();
 
   const triggerIcon = {
-    light: <Icons.sun />,
-    dark: <Icons.moon />,
+    light: <Icons.sun className="h-6 w-6" />,
+    dark: <Icons.moon className="h-6 w-6" />,
     system: <Icons.system className="h-6 w-6" />,
   }[theme as "light" | "dark" | "system"];
 
@@ -47,7 +47,7 @@ export default function ThemeToggle(props: {
           <span>Dark</span>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Icons.laptop className="mr-2 h-4 w-4" />
+          <Icons.system className="mr-2 h-4 w-4" />
           <span>System</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
