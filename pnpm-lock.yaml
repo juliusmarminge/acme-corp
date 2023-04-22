@@ -89,8 +89,8 @@ importers:
         specifier: ~3.20.0
         version: 3.20.0(react-native@0.71.7)(react@18.2.0)
       superjson:
-        specifier: 1.9.1
-        version: 1.9.1
+        specifier: 1.12.3
+        version: 1.12.3
     devDependencies:
       '@acme/api':
         specifier: '*'
@@ -198,8 +198,8 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       superjson:
-        specifier: 1.9.1
-        version: 1.9.1
+        specifier: 1.12.3
+        version: 1.12.3
       tailwindcss-animate:
         specifier: ^1.0.5
         version: 1.0.5(tailwindcss@3.3.1)
@@ -253,8 +253,8 @@ importers:
         specifier: ^10.20.0
         version: 10.20.0
       superjson:
-        specifier: 1.9.1
-        version: 1.9.1
+        specifier: 1.12.3
+        version: 1.12.3
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -11267,8 +11267,8 @@ packages:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
     dev: false
 
-  /superjson@1.9.1:
-    resolution: {integrity: sha512-oT3HA2nPKlU1+5taFgz/HDy+GEaY+CWEbLzaRJVD4gZ7zMVVC4GDNFdgvAZt6/VuIk6D2R7RtPAiCHwmdzlMmg==}
+  /superjson@1.12.3:
+    resolution: {integrity: sha512-0j+U70KUtP8+roVPbwfqkyQI7lBt7ETnuA7KXbTDX3mCKiD/4fXs2ldKSMdt0MCfpTwiMxo20yFU3vu6ewETpQ==}
     engines: {node: '>=10'}
     dependencies:
       copy-anything: 3.0.3
