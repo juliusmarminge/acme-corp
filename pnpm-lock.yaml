@@ -331,8 +331,8 @@ importers:
         specifier: ^7.2.1
         version: 7.2.1
       prisma:
-        specifier: ^4.12.0
-        version: 4.12.0
+        specifier: ^4.13.0
+        version: 4.13.0
       tsx:
         specifier: ^3.12.6
         version: 3.12.6
@@ -2850,8 +2850,8 @@ packages:
     engines: {node: '>=16'}
     dev: false
 
-  /@prisma/engines@4.12.0:
-    resolution: {integrity: sha512-0alKtnxhNB5hYU+ymESBlGI4b9XrGGSdv7Ud+8TE/fBNOEhIud0XQsAR+TrvUZgS4na5czubiMsODw0TUrgkIA==}
+  /@prisma/engines@4.13.0:
+    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
     requiresBuild: true
     dev: true
 
@@ -9899,13 +9899,13 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /prisma@4.12.0:
-    resolution: {integrity: sha512-xqVper4mbwl32BWzLpdznHAYvYDWQQWK2tBfXjdUD397XaveRyAP7SkBZ6kFlIg8kKayF4hvuaVtYwXd9BodAg==}
+  /prisma@4.13.0:
+    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.12.0
+      '@prisma/engines': 4.13.0
     dev: true
 
   /process-nextick-args@2.0.1:
