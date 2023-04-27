@@ -8,16 +8,20 @@ export const dynamic = "force-dynamic";
 export default function ProfilePageModal() {
   return (
     <InterceptingModal className="h-[80vh] overflow-hidden">
-      <UserProfile appearance={{
-        elements: {
-          // Main card element
-          card: "w-[420px] w-fit, h-[75vh]",
-          navbar: "hidden",
-          navbarMobileMenuButton: "hidden",
+      <UserProfile
+        appearance={
+          {
+            elements: {
+              // Main card element
+              card: "w-full md:w-fit h-[75vh]",
+              navbar: "hidden",
+              navbarMobileMenuButton: "hidden",
+            },
+          }
+          // set the routing to virtual, so that the modal can intercept the routing
         }
-      }
-        // set the routing to virtual, so that the modal can intercept the routing
-      } routing="virtual" />
+        routing="virtual"
+      />
     </InterceptingModal>
   );
 }
