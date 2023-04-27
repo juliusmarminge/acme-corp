@@ -23,10 +23,10 @@ export default function RootLayout(props: {
   return (
     <>
       <ClerkProvider>
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" suppressHydrationWarning className="bg-background">
           <body
             className={cn(
-              "min-h-screen bg-background font-sans antialiased",
+              "min-h-screen font-sans antialiased",
               fontSans.variable,
             )}
           >

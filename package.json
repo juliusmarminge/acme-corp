@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=v18.16.0"
   },
-  "packageManager": "pnpm@8.2.0",
+  "packageManager": "pnpm@8.3.1",
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
@@ -23,7 +23,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
     "@types/prettier": "^2.7.2",
-    "eslint": "^8.38.0",
+    "eslint": "^8.39.0",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
     "turbo": "^1.9.3",
