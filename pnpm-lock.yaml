@@ -379,8 +379,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
       lucide-react:
-        specifier: ^0.122.0
-        version: 0.122.0(react@18.2.0)
+        specifier: ^0.183.0
+        version: 0.183.0(react@18.2.0)
       tailwind-merge:
         specifier: ^1.12.0
         version: 1.12.0
@@ -8198,8 +8198,8 @@ packages:
     dependencies:
       yallist: 4.0.0
 
-  /lucide-react@0.122.0(react@18.2.0):
-    resolution: {integrity: sha512-CWPqOK0pSgi+HBZh4Xh1i+0zBSZdWw9ulFVHpeWWszp1Oz5LA1S71LhDhelWq+8afHWPrRha0SNyQhfhOIb4EQ==}
+  /lucide-react@0.183.0(react@18.2.0):
+    resolution: {integrity: sha512-oYKPEqrMXM+Lovi2a1kqxk9e6QC5d0t07dTYo9Mu/g5Malu66nb/UqxO/jKoer3Z/El8jz7l088JBt34f3lgOA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
