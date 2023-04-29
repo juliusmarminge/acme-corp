@@ -6,10 +6,7 @@
 import { readFile, rm, writeFile } from "fs/promises";
 import path from "path";
 
-const generatedFile = path.join(
-  process.cwd(),
-  "prisma/types/database-types.ts",
-);
+const generatedFile = path.join(process.cwd(), "prisma/types/types.ts");
 const outputFile = path.join(process.cwd(), "index.ts");
 
 (async () => {
@@ -23,7 +20,7 @@ import { nanoid } from "nanoid";
 
 ${dbTypes}
 
-export const db = new Kysely<Database>({
+export const db = new Kysely<DB>({
   dialect: new PlanetScaleDialect({
     url: process.env.DATABASE_URL,
   }),

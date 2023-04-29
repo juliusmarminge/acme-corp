@@ -1,5 +1,5 @@
 generator kysely {
-    provider = "npx prisma-generator-kysely"
+    provider = "prisma-kysely"
     output   = "./types"
 }
 
