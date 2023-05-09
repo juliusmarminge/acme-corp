@@ -9,7 +9,7 @@
     "db:generate": "pnpm with-env prisma generate && tsx prisma/postgenerate.ts",
     "db:push": "pnpm with-env prisma db push --skip-generate",
     "dev": "pnpm with-env prisma studio --port 5556",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
     "@planetscale/database": "^1.7.0",

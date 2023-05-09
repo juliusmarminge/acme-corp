@@ -1,4 +1,5 @@
-import { Component, Globe } from "lucide-react";
+import { type Route } from "next";
+import { Component, CreditCard, Globe } from "lucide-react";
 
 import { Icons } from "@acme/ui/icons";
 
@@ -24,11 +25,11 @@ export const navItems = [
     href: "/dashboard",
     title: "Settings",
   },
-];
+] satisfies { href: Route; title: string }[];
 
 export const marketingFeatures = [
   {
-    icon: <Component />,
+    icon: <Component className="h-10 w-10" />,
     title: "UI Package",
     body: (
       <>
@@ -47,7 +48,7 @@ export const marketingFeatures = [
     ),
   },
   {
-    icon: <Icons.clerkWide />,
+    icon: <Icons.clerkWide className="h-10" />,
     title: "Authentication",
     body: (
       <>
@@ -65,7 +66,7 @@ export const marketingFeatures = [
     ),
   },
   {
-    icon: <Icons.mdx />,
+    icon: <Icons.mdx className="h-10" />,
     title: "MDX",
     body: (
       <>
@@ -76,15 +77,28 @@ export const marketingFeatures = [
   },
   {
     icon: (
-      <div className="flex gap-2 self-start">
-        <Icons.trpc className="h-8 w-8" />
-        <Icons.nextjs className="h-8 w-8" />
-        <Icons.react className="h-8 w-8" />
-        <Icons.kysely className="h-8 w-8" />
-        <Icons.prisma className="h-8 w-8" />
+      <div className="flex gap-3 self-start">
+        <Icons.nextjs className="h-10 w-10" />
+        <Icons.react className="h-10 w-10" />
       </div>
     ),
-    extraClassNames: "md:col-span-2",
+    title: "Next.js 13 & React 18",
+    body: (
+      <>
+        Latest features from Next 13 using the brand new App Router with full
+        React 18 support including streaming.
+      </>
+    ),
+  },
+
+  {
+    icon: (
+      <div className="flex gap-3 self-start">
+        <Icons.trpc className="h-10 w-10" />
+        <Icons.kysely className="h-10 w-10" />
+        <Icons.prisma className="h-10 w-10" />
+      </div>
+    ),
     title: "Full-stack Typesafety",
     body: (
       <>
@@ -97,25 +111,7 @@ export const marketingFeatures = [
         >
           tRPC
         </a>
-        ,{" "}
-        <a
-          href="https://nextjs.org"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium underline underline-offset-4"
-        >
-          Next.js
-        </a>
-        , and{" "}
-        <a
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noreferrer"
-          className="font-medium underline underline-offset-4"
-        >
-          React
-        </a>{" "}
-        Server Components. Typesafe database access using{" "}
+        . Typesafe database querying using{" "}
         <a
           href="https://kysely.dev"
           target="_blank"
@@ -124,7 +120,7 @@ export const marketingFeatures = [
         >
           Kysely
         </a>{" "}
-        as query builder, and{" "}
+        and{" "}
         <a
           href="https://prisma.io"
           target="_blank"
@@ -132,18 +128,36 @@ export const marketingFeatures = [
           className="font-medium underline underline-offset-4"
         >
           Prisma
-        </a>{" "}
-        for schema management.
+        </a>
+        .
       </>
     ),
   },
   {
-    icon: <Globe />,
+    icon: <Globe className="h-10 w-10" />,
     title: "Edge Compute",
     body: (
       <>
         Ready to deploy on Edge functions to ensure a blazingly fast application
         with optimal UX.
+      </>
+    ),
+  },
+  {
+    icon: <CreditCard className="h-10 w-10" />,
+    title: "Payments",
+    body: (
+      <>
+        Accept payments with{" "}
+        <a
+          href="https://stripe.com"
+          target="_blank"
+          rel="noreferrer"
+          className="font-medium underline underline-offset-4"
+        >
+          Stripe
+        </a>
+        .
       </>
     ),
   },

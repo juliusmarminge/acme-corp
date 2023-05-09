@@ -10,7 +10,7 @@
     "lint:fix": "pnpm lint --fix",
     "start": "pnpm with-env next start",
     "type-check": "tsc --noEmit",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
     "@acme/api": "^0.1.0",
@@ -18,6 +18,7 @@
     "@acme/tailwind-config": "^0.1.0",
     "@acme/ui": "^0.1.0",
     "@clerk/nextjs": "^4.16.4",
+    "@next/mdx": "^13.3.2",
     "@t3-oss/env-nextjs": "^0.2.2",
     "@tanstack/react-query": "^4.29.5",
     "@trpc/client": "^10.21.2",
@@ -26,19 +27,21 @@
     "@trpc/server": "^10.21.2",
     "@vercel/analytics": "^1.0.0",
     "date-fns": "^2.29.3",
-    "next": "^13.3.1",
+    "next": "^13.3.2",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-day-picker": "^8.7.1",
     "react-dom": "18.2.0",
     "react-wrap-balancer": "^0.4.0",
     "recharts": "^2.5.0",
+    "stripe": "^12.3.0",
     "superjson": "1.9.1",
     "tailwindcss-animate": "^1.0.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.1.0",
+    "@types/mdx": "^2.0.5",
     "@types/node": "^18.16.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
