@@ -1,5 +1,4 @@
 import "./src/env.mjs";
-import withMdx from "@next/mdx";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -18,4 +17,4 @@ const config = {
   typescript: { ignoreBuildErrors: true },
 };
 
-export default withMdx()(config);
+export default config;
