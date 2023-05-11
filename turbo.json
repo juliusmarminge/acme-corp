@@ -19,7 +19,7 @@
       "outputs": [".next/**", ".expo/**", "dist/**"]
     },
     "lint": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build"]
     },
     "lint:fix": {},
     "clean": {
