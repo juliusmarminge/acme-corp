@@ -1,6 +1,7 @@
 generator kysely {
-    provider = "prisma-kysely"
-    output   = "./types"
+    provider     = "prisma-kysely"
+    output       = ".."
+    enumFileName = "enums.ts"
 }
 
 datasource db {
@@ -9,11 +10,24 @@ datasource db {
     relationMode = "prisma"
 }
 
+enum Foo {
+    BAR
+    BAZ
+}
+
 model Post {
-    id      String @id @default(cuid())
+    id      String @id
     userId  String
     title   String
     content String
 
     @@index([userId])
+}
+
+model Customer {
+    id       String @id
+    name     String
+    email    String
+    foo      Foo
+    stripeId String
 }
