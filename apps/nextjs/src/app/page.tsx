@@ -32,6 +32,7 @@ export default function Home() {
           <MainNav />
           <div className="ml-auto flex items-center space-x-4">
             <Suspense>
+              {/* @ts-expect-error - ... */}
               <UserNav />
             </Suspense>
           </div>
