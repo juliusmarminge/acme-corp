@@ -24,7 +24,7 @@
     "@trpc/next": "^10.25.1",
     "@trpc/react-query": "^10.25.1",
     "@trpc/server": "^10.25.1",
-    "@vercel/analytics": "^1.0.0",
+    "@vercel/analytics": "^1.0.1",
     "date-fns": "^2.29.3",
     "next": "^13.3.1",
     "next-themes": "^0.2.1",
