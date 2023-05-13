@@ -32,6 +32,7 @@ export default function Home() {
           <MainNav />
           <div className="ml-auto flex items-center space-x-4">
             <Suspense>
+              {/* @ts-expect-error - ... */}
               <UserNav />
             </Suspense>
           </div>
@@ -39,17 +40,6 @@ export default function Home() {
       </nav>
       <main className="container flex min-h-screen w-full flex-col items-center justify-center pt-48">
         <div className="z-10 min-h-[50vh] w-full max-w-4xl px-5 xl:px-0">
-          {/* <a
-          href="https://twitter.com/steventey/status/1613928948915920896"
-          target="_blank"
-          rel="noreferrer"
-          className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-sky-100 px-7 py-2 transition-colors hover:bg-sky-200"
-        >
-          <Icons.twitter className="h-5 w-5 text-sky-500" />
-          <p className="text-sm font-semibold text-sky-500">
-            Introducing Acme Corp
-          </p>
-        </a> */}
           <h1
             className="font-display animate-fade-up bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl/[5rem]"
             style={{ animationDelay: "0.20s", animationFillMode: "forwards" }}
