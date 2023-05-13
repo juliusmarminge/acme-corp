@@ -7,7 +7,6 @@ const config = {
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@acme/api", "@acme/db"],
   pageExtensions: ["ts", "tsx", "mdx"],
-
   experimental: {
     appDir: true,
     mdxRs: true,
