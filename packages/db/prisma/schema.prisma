@@ -10,11 +10,6 @@ datasource db {
     relationMode = "prisma"
 }
 
-enum Foo {
-    BAR
-    BAZ
-}
-
 model Post {
     id      String @id
     userId  String
@@ -28,6 +23,5 @@ model Customer {
     id       String @id
     name     String
     email    String
-    foo      Foo
     stripeId String
 }

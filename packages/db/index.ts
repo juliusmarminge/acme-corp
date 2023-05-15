@@ -6,8 +6,6 @@ import { nanoid } from "nanoid";
 
 import type { ColumnType } from "kysely";
 
-import type { Foo } from "./enums";
-
 export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   ? ColumnType<S, I | undefined, U>
   : ColumnType<T, T | undefined, T>;
@@ -17,7 +15,6 @@ export type Customer = {
   id: string;
   name: string;
   email: string;
-  foo: Foo;
   stripeId: string;
 };
 export type Post = {
