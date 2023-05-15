@@ -18,10 +18,3 @@ model Post {
 
     @@index([userId])
 }
-
-model Customer {
-    id       String @id
-    name     String
-    email    String
-    stripeId String
-}

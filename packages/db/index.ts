@@ -11,12 +11,6 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   : ColumnType<T, T | undefined, T>;
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
-export type Customer = {
-  id: string;
-  name: string;
-  email: string;
-  stripeId: string;
-};
 export type Post = {
   id: string;
   userId: string;
@@ -24,7 +18,6 @@ export type Post = {
   content: string;
 };
 export type DB = {
-  Customer: Customer;
   Post: Post;
 };
 
