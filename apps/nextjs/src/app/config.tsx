@@ -1,3 +1,4 @@
+import { type Route } from "next";
 import { Component, Globe } from "lucide-react";
 
 import { Icons } from "@acme/ui/icons";
@@ -24,7 +25,7 @@ export const navItems = [
     href: "/dashboard",
     title: "Settings",
   },
-];
+] satisfies { href: Route; title: string }[];
 
 export const marketingFeatures = [
   {

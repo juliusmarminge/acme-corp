@@ -6,7 +6,7 @@
 import { readFile, rm, writeFile } from "fs/promises";
 import path from "path";
 
-const generatedFile = path.join(process.cwd(), "prisma/types/types.ts");
+const generatedFile = path.join(process.cwd(), "types.ts");
 const outputFile = path.join(process.cwd(), "index.ts");
 
 (async () => {
@@ -30,7 +30,7 @@ export const genId = nanoid;
 `;
 
   await writeFile(outputFile, output, "utf-8");
-  await rm(path.join(process.cwd(), "prisma/types"), { recursive: true });
+  await rm(path.join(process.cwd(), "types.ts"));
 })().catch((e) => {
   console.error(e);
   process.exit(1);

@@ -61,6 +61,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
+        cal: ["var(--font-cal)", ...fontFamily.sans],
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       keyframes: {
