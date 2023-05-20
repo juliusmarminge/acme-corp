@@ -6,7 +6,8 @@ import type { HandleOAuthCallbackParams } from "@clerk/types";
 
 import { Icons } from "@acme/ui/icons";
 
-export const runtime = "edge";
+// FIXME: 1MB limit on edge and Vercel won't fix the OG-bundling issue...
+export const runtime = "nodejs";
 
 export default function SSOCallback(props: {
   searchParams: HandleOAuthCallbackParams;

@@ -6,7 +6,6 @@ import { OAuthSignIn } from "./oauth-signin";
 
 // FIXME: 1MB limit on edge and Vercel won't fix the OG-bundling issue...
 export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
 
 export default function AuthenticationPage() {
   return (
