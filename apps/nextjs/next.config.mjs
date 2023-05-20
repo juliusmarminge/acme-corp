@@ -1,5 +1,5 @@
 import "./src/env.mjs";
-import withMdx from "@next/mdx";
+import withMDX from "@next/mdx";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -7,7 +7,6 @@ const config = {
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@acme/api", "@acme/db"],
   pageExtensions: ["ts", "tsx", "mdx"],
-
   experimental: {
     appDir: true,
     mdxRs: true,
@@ -18,4 +17,4 @@ const config = {
   typescript: { ignoreBuildErrors: true },
 };
 
-export default withMdx()(config);
+export default withMDX()(config);

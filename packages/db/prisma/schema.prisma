@@ -1,6 +1,7 @@
 generator kysely {
-    provider = "prisma-kysely"
-    output   = "./types"
+    provider     = "prisma-kysely"
+    output       = ".."
+    enumFileName = "enums.ts"
 }
 
 datasource db {
@@ -10,7 +11,7 @@ datasource db {
 }
 
 model Post {
-    id      String @id @default(cuid())
+    id      String @id
     userId  String
     title   String
     content String

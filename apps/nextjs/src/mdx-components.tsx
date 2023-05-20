@@ -44,8 +44,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    img: (props) => <img {...props} className="rounded-lg" />,
+    // eslint-disable-next-line @next/next/no-img-element
+    img: (props) => <img {...props} className="rounded-lg" alt={props.alt} />,
 
     // Pass through all other components.
     ...components,

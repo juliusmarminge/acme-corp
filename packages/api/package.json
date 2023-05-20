@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@acme/db": "^0.1.0",
-    "@clerk/nextjs": "^4.16.4",
-    "@trpc/client": "^10.21.2",
-    "@trpc/server": "^10.21.2",
+    "@clerk/nextjs": "^4.18.2",
+    "@trpc/client": "^10.25.1",
+    "@trpc/server": "^10.25.1",
     "superjson": "1.9.1",
     "zod": "^3.21.4"
   },
