@@ -1,4 +1,3 @@
-import "@acme/ui/styles.css";
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
