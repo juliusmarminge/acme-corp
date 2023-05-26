@@ -18,3 +18,22 @@ model Post {
 
     @@index([userId])
 }
+
+enum SubscriptionPlan {
+    FREE
+    STANDARD
+    PRO
+}
+
+model Customer {
+    id             String            @id
+    stripeId       String            @unique
+    subscriptionId String?
+    clerkUserId    String
+    name           String?
+    plan           SubscriptionPlan?
+    paidUntil      DateTime?
+    endsAt         DateTime?
+
+    @@index([clerkUserId])
+}

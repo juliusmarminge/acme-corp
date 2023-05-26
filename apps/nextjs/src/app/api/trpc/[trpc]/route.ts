@@ -7,7 +7,7 @@ export const runtime = "edge";
 
 const handler = (req: NextRequest) =>
   fetchRequestHandler({
-    endpoint: "/api/trpc/",
+    endpoint: "/api/trpc",
     router: appRouter,
     req: req,
     createContext: createTRPCContext,
