@@ -5,8 +5,7 @@ import { useClerk } from "@clerk/nextjs";
 
 import { Button } from "@acme/ui/button";
 
-// FIXME: 1MB limit on edge and Vercel won't fix the OG-bundling issue...
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 export default function AuthenticationPage() {
   const { signOut } = useClerk();
