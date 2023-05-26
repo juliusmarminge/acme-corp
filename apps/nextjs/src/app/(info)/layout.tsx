@@ -6,6 +6,8 @@ import { MobileDropdown } from "~/components/mobile-nav";
 import { UserNav } from "~/components/user-nav";
 import { MainNav } from "../dashboard/components/main-nav";
 
+export const runtime = "edge";
+
 export default function InfoLayout(props: { children: React.ReactNode }) {
   return (
     <>
