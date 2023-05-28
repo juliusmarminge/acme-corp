@@ -4,10 +4,10 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { useSignIn, useSignUp } from "@clerk/nextjs";
 
-import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
+import { Button } from "@acme/ui/button";
+import { Icons } from "@acme/ui/icons";
+import { Input } from "@acme/ui/input";
+import { useToast } from "@acme/ui/use-toast";
 
 
 export function EmailSignIn() {
