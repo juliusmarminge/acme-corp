@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "~/styles/globals.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import { ClerkProvider } from "@clerk/nextjs";
