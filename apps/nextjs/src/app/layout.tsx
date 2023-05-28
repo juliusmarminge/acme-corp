@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
-import { ClerkProvider } from "@clerk/nextjs/app-beta";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@acme/ui";

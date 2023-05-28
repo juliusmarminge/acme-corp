@@ -153,8 +153,8 @@ importers:
         specifier: ^0.1.0
         version: link:../../packages/ui
       '@clerk/nextjs':
-        specifier: ^4.19.0-staging.1
-        version: 4.19.0-staging.1(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.19.0
+        version: 4.19.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
       '@next/mdx':
         specifier: ^13.4.4
         version: 13.4.4
@@ -253,8 +253,8 @@ importers:
         specifier: ^0.1.0
         version: link:../db
       '@clerk/nextjs':
-        specifier: ^4.19.0-staging.1
-        version: 4.19.0-staging.1(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.19.0
+        version: 4.19.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
         specifier: ^10.25.1
         version: 10.25.1(@trpc/server@10.25.1)
@@ -1918,8 +1918,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@clerk/nextjs@4.19.0-staging.1(next@13.4.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-6nxCyER25kDeiPhn39u6+ApNfH/AL8XtI2J4/I6l2HRii9Xu3L7Xt2vOyj7pTkeYdTvlxzknRnRW2ZVNgBmQ/w==}
+  /@clerk/nextjs@4.19.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-k7BUhu2hV924UOf3bzS/3KnNJWONzUQtWxaeJMHnd8AgS2X2j7iP32Sp5aPL5Jg2+n9h2lyI5A5obgbQhLeo5g==}
     engines: {node: '>=14'}
     peerDependencies:
       next: '>=10'

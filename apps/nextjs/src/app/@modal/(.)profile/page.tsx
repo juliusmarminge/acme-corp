@@ -1,4 +1,4 @@
-import { UserProfile } from "@clerk/nextjs/app-beta";
+import { UserProfile } from "@clerk/nextjs";
 
 import { InterceptingModal } from "~/app/@modal/intercepting-modal";
 
