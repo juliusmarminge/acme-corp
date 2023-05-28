@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { currentUser } from "@clerk/nextjs/app-beta";
+import { currentUser } from "@clerk/nextjs";
 import {
   CreditCard,
   LogIn,

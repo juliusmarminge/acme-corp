@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useClerk } from "@clerk/nextjs/app-beta/client";
+import { useClerk } from "@clerk/nextjs";
 import type { HandleOAuthCallbackParams } from "@clerk/types";
 
 import { Icons } from "@acme/ui/icons";

@@ -1,4 +1,4 @@
-import { UserProfile } from "@clerk/nextjs/app-beta";
+import { UserProfile } from "@clerk/nextjs";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
