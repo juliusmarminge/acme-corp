@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { useSignIn, useSignUp } from "@clerk/nextjs/app-beta/client";
+import { useSignIn, useSignUp } from "@clerk/nextjs";
 
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
