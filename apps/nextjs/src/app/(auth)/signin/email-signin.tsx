@@ -4,10 +4,11 @@ import * as React from "react";
 import { useRouter } from "next/navigation";
 import { useSignIn, useSignUp } from "@clerk/nextjs/app-beta/client";
 
-import { Button } from "@acme/ui/button";
-import { Icons } from "@acme/ui/icons";
-import { Input } from "@acme/ui/input";
-import { useToast } from "@acme/ui/use-toast";
+import { Button } from "@/components/ui/button";
+import { Icons } from "@/components/icons";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
+
 
 export function EmailSignIn() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -26,9 +27,7 @@ export function EmailSignIn() {
     setIsLoading(true);
     await signIn
       .create({
-        strategy: "email_link",
         identifier: email,
-        redirectUrl: `${window.location.origin}/`,
       })
       .catch((error) => {
         console.log("sign-in error", JSON.stringify(error));
