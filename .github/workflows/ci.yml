@@ -47,6 +47,8 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install
 
+      - run: cp .env.example .env.local
+
       - name: Build, lint and type-check
         run: pnpm turbo build lint type-check
 
