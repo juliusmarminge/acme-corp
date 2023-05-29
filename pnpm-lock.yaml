@@ -197,9 +197,6 @@ importers:
       recharts:
         specifier: ^2.5.0
         version: 2.5.0(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
-      stripe:
-        specifier: ^12.3.0
-        version: 12.3.0
       superjson:
         specifier: 1.9.1
         version: 1.9.1
@@ -12366,14 +12363,6 @@ packages:
   /strip-json-comments@3.1.1:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
-
-  /stripe@12.3.0:
-    resolution: {integrity: sha512-B9Q1b0gbKY/Z4fQc1Y82VpHTFLh8A67D6kdcFtgpGfTovVkI7SamE66vmVaWNHgcUjPqI8x6wVvksdRf/ucTDw==}
-    engines: {node: '>=12.*'}
-    dependencies:
-      '@types/node': 20.2.5
-      qs: 6.11.2
-    dev: false
 
   /stripe@12.7.0:
     resolution: {integrity: sha512-4yY9gNFznBI6fZtR0B4y2a+o2EJe+s7p4DiHECKphwa36zYIczpWzO1g4dF0PF3lhTRw5FWTaHGBjwaD5FEiDQ==}
