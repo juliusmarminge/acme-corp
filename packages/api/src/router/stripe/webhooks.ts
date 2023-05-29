@@ -35,29 +35,31 @@ export const webhookRouter = createTRPCRouter({
       session.subscription,
     );
 
-    console.log("sessionCompleted", subscription);
-
-    if (typeof subscription.customer !== "string") {
-      return new Response("Missing or invalid customerId", { status: 400 });
-    }
-
+    const customerId =
+      typeof subscription.customer === "string"
+        ? subscription.customer
+        : subscription.customer.id;
     const { userId } = subscription.metadata;
 
     const customer = await opts.ctx.db
       .selectFrom("Customer")
       .select("id")
-      .where("stripeId", "=", subscription.customer)
+      .where("stripeId", "=", customerId)
       .executeTakeFirst();
 
     const subscriptionPlan = stripePriceToSubscriptionPlan(
       subscription.items.data[0]?.price.id,
     );
 
+    /**
+     * User is already subscribed, update their info
+     */
     if (customer) {
       return await opts.ctx.db
         .updateTable("Customer")
+        .where("id", "=", customer.id)
         .set({
-          stripeId: subscription.customer,
+          stripeId: customerId,
           subscriptionId: subscription.id,
           paidUntil: new Date(subscription.current_period_end * 1000),
           plan: subscriptionPlan,
@@ -65,12 +67,15 @@ export const webhookRouter = createTRPCRouter({
         .execute();
     }
 
+    /**
+     * User is not subscribed, create a new customer
+     */
     await opts.ctx.db
       .insertInto("Customer")
       .values({
         id: genId(),
         clerkUserId: userId ?? "wh",
-        stripeId: subscription.customer,
+        stripeId: customerId,
         subscriptionId: subscription.id,
         plan: subscriptionPlan,
         paidUntil: new Date(subscription.current_period_end * 1000),
@@ -95,22 +100,52 @@ export const webhookRouter = createTRPCRouter({
       subscription.items.data[0]?.price.id,
     );
 
-    console.log("invoicePaymentSucceeded", subscription);
-
     await opts.ctx.db
       .updateTable("Customer")
+      .where("subscriptionId", "=", subscription.id)
       .set({
         plan: subscriptionPlan,
         paidUntil: new Date(subscription.current_period_end * 1000),
       })
-      .where("subscriptionId", "=", subscription.id)
       .execute();
   }),
 
-  customerSubscriptionDeleted: webhookProcedure.mutation(async () => {
-    // todo
+  customerSubscriptionDeleted: webhookProcedure.mutation(async (opts) => {
+    const subscription = opts.input.event.data.object as Stripe.Subscription;
+    const customerId =
+      typeof subscription.customer === "string"
+        ? subscription.customer
+        : subscription.customer.id;
+
+    await opts.ctx.db
+      .updateTable("Customer")
+      .where("stripeId", "=", customerId)
+      .set({
+        subscriptionId: null,
+        plan: "FREE",
+        paidUntil: null,
+      })
+      .execute();
   }),
-  customerSubscriptionUpdated: webhookProcedure.mutation(async () => {
-    // todo
+
+  customerSubscriptionUpdated: webhookProcedure.mutation(async (opts) => {
+    const subscription = opts.input.event.data.object as Stripe.Subscription;
+    const customerId =
+      typeof subscription.customer === "string"
+        ? subscription.customer
+        : subscription.customer.id;
+
+    const subscriptionPlan = stripePriceToSubscriptionPlan(
+      subscription.items.data[0]?.price.id,
+    );
+
+    await opts.ctx.db
+      .updateTable("Customer")
+      .where("stripeId", "=", customerId)
+      .set({
+        plan: subscriptionPlan,
+        paidUntil: new Date(subscription.current_period_end * 1000),
+      })
+      .execute();
   }),
 });
