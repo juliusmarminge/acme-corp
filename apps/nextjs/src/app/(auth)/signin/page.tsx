@@ -1,4 +1,4 @@
-import { type Route } from "next";
+import type { Route } from "next";
 import Link from "next/link";
 
 import { EmailSignIn } from "./email-signin";

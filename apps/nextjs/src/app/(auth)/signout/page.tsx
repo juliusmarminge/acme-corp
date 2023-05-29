@@ -18,9 +18,7 @@ export default function AuthenticationPage() {
           Are you sure you want to sign out?
         </p>
         <SignOutButton signOutCallback={() => router.push("/?redirect=false")}>
-          <Button>
-            Confirm
-          </Button>
+          <Button>Confirm</Button>
         </SignOutButton>
       </div>
     </div>

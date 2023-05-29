@@ -7,7 +7,7 @@ export default authMiddleware({
     "/sso-callback(.*)",
     "/terms(.*)",
     "/privacy(.*)",
-  ]
+  ],
 });
 
 export const config = {
