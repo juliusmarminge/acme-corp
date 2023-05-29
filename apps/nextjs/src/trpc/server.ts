@@ -5,7 +5,7 @@ import { httpBatchLink, loggerLink } from "@trpc/client";
 import { experimental_createTRPCNextAppDirServer } from "@trpc/next/app-dir/server";
 import superjson from "superjson";
 
-import { type AppRouter } from "@acme/api";
+import type { AppRouter } from "@acme/api";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return "";
