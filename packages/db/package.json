@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@planetscale/database": "^1.7.0",
-    "kysely": "^0.24.2",
+    "kysely": "^0.25.0",
     "kysely-planetscale": "^1.3.0",
     "nanoid": "^4.0.2"
   },
