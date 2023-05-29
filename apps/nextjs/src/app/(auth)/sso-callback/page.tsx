@@ -1,23 +1,21 @@
 "use client";
 
 import { useEffect } from "react";
-import { useClerk } from "@clerk/nextjs/app-beta/client";
+import { useClerk } from "@clerk/nextjs";
 import type { HandleOAuthCallbackParams } from "@clerk/types";
 
 import { Icons } from "@acme/ui/icons";
 
-// FIXME: 1MB limit on edge and Vercel won't fix the OG-bundling issue...
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 export default function SSOCallback(props: {
   searchParams: HandleOAuthCallbackParams;
 }) {
-  console.log("SSO Callback", props);
   const { handleRedirectCallback } = useClerk();
 
   useEffect(() => {
     void handleRedirectCallback(props.searchParams);
-  }, [props, handleRedirectCallback]);
+  }, [props.searchParams, handleRedirectCallback]);
 
   return (
     <div className="flex items-center justify-center">

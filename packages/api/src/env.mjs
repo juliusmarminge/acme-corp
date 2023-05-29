@@ -25,4 +25,5 @@ export const env = createEnv({
     STRIPE_PRO_MONTHLY_PRICE_ID: process.env.STRIPE_PRO_MONTHLY_PRICE_ID,
     STRIPE_PRO_YEARLY_PRICE_ID: process.env.STRIPE_PRO_YEARLY_PRICE_ID,
   },
+  skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,
 });

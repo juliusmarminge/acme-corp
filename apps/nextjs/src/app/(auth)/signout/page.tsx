@@ -1,15 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useClerk } from "@clerk/nextjs";
+import { SignOutButton } from "@clerk/nextjs";
 
 import { Button } from "@acme/ui/button";
 
-// FIXME: 1MB limit on edge and Vercel won't fix the OG-bundling issue...
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 export default function AuthenticationPage() {
-  const { signOut } = useClerk();
   const router = useRouter();
 
   return (
@@ -19,14 +17,9 @@ export default function AuthenticationPage() {
         <p className="text-sm text-muted-foreground">
           Are you sure you want to sign out?
         </p>
-        <Button
-          onClick={async () => {
-            await signOut();
-            router.push("/?redirect=false");
-          }}
-        >
-          Confirm
-        </Button>
+        <SignOutButton signOutCallback={() => router.push("/?redirect=false")}>
+          <Button>Confirm</Button>
+        </SignOutButton>
       </div>
     </div>
   );

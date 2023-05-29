@@ -1,4 +1,7 @@
 {
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -9,10 +12,7 @@
     { "pattern": "apps/*/" },
     { "pattern": "packages/*/" }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts",
-  "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
-  }
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

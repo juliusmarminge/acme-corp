@@ -1,11 +1,10 @@
-import { type Route } from "next";
+import type { Route } from "next";
 import Link from "next/link";
 
 import { EmailSignIn } from "./email-signin";
 import { OAuthSignIn } from "./oauth-signin";
 
-// FIXME: 1MB limit on edge and Vercel won't fix the OG-bundling issue...
-export const runtime = "nodejs";
+export const runtime = "edge";
 
 export default function AuthenticationPage() {
   return (

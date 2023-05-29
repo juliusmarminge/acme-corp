@@ -1,4 +1,4 @@
-import { type Route } from "next";
+import type { Route } from "next";
 import { Component, CreditCard, Globe } from "lucide-react";
 
 import { Icons } from "@acme/ui/icons";

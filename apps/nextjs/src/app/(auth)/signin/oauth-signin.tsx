@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useSignIn } from "@clerk/nextjs";
-import { type OAuthStrategy } from "@clerk/types";
+import type { OAuthStrategy } from "@clerk/types";
 
 import { Button } from "@acme/ui/button";
 import { Icons } from "@acme/ui/icons";
