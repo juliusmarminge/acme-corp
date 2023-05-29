@@ -34,12 +34,12 @@
     "tailwindcss-animate": "^1.0.5"
   },
   "devDependencies": {
-    "@acme/eslint-config": "0.1.0",
+    "@acme/eslint-config": "0.2.0",
     "@acme/tailwind-config": "0.1.0",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "date-fns": "^2.30.0",
-    "eslint": "^8.39.0",
+    "eslint": "^8.41.0",
     "postcss": "^8.4.23",
     "react": "18.2.0",
     "react-day-picker": "^8.7.1",

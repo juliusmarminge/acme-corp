@@ -1,4 +1,5 @@
 import "./src/env.mjs";
+
 import withMDX from "@next/mdx";
 
 /** @type {import("next").NextConfig} */
