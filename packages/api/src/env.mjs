@@ -1,6 +1,8 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import * as z from "zod";
 
+console.log("process.env.CI", process.env.CI);
+
 export const env = createEnv({
   server: {
     NEXTJS_URL: z.string().url(),
