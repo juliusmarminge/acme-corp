@@ -30,6 +30,15 @@ export async function POST(req: Request) {
       case "invoice.payment_succeeded":
         await caller.stripe.webhooks.invoicePaymentSucceeded({ event });
         break;
+      case "invoice.payment_failed":
+        // TODO: Handle failed payments
+        break;
+      case "customer.subscription.deleted":
+        await caller.stripe.webhooks.customerSubscriptionDeleted({ event });
+        break;
+      case "customer.subscription.updated":
+        await caller.stripe.webhooks.customerSubscriptionUpdated({ event });
+        break;
 
       default:
         throw new Error(`Unhandled event type ${event.type}`);

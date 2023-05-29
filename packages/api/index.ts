@@ -17,4 +17,4 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  **/
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
-export { stripe } from "./src/router/stripe";
+export { stripe } from "./src/router/stripe/shared";

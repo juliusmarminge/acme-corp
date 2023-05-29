@@ -1,24 +1,11 @@
 import { TRPCError } from "@trpc/server";
-import Stripe from "stripe";
+import type Stripe from "stripe";
 import * as z from "zod";
 
 import { genId } from "@acme/db";
 
-import { env } from "../env.mjs";
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
-
-export const stripe = new Stripe(env.STRIPE_API_KEY, {
-  apiVersion: "2022-11-15",
-  typescript: true,
-});
-
-function stripePriceToSubscriptionPlan(priceId: string | undefined) {
-  if (priceId === env.STRIPE_PRO_MONTHLY_PRICE_ID) return "PRO";
-  if (priceId === env.STRIPE_PRO_YEARLY_PRICE_ID) return "PRO";
-  if (priceId === env.STRIPE_STD_MONTHLY_PRICE_ID) return "STANDARD";
-  if (priceId === env.STRIPE_STD_YEARLY_PRICE_ID) return "STANDARD";
-  throw new Error(`Invalid price id: ${priceId}`);
-}
+import { createTRPCRouter, publicProcedure } from "../../trpc";
+import { stripe, stripePriceToSubscriptionPlan } from "./shared";
 
 const webhookProcedure = publicProcedure.input(
   z.object({
@@ -35,7 +22,7 @@ const webhookProcedure = publicProcedure.input(
   }),
 );
 
-const webhookRouter = createTRPCRouter({
+export const webhookRouter = createTRPCRouter({
   sessionCompleted: webhookProcedure.mutation(async (opts) => {
     const session = opts.input.event.data.object as Stripe.Checkout.Session;
     if (typeof session.subscription !== "string") {
@@ -119,50 +106,11 @@ const webhookRouter = createTRPCRouter({
       .where("subscriptionId", "=", subscription.id)
       .execute();
   }),
-});
 
-export const stripeRouter = createTRPCRouter({
-  webhooks: webhookRouter,
-
-  createSession: protectedProcedure.mutation(async (opts) => {
-    const { userId, user } = opts.ctx.auth;
-
-    const customer = await opts.ctx.db
-      .selectFrom("Customer")
-      .select(["id", "plan", "stripeId"])
-      .where("clerkUserId", "=", userId)
-      .executeTakeFirst();
-
-    const returnUrl = env.NEXTJS_URL + "/account";
-
-    if (customer && customer.plan !== "FREE") {
-      /**
-       * User is subscribed, create a billing portal session
-       */
-      const session = await stripe.billingPortal.sessions.create({
-        customer: customer.stripeId,
-        return_url: returnUrl,
-      });
-      return { url: session.url };
-    }
-
-    /**
-     * User is not subscribed, create a checkout session
-     * Use existing email address if available
-     */
-    const email = user?.emailAddresses.find(
-      (addr) => addr.id === user?.primaryEmailAddressId,
-    )?.emailAddress;
-
-    const session = await stripe.checkout.sessions.create({
-      success_url: returnUrl,
-      cancel_url: returnUrl,
-      mode: "subscription",
-      customer_email: email,
-      metadata: { userId },
-      line_items: [{ price: env.STRIPE_PRO_MONTHLY_PRICE_ID, quantity: 1 }],
-    });
-
-    return { url: session.url };
+  customerSubscriptionDeleted: webhookProcedure.mutation(async () => {
+    // todo
+  }),
+  customerSubscriptionUpdated: webhookProcedure.mutation(async () => {
+    // todo
   }),
 });
