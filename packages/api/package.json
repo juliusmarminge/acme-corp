@@ -13,7 +13,7 @@
   "dependencies": {
     "@acme/db": "^0.1.0",
     "@clerk/nextjs": "^4.19.0",
-    "@t3-oss/env-nextjs": "^0.3.1",
+    "@t3-oss/env-nextjs": "^0.4.0",
     "@trpc/client": "^10.28.0",
     "@trpc/server": "^10.28.0",
     "stripe": "^12.3.0",
