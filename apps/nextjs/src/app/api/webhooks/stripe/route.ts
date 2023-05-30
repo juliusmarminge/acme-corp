@@ -1,8 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 
-import { createTRPCContext } from "@acme/api";
-import { lambdaRouter, stripe } from "@acme/api/src/lambda";
+import { appRouter, createTRPCContext, stripe } from "@acme/api";
 
 import { env } from "~/env.mjs";
 
@@ -22,7 +21,7 @@ export async function POST(req: Request) {
      * Forward to tRPC API to handle the webhook event
      */
     const ctx = createTRPCContext({ req, resHeaders: {} as Headers });
-    const caller = lambdaRouter.createCaller(ctx);
+    const caller = appRouter.createCaller(ctx);
 
     switch (event.type) {
       case "checkout.session.completed":
