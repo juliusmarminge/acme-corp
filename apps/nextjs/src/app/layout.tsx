@@ -43,10 +43,7 @@ export const metadata = {
   metadataBase: new URL("https://acme-corp.jumr.dev"),
 };
 
-export default function RootLayout(props: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}) {
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <>
       <ClerkProvider>
@@ -60,7 +57,6 @@ export default function RootLayout(props: {
           >
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               {props.children}
-              {props.modal}
               <TailwindIndicator />
             </ThemeProvider>
             <Analytics />
