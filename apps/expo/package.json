@@ -37,7 +37,7 @@
     "@acme/eslint-config": "0.2.0",
     "@acme/tailwind-config": "0.1.0",
     "@babel/core": "^7.22.1",
-    "@babel/preset-env": "^7.22.2",
+    "@babel/preset-env": "^7.22.4",
     "@babel/runtime": "^7.22.3",
     "@expo/config-plugins": "^6.0.1",
     "@types/babel__core": "7.20.0",
