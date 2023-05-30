@@ -2,8 +2,16 @@ import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 import type { AppRouter } from "./src/root";
 
-export { appRouter, type AppRouter } from "./src/root";
 export { createTRPCContext, createInnerTRPCContext } from "./src/trpc";
+
+// Export stripe router separately since it is incompatible with Edge runtimes
+// and we want the rest of our endpoints to be running on the Edge => split it up
+export {
+  appRouter,
+  type AppRouter,
+  edgeRouter,
+  lambdaRouter,
+} from "./src/root";
 
 /**
  * Inference helpers for input types
