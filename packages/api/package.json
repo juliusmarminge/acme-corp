@@ -11,11 +11,11 @@
     "./stripe-client": {
       "import": "./stripe-client.ts",
       "types": "./stripe-client.ts"
-    }
+    },
     "./src/env.mjs": {
       "import": "./src/env.mjs",
       "types": "./src/env.mjs"
-    },
+    }
   },
   "license": "MIT",
   "scripts": {
