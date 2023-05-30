@@ -1,13 +1,8 @@
-import { authRouter } from "./router/auth";
-import { postRouter } from "./router/post";
-import { stripeRouter } from "./router/stripe";
-import { createTRPCRouter } from "./trpc";
+import { edgeRouter } from "./edge";
+import { lambdaRouter } from "./lambda";
+import { mergeRouters } from "./trpc";
 
-export const appRouter = createTRPCRouter({
-  post: postRouter,
-  auth: authRouter,
-  stripe: stripeRouter,
-});
-
-// export type definition of API
+// Used to provide a good DX with a single client
+// Then, a custom link is used to generate the correct URL for the request
+const appRouter = mergeRouters(edgeRouter, lambdaRouter);
 export type AppRouter = typeof appRouter;
