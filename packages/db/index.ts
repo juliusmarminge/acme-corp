@@ -4,7 +4,7 @@ import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
 import { nanoid } from "nanoid";
 
-import type { ColumnType, GeneratedAlways } from "kysely";
+import type { ColumnType } from "kysely";
 export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   ? ColumnType<S, I | undefined, U>
   : ColumnType<T, T | undefined, T>;
@@ -17,6 +17,7 @@ export type Customer = {
     stripeId: string;
     subscriptionId: string | null;
     clerkUserId: string;
+    clerkOrganizationId: string | null;
     name: string | null;
     plan: SubscriptionPlan | null;
     paidUntil: Timestamp | null;

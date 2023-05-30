@@ -1,6 +1,7 @@
 import {
   AlertTriangle,
   ArrowRight,
+  Building,
   Check,
   ChevronLeft,
   ChevronRight,
@@ -42,6 +43,7 @@ export const Icons = {
   settings: Settings,
   billing: CreditCard,
   ellipsis: MoreVertical,
+  organization: Building,
   add: Plus,
   warning: AlertTriangle,
   user: User,

@@ -1,3 +1,4 @@
+import clerkClient from "@clerk/clerk-sdk-node";
 import { TRPCError } from "@trpc/server";
 import type Stripe from "stripe";
 import * as z from "zod";
@@ -35,11 +36,13 @@ export const webhookRouter = createTRPCRouter({
       session.subscription,
     );
 
+    console.log({ session, subscription });
+
     const customerId =
       typeof subscription.customer === "string"
         ? subscription.customer
         : subscription.customer.id;
-    const { userId } = subscription.metadata;
+    const { userId, organizationName } = subscription.metadata;
 
     const customer = await opts.ctx.db
       .selectFrom("Customer")
@@ -68,13 +71,19 @@ export const webhookRouter = createTRPCRouter({
     }
 
     /**
-     * User is not subscribed, create a new customer
+     * User is not subscribed, create a new customer and org
      */
+    const organization = await clerkClient.organizations.createOrganization({
+      createdBy: userId as string,
+      name: organizationName as string,
+    });
+
     await opts.ctx.db
       .insertInto("Customer")
       .values({
         id: genId(),
         clerkUserId: userId ?? "wh",
+        clerkOrganizationId: organization.id,
         stripeId: customerId,
         subscriptionId: subscription.id,
         plan: subscriptionPlan,

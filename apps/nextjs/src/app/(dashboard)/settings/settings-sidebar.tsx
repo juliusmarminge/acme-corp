@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useOrganization } from "@clerk/nextjs";
 
 import { cn } from "@acme/ui";
 import { Icons } from "@acme/ui/icons";
@@ -22,16 +23,11 @@ const items = [
     href: "/dashboard",
     icon: "post",
   },
-  {
-    title: "Settings",
-    href: "/settings/settings",
-    icon: "settings",
-    disabled: true,
-  },
 ] as const;
 
 export function SettingsSidebar() {
   const path = usePathname();
+  const { organization } = useOrganization();
 
   if (!items?.length) {
     return null;
@@ -62,6 +58,22 @@ export function SettingsSidebar() {
           )
         );
       })}
+
+      {organization && (
+        <Link href={`/settings/organizations/${organization.slug}`}>
+          <span
+            className={cn(
+              "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+              path.startsWith("/settings/organizations")
+                ? "bg-accent"
+                : "transparent",
+            )}
+          >
+            <Icons.organization className="mr-2 h-4 w-4" />
+            <span>Organization</span>
+          </span>
+        </Link>
+      )}
     </nav>
   );
 }

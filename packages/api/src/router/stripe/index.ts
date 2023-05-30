@@ -89,4 +89,40 @@ export const stripeRouter = createTRPCRouter({
       },
     ];
   }),
+
+  purchaseOrg: protectedProcedure
+    .input(
+      z.object({
+        orgName: z.string(),
+        planId: z
+          .string()
+          .refine(
+            (str) =>
+              [
+                env.STRIPE_STD_MONTHLY_PRICE_ID,
+                env.STRIPE_PRO_MONTHLY_PRICE_ID,
+              ].includes(str),
+            "Invalid planId",
+          ),
+      }),
+    )
+    .mutation(async (opts) => {
+      const { userId } = opts.ctx.auth;
+      const { orgName, planId } = opts.input;
+
+      const session = await stripe.checkout.sessions.create({
+        mode: "subscription",
+        payment_method_types: ["card"],
+        client_reference_id: userId,
+        subscription_data: {
+          metadata: { userId, organizationName: orgName },
+        },
+        success_url: `${env.NEXTJS_URL}/settings/organizations/${orgName}?isNew=true`,
+        cancel_url: env.NEXTJS_URL,
+        line_items: [{ price: planId, quantity: 1 }],
+      });
+
+      if (!session.url) return { success: false as const };
+      return { success: true as const, url: session.url };
+    }),
 });

@@ -20,7 +20,7 @@ export default function ProfilePage() {
           },
           elements: {
             // Main card element
-            card: "shadow-none",
+            card: "shadow-none bg-background text-foreground",
             navbar: "hidden",
             navbarMobileMenuButton: "hidden",
             headerTitle: "hidden",
