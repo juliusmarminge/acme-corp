@@ -356,8 +356,8 @@ importers:
         specifier: ^7.2.1
         version: 7.2.1
       prisma:
-        specifier: ^4.14.0
-        version: 4.14.0
+        specifier: ^4.14.1
+        version: 4.14.1
       prisma-kysely:
         specifier: ^1.4.1
         version: 1.4.1
@@ -3123,8 +3123,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /@prisma/engines@4.14.0:
-    resolution: {integrity: sha512-PDNlhP/1vyTgmNyiucGqGCdXIp7HIkkvKO50si3y3PcceeHvqtiKPaH1iJdz63jCWMVMbj2MElSxXPOeBvEVIQ==}
+  /@prisma/engines@4.14.1:
+    resolution: {integrity: sha512-APqFddPVHYmWNKqc+5J5SqrLFfOghKOLZxobmguDUacxOwdEutLsbXPVhNnpFDmuQWQFbXmrTTPoRrrF6B1MWA==}
     requiresBuild: true
     dev: true
 
@@ -10960,13 +10960,13 @@ packages:
       - supports-color
     dev: true
 
-  /prisma@4.14.0:
-    resolution: {integrity: sha512-+5dMl1uxMQb4RepndY6AwR9xi1cDcaGFICu+ws6/Nmgt93mFPNj8tYxSfTdmfg+rkNrUId9rk/Ac2vTgLe/oXA==}
+  /prisma@4.14.1:
+    resolution: {integrity: sha512-z6hxzTMYqT9SIKlzD08dhzsLUpxjFKKsLpp5/kBDnSqiOjtUyyl/dC5tzxLcOa3jkEHQ8+RpB/fE3w8bgNP51g==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.14.0
+      '@prisma/engines': 4.14.1
     dev: true
 
   /process-nextick-args@2.0.1:
