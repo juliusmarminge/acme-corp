@@ -6,7 +6,7 @@ import { Icons } from "@acme/ui/icons";
 import { SiteFooter } from "~/components/footer";
 import { MobileDropdown } from "~/components/mobile-nav";
 import { UserNav } from "~/components/user-nav";
-import { MainNav } from "../dashboard/components/main-nav";
+import { MainNav } from "../(dashboard)/_components/main-nav";
 
 export default function MarketingLayout(props: { children: ReactNode }) {
   return (

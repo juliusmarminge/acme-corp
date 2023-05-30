@@ -8,8 +8,8 @@ import { Icons } from "@acme/ui/icons";
 import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 import { ScrollArea } from "@acme/ui/scroll-area";
 
+import { Search } from "~/app/(dashboard)/_components/search";
 import { navItems } from "~/app/config";
-import { Search } from "~/app/dashboard/components/search";
 import ThemeToggle from "./theme-toggle";
 
 export function MobileDropdown() {

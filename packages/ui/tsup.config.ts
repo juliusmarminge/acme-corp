@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
-import { defineConfig, type Options } from "tsup";
+import { defineConfig } from "tsup";
+import type { Options } from "tsup";
 
 // TODO: Would be nice not having to split up the client and server
 // and just have esbuild keep the directives so that components with

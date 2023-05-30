@@ -17,8 +17,8 @@ export const navItems = [
     title: "Overview",
   },
   {
-    href: "/dashboard",
-    title: "Customers",
+    href: "/pricing",
+    title: "Pricing",
   },
   {
     href: "/dashboard",

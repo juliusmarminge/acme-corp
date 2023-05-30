@@ -32,6 +32,15 @@ export function SiteFooter(props: { className?: string }) {
             >
               Julius
             </a>
+            . Inspired by{" "}
+            <a
+              href="https://tx.shadcn.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Taxonomy
+            </a>
             . Components by{" "}
             <a
               href="https://twitter.com/shadcn"

@@ -1,4 +1,4 @@
-import Balancer from "react-wrap-balancer";
+import { Balancer } from "react-wrap-balancer";
 
 import { cn } from "@acme/ui";
 import { buttonVariants } from "@acme/ui/button";
@@ -31,7 +31,7 @@ export default function Home() {
           </p>
         </a> */}
         <h1
-          className="animate-fade-up bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl/[5rem]"
+          className="md:text-7xl/[5rem] animate-fade-up bg-gradient-to-br from-foreground to-muted-foreground bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm"
           style={{ animationDelay: "0.20s", animationFillMode: "forwards" }}
         >
           <Balancer>Your all-in-one, enterprise ready starting point</Balancer>
