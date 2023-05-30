@@ -1,7 +1,8 @@
 import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 
-import { appRouter, createTRPCContext, stripe } from "@acme/api";
+import { appRouter, createTRPCContext } from "@acme/api";
+import { stripe } from "@acme/api/stripe-client";
 
 import { env } from "~/env.mjs";
 
@@ -25,19 +26,19 @@ export async function POST(req: Request) {
 
     switch (event.type) {
       case "checkout.session.completed":
-        await caller.stripe.webhooks.sessionCompleted({ event });
+        await caller.webhooks.sessionCompleted({ event });
         break;
       case "invoice.payment_succeeded":
-        await caller.stripe.webhooks.invoicePaymentSucceeded({ event });
+        await caller.webhooks.invoicePaymentSucceeded({ event });
         break;
       case "invoice.payment_failed":
         // TODO: Handle failed payments
         break;
       case "customer.subscription.deleted":
-        await caller.stripe.webhooks.customerSubscriptionDeleted({ event });
+        await caller.webhooks.customerSubscriptionDeleted({ event });
         break;
       case "customer.subscription.updated":
-        await caller.stripe.webhooks.customerSubscriptionUpdated({ event });
+        await caller.webhooks.customerSubscriptionUpdated({ event });
         break;
 
       default:
