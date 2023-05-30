@@ -1,17 +1,20 @@
+"use server";
+
+import { headers } from "next/headers";
 import { httpBatchLink, loggerLink } from "@trpc/client";
-import { createTRPCNext } from "@trpc/next";
+import { experimental_createTRPCNextAppDirServer } from "@trpc/next/app-dir/server";
 import superjson from "superjson";
 
 import type { AppRouter } from "@acme/api";
 
 const getBaseUrl = () => {
-  if (typeof window !== "undefined") return ""; // browser should use relative url
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
-
-  return `http://localhost:3000`; // dev SSR should use localhost
+  if (typeof window !== "undefined") return "";
+  const vc = process.env.VERCEL_URL;
+  if (vc) return `https://${vc}`;
+  return `http://localhost:3000`;
 };
 
-export const api = createTRPCNext<AppRouter>({
+export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
   config() {
     return {
       transformer: superjson,
@@ -23,11 +26,13 @@ export const api = createTRPCNext<AppRouter>({
         }),
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
+          headers: () => {
+            return Object.fromEntries(headers().entries());
+          },
         }),
       ],
     };
   },
-  ssr: false,
 });
 
 export { type RouterInputs, type RouterOutputs } from "@acme/api";

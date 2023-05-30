@@ -10,6 +10,18 @@ export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
   : ColumnType<T, T | undefined, T>;
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
+import type { SubscriptionPlan } from "./enums";
+
+export type Customer = {
+    id: string;
+    stripeId: string;
+    subscriptionId: string | null;
+    clerkUserId: string;
+    name: string | null;
+    plan: SubscriptionPlan | null;
+    paidUntil: Timestamp | null;
+    endsAt: Timestamp | null;
+};
 export type Post = {
     id: string;
     userId: string;
@@ -17,6 +29,7 @@ export type Post = {
     content: string;
 };
 export type DB = {
+    Customer: Customer;
     Post: Post;
 };
 

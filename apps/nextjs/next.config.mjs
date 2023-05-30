@@ -1,4 +1,5 @@
 import "./src/env.mjs";
+import "@acme/api/src/env.mjs";
 
 import withMDX from "@next/mdx";
 
@@ -9,9 +10,8 @@ const config = {
   transpilePackages: ["@acme/api", "@acme/db"],
   pageExtensions: ["ts", "tsx", "mdx"],
   experimental: {
-    appDir: true,
     mdxRs: true,
-    typedRoutes: true,
+    serverActions: true,
   },
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },

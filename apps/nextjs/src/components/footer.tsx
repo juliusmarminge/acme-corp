@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
+import { cn } from "@acme/ui";
 import { Icons } from "@acme/ui/icons";
 
 import { siteConfig } from "~/app/config";
@@ -9,9 +10,9 @@ const ThemeToggle = dynamic(() => import("~/components/theme-toggle"), {
   ssr: false,
 });
 
-export function SiteFooter() {
+export function SiteFooter(props: { className?: string }) {
   return (
-    <footer className="container border-t py-6">
+    <footer className={cn("container border-t py-6", props.className)}>
       <div className="flex flex-col items-center justify-between gap-4">
         <div className="flex w-full justify-between">
           <Link href="/" className="flex items-center text-lg font-medium">
@@ -30,6 +31,15 @@ export function SiteFooter() {
               className="font-medium underline underline-offset-4"
             >
               Julius
+            </a>
+            . Inspired by{" "}
+            <a
+              href="https://tx.shadcn.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium underline underline-offset-4"
+            >
+              Taxonomy
             </a>
             . Components by{" "}
             <a
