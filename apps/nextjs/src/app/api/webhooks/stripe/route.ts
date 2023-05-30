@@ -26,19 +26,19 @@ export async function POST(req: Request) {
 
     switch (event.type) {
       case "checkout.session.completed":
-        await caller.webhooks.sessionCompleted({ event });
+        await caller.stripe.webhooks.sessionCompleted({ event });
         break;
       case "invoice.payment_succeeded":
-        await caller.webhooks.invoicePaymentSucceeded({ event });
+        await caller.stripe.webhooks.invoicePaymentSucceeded({ event });
         break;
       case "invoice.payment_failed":
         // TODO: Handle failed payments
         break;
       case "customer.subscription.deleted":
-        await caller.webhooks.customerSubscriptionDeleted({ event });
+        await caller.stripe.webhooks.customerSubscriptionDeleted({ event });
         break;
       case "customer.subscription.updated":
-        await caller.webhooks.customerSubscriptionUpdated({ event });
+        await caller.stripe.webhooks.customerSubscriptionUpdated({ event });
         break;
 
       default:
