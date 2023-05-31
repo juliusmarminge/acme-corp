@@ -14,7 +14,7 @@ const handler = (req: NextRequest) =>
     req: req,
     createContext: createTRPCContext,
     onError: ({ error }) => {
-      console.log("Error in trpc handler (lambda)");
+      console.log("Error in tRPC handler (lambda)");
       console.error(error);
     },
   });

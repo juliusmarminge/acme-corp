@@ -13,7 +13,7 @@ const handler = (req: NextRequest) =>
     req: req,
     createContext: createTRPCContext,
     onError: ({ error }) => {
-      console.log("Error in trpc handler (edge)");
+      console.log("Error in tRPC handler (edge)");
       console.error(error);
     },
   });
