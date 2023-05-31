@@ -15,6 +15,14 @@ You can use the `create-turbo` CLI to bootstrap your project using this template
 npx create-turbo@latest -e https://github.com/juliusmarminge/acme-corp
 ```
 
+## MySQL
+
+To run mysql for local development you can run this command.
+
+```sh
+docker compose --env-file .env.local -f compose.dev.yaml
+```
+
 ## About
 
 This project features the next-generation stack for building fullstack application. It's structured as a monorepo with a shared API using tRPC. Built on the new app router in Next.js 13 with React Server Components.
