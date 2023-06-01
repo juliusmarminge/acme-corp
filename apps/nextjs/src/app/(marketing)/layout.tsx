@@ -20,7 +20,6 @@ export default function MarketingLayout(props: { children: ReactNode }) {
         <MainNav />
         <div className="ml-auto flex items-center space-x-4">
           <Suspense>
-            {/* @ts-expect-error - Async Server Component */}
             <UserNav />
           </Suspense>
         </div>

@@ -21,6 +21,6 @@
   },
   "devDependencies": {
     "eslint": "^8.41.0",
-    "typescript": "^5.1.0-beta"
+    "typescript": "^5.1.3"
   }
 }

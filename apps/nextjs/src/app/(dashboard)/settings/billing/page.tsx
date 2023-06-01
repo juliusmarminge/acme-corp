@@ -21,7 +21,6 @@ export default function BillingPage() {
 
       <div className="h-4" />
 
-      {/* @ts-expect-error - Async Server Component */}
       <SubscriptionCard />
 
       <UsageCard />

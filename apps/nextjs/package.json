@@ -36,7 +36,7 @@
     "react-dom": "18.2.0",
     "react-image-crop": "^10.1.4",
     "react-wrap-balancer": "^0.5.0",
-    "recharts": "^2.5.0",
+    "recharts": "^2.6.2",
     "superjson": "1.9.1",
     "tailwindcss-animate": "^1.0.5",
     "zod": "^3.21.4"
@@ -45,7 +45,7 @@
     "@acme/eslint-config": "0.2.0",
     "@types/mdx": "^2.0.5",
     "@types/node": "^20.2.5",
-    "@types/react": "^18.2.7",
+    "@types/react": "^18.2.8",
     "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.14",
     "concurrently": "^8.0.1",
@@ -53,6 +53,6 @@
     "eslint": "^8.41.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.1.0-beta"
+    "typescript": "^5.1.3"
   }
 }
