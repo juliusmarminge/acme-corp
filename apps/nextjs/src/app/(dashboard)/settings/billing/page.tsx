@@ -19,7 +19,6 @@ export default function BillingPage() {
         Manage your subscription and billing details
       </h2>
 
-      {/* @ts-expect-error - Async Server Component */}
       <SubscriptionCard />
 
       <UsageCard />
