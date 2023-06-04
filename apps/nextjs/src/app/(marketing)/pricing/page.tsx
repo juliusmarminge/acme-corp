@@ -24,7 +24,7 @@ export default async function PricingPage() {
           Simple pricing for all your needs. No hidden fees, no surprises.
         </Balancer>
 
-        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {plans.map((plan) => (
             <PricingCard key={plan.id} plan={plan} />
           ))}

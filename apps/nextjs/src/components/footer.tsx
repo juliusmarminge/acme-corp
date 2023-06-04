@@ -12,17 +12,11 @@ const ThemeToggle = dynamic(() => import("~/components/theme-toggle"), {
 
 export function SiteFooter(props: { className?: string }) {
   return (
-    <footer className={cn("container border-t py-6", props.className)}>
-      <div className="flex flex-col items-center justify-between gap-4">
-        <div className="flex w-full justify-between">
-          <Link href="/" className="flex items-center text-lg font-medium">
-            <Icons.logo className="mr-2 h-6 w-6" />
-            Acme Corp
-          </Link>
-          <ThemeToggle />
-        </div>
-        <div>
-          <p className="text-center text-sm/7 text-muted-foreground md:text-left">
+    <footer className={cn("border-t", props.className)}>
+      <div className="container flex flex-col items-center gap-2 py-6 md:flex-row md:justify-between">
+        <div className="flex flex-col items-center gap-2 md:flex-row">
+          <Icons.logo className="h-6 w-6" />
+          <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
             Built by{" "}
             <a
               href={siteConfig.twitter}
@@ -32,7 +26,7 @@ export function SiteFooter(props: { className?: string }) {
             >
               Julius
             </a>
-            . Inspired by{" "}
+            . Inspired by
             <a
               href="https://tx.shadcn.com"
               target="_blank"
@@ -61,7 +55,8 @@ export function SiteFooter(props: { className?: string }) {
             </a>
             .
           </p>
-        </div>{" "}
+        </div>
+        <ThemeToggle />
       </div>
     </footer>
   );
