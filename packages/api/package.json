@@ -16,7 +16,7 @@
     "@t3-oss/env-nextjs": "^0.4.0",
     "@trpc/client": "^10.28.0",
     "@trpc/server": "^10.28.0",
-    "stripe": "^12.7.0",
+    "stripe": "^12.8.0",
     "superjson": "1.9.1",
     "zod": "^3.21.4"
   },
