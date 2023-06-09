@@ -23,7 +23,7 @@
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
-    "lucide-react": "^0.233.0",
+    "lucide-react": "^0.241.0",
     "tailwind-merge": "^1.13.0"
   },
   "peerDependencies": {
