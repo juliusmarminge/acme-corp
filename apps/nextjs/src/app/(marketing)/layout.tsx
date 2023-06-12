@@ -11,7 +11,7 @@ import { MainNav } from "../(dashboard)/_components/main-nav";
 export default function MarketingLayout(props: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <nav className="container z-50 flex h-16 border-b bg-background">
+      <nav className="container z-50 flex h-16 items-center border-b bg-background">
         <div className="mr-8 hidden items-center md:flex">
           <Icons.logo className="mr-2 h-6 w-6" />
           <span className="text-lg font-bold tracking-tight">Acme Corp</span>
