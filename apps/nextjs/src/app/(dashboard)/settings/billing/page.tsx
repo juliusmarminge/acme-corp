@@ -19,6 +19,8 @@ export default function BillingPage() {
         Manage your subscription and billing details
       </h2>
 
+      <div className="h-4" />
+
       <SubscriptionCard />
 
       <UsageCard />
@@ -30,7 +32,7 @@ async function SubscriptionCard() {
   const subscription = await api.auth.mySubscription.query();
 
   return (
-    <Card className="mt-4">
+    <Card>
       <CardHeader>
         <CardTitle>Subscription</CardTitle>
       </CardHeader>

@@ -12,6 +12,10 @@ const handler = (req: NextRequest) =>
     router: edgeRouter,
     req: req,
     createContext: createTRPCContext,
+    onError: ({ error }) => {
+      console.log("Error in tRPC handler (edge)");
+      console.error(error);
+    },
   });
 
 export { handler as GET, handler as POST };

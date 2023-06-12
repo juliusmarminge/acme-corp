@@ -1,3 +1,4 @@
+import "react-image-crop/dist/ReactCrop.css";
 import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";

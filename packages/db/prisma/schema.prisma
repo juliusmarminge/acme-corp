@@ -26,14 +26,15 @@ enum SubscriptionPlan {
 }
 
 model Customer {
-    id             String            @id
-    stripeId       String            @unique
-    subscriptionId String?
-    clerkUserId    String
-    name           String?
-    plan           SubscriptionPlan?
-    paidUntil      DateTime?
-    endsAt         DateTime?
+    id                  String            @id
+    stripeId            String            @unique
+    subscriptionId      String?
+    clerkUserId         String
+    clerkOrganizationId String?
+    name                String?
+    plan                SubscriptionPlan?
+    paidUntil           DateTime?
+    endsAt              DateTime?
 
     @@index([clerkUserId])
 }
