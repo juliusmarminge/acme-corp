@@ -137,6 +137,15 @@ const columns = [
       if (value === null) {
         return "Never expires";
       }
+
+      if (value < new Date()) {
+        return (
+          <div className="flex flex-col text-destructive">
+            <span>Expired</span>
+            <span>{format(value, "yyyy-MM-dd")}</span>
+          </div>
+        );
+      }
       return format(value, "yyyy-MM-dd");
     },
     header: "Expires At",
@@ -309,7 +318,15 @@ export function DataTable(props: { data: ApiKeyColumn[] }) {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  disabled={row.original.revokedAt !== null}
+                  disabled={(() => {
+                    if (row.original.revokedAt !== null) {
+                      return true;
+                    }
+                    if (row.original.expiresAt !== null) {
+                      return row.original.expiresAt < new Date();
+                    }
+                    return false;
+                  })()}
                   className={cn("group")}
                 >
                   {row.getVisibleCells().map((cell) => (
