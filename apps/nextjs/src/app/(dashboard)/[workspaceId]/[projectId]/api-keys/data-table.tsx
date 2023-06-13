@@ -267,6 +267,12 @@ export function DataTable(props: { data: ApiKeyColumn[] }) {
     },
   });
 
+  const filteredRows = showRevoked
+    ? table.getRowModel().rows
+    : table
+        .getRowModel()
+        ?.rows.filter((row) => row.original.revokedAt === null);
+
   return (
     <div>
       <div className="flex items-center gap-2 py-2">
@@ -298,26 +304,24 @@ export function DataTable(props: { data: ApiKeyColumn[] }) {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getFilteredRowModel().rows?.length ? (
-              table.getFilteredRowModel().rows.map((row) =>
-                !showRevoked && row.original.revokedAt !== null ? null : (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
-                    disabled={row.original.revokedAt !== null}
-                    className={cn("group")}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ),
-              )
+            {filteredRows.length ? (
+              filteredRows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                  disabled={row.original.revokedAt !== null}
+                  className={cn("group")}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
             ) : (
               <TableRow>
                 <TableCell
