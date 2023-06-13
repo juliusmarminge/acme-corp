@@ -57,7 +57,6 @@ const columns = [
     ),
   }),
   columnHelper.accessor("key", {
-    // TODO: Show/Hide + Copy
     cell: function Key(t) {
       const [show, setShow] = useState(false);
       const [copied, setCopied] = useState(false);
