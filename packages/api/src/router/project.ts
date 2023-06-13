@@ -151,6 +151,9 @@ export const projectRouter = createTRPCRouter({
         ])
         .where("projectId", "=", projectId)
         .where("clerkUserId", "=", userId)
+        // first active, then expired, then revoked
+        .orderBy("expiresAt", "desc")
+        .orderBy("revokedAt", "asc")
         .execute();
 
       // TODO: Project admins should maybe be able to see all keys for the project?
