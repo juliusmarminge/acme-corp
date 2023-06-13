@@ -6,7 +6,6 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { format, formatRelative } from "date-fns";
@@ -253,18 +252,16 @@ const columns = [
 
 export function DataTable(props: { data: ApiKeyColumn[] }) {
   const [rowSelection, setRowSelection] = useState({});
-  const [visibleRows, setVisibleRows] = useState<ApiKeyColumn[]>(props.data);
   const [showRevoked, setShowRevoked] = useState(true);
 
   const table = useReactTable({
-    data: visibleRows,
+    data: props.data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onRowSelectionChange: setRowSelection,
     enableRowSelection: (row) => {
       return row.original.revokedAt === null;
     },
-    getFilteredRowModel: getFilteredRowModel(),
     state: {
       rowSelection,
     },
@@ -276,16 +273,7 @@ export function DataTable(props: { data: ApiKeyColumn[] }) {
         <Label>Show revoked</Label>
         <Checkbox
           checked={showRevoked}
-          onCheckedChange={(c) => {
-            setShowRevoked(!!c);
-
-            // This feels unperformant, is there a built in way to @tanstack/table to filter rows?
-            setVisibleRows(
-              props.data.filter((row) => {
-                return c || row.revokedAt === null;
-              }),
-            );
-          }}
+          onCheckedChange={(c) => setShowRevoked(!!c)}
           className="max-w-sm"
         />
       </div>
@@ -310,24 +298,26 @@ export function DataTable(props: { data: ApiKeyColumn[] }) {
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  disabled={row.original.revokedAt !== null}
-                  className={cn("group")}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+            {table.getFilteredRowModel().rows?.length ? (
+              table.getFilteredRowModel().rows.map((row) =>
+                !showRevoked && row.original.revokedAt !== null ? null : (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    disabled={row.original.revokedAt !== null}
+                    className={cn("group")}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext(),
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ),
+              )
             ) : (
               <TableRow>
                 <TableCell
