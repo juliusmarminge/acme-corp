@@ -10,12 +10,24 @@ datasource db {
     relationMode = "prisma"
 }
 
-model Post {
-    id      String @id
-    userId  String
-    title   String
-    content String
+enum ProjectTier {
+    FREE
+    PRO
+}
 
+model Project {
+    id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
+    createdAt DateTime @default(now())
+
+    // A project is tied to a Clerk User or Organization
+    organizationId String? @db.VarChar(36) // uuid v4
+    userId         String? @db.VarChar(36) // uuid v4
+
+    name String?
+    tier ProjectTier @default(FREE)
+    url  String?
+
+    @@index([organizationId])
     @@index([userId])
 }
 
@@ -26,7 +38,7 @@ enum SubscriptionPlan {
 }
 
 model Customer {
-    id                  String            @id
+    id                  String            @id @db.VarChar(30) // prefix_ + nanoid (16)
     stripeId            String            @unique
     subscriptionId      String?
     clerkUserId         String
@@ -37,4 +49,18 @@ model Customer {
     endsAt              DateTime?
 
     @@index([clerkUserId])
+}
+
+model ApiKey {
+    id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
+    createdAt DateTime @default(now())
+
+    // A project is tied to a Clerk User or Organization
+    projectId String @db.VarChar(30) // prefix_ + nanoid (16)
+
+    name String? @default("Secret Key")
+    key  String  @unique
+
+    @@unique([projectId, name])
+    @@index([projectId])
 }

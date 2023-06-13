@@ -1,6 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 import * as z from "zod";
 
+import { purchaseOrgSchema } from "../../../validators";
 import { env } from "../../env.mjs";
 import {
   createTRPCRouter,
@@ -91,24 +92,11 @@ export const stripeRouter = createTRPCRouter({
   }),
 
   purchaseOrg: protectedProcedure
-    .input(
-      z.object({
-        orgName: z.string(),
-        planId: z
-          .string()
-          .refine(
-            (str) =>
-              [
-                env.STRIPE_STD_MONTHLY_PRICE_ID,
-                env.STRIPE_PRO_MONTHLY_PRICE_ID,
-              ].includes(str),
-            "Invalid planId",
-          ),
-      }),
-    )
+    .input(purchaseOrgSchema)
     .mutation(async (opts) => {
       const { userId } = opts.ctx.auth;
       const { orgName, planId } = opts.input;
+      const orgSlug = orgName.toLowerCase().replace(/\s/g, "-");
 
       const session = await stripe.checkout.sessions.create({
         mode: "subscription",
@@ -117,7 +105,7 @@ export const stripeRouter = createTRPCRouter({
         subscription_data: {
           metadata: { userId, organizationName: orgName },
         },
-        success_url: `${env.NEXTJS_URL}/settings/organizations/${orgName}?isNew=true`,
+        success_url: `${env.NEXTJS_URL}/settings/organizations/${orgSlug}?isNew=true`,
         cancel_url: env.NEXTJS_URL,
         line_items: [{ price: planId, quantity: 1 }],
       });

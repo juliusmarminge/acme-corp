@@ -35,7 +35,7 @@ export function OrganizationName(props: { name: string; orgId: string }) {
           const name = new FormData(e.currentTarget).get("name");
           if (!name || typeof name !== "string") return;
           setUpdating(true);
-          await organization?.update({ name });
+          await organization?.update({ name, slug: props.orgId });
           setUpdating(false);
           toast({
             title: "Organization name updated",

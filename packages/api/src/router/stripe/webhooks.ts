@@ -36,8 +36,6 @@ export const webhookRouter = createTRPCRouter({
       session.subscription,
     );
 
-    console.log({ session, subscription });
-
     const customerId =
       typeof subscription.customer === "string"
         ? subscription.customer

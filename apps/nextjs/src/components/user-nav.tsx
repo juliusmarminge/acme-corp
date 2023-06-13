@@ -73,14 +73,14 @@ export async function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Link href="/settings/account">
+            <Link href={`/${user.id}/settings`}>
               <User className="mr-2 h-4 w-4" />
               <span>Profile</span>
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/settings/billing">
+            <Link href={`/${user.id}/billing`}>
               <CreditCard className="mr-2 h-4 w-4" />
               <span>Billing</span>
               <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>

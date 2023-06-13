@@ -153,6 +153,9 @@ importers:
       '@clerk/nextjs':
         specifier: ^4.20.0
         version: 4.20.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
+      '@hookform/resolvers':
+        specifier: ^3.1.0
+        version: 3.1.0(react-hook-form@7.44.3)
       '@next/mdx':
         specifier: ^13.4.4
         version: 13.4.4
@@ -195,6 +198,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.44.3
+        version: 7.44.3(react@18.2.0)
       react-image-crop:
         specifier: ^10.1.4
         version: 10.1.4(react@18.2.0)
@@ -2646,6 +2652,14 @@ packages:
     resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
     dependencies:
       '@hapi/hoek': 9.3.0
+    dev: false
+
+  /@hookform/resolvers@3.1.0(react-hook-form@7.44.3):
+    resolution: {integrity: sha512-z0A8K+Nxq+f83Whm/ajlwE6VtQlp/yPHZnXw7XWVPIGm1Vx0QV8KThU3BpbBRfAZ7/dYqCKKBNnQh85BkmBKkA==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.44.3(react@18.2.0)
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -11140,6 +11154,15 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
+    dev: false
+
+  /react-hook-form@7.44.3(react@18.2.0):
+    resolution: {integrity: sha512-/tHId6p2ViAka1wECMw8FEPn/oz/w226zehHrJyQ1oIzCBNMIJCaj6ZkQcv+MjDxYh9MWR7RQic7Qqwe4a5nkw==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-image-crop@10.1.4(react@18.2.0):
