@@ -56,12 +56,26 @@ model ApiKey {
     createdAt DateTime  @default(now())
     expiresAt DateTime?
     lastUsed  DateTime?
+    revokedAt DateTime?
 
     projectId   String @db.VarChar(30) // prefix_ + nanoid (16)
     clerkUserId String @db.VarChar(36) // uuid v4
 
     name String @default("Secret Key")
     key  String @unique
+
+    @@index([projectId])
+}
+
+model Ingestion {
+    id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
+    createdAt DateTime @default(now())
+
+    projectId String @db.VarChar(30) // prefix_ + nanoid (16)
+    apiKey    String @db.VarChar(30) // prefix_ + nanoid (16)
+
+    name String?
+    url  String?
 
     @@index([projectId])
 }

@@ -129,15 +129,26 @@ export const projectRouter = createTRPCRouter({
     }),
 
   listApiKeys: protectedProcedure
-
-    .input(z.object({ projectId: z.string() }))
+    .input(
+      z.object({
+        projectId: z.string(),
+      }),
+    )
     .query(async (opts) => {
       const { userId } = opts.ctx.auth;
       const { projectId } = opts.input;
 
       const apiKeys = await opts.ctx.db
         .selectFrom("ApiKey")
-        .select(["id", "name", "key", "createdAt", "lastUsed", "expiresAt"])
+        .select([
+          "id",
+          "name",
+          "key",
+          "createdAt",
+          "lastUsed",
+          "expiresAt",
+          "revokedAt",
+        ])
         .where("projectId", "=", projectId)
         .where("clerkUserId", "=", userId)
         .execute();
@@ -192,10 +203,11 @@ export const projectRouter = createTRPCRouter({
 
       // Generate the key
       const apiKey = "sk_live_" + genId();
+      const apiKeyId = "api_key_" + genId();
       await opts.ctx.db
         .insertInto("ApiKey")
         .values({
-          id: genId(),
+          id: apiKeyId,
           name: opts.input.name,
           key: apiKey,
           expiresAt: opts.input.expiresAt,
@@ -207,46 +219,27 @@ export const projectRouter = createTRPCRouter({
       return apiKey;
     }),
 
-  deleteApiKey: protectedProcedure
-    .input(z.object({ id: z.string() }))
-    .mutation(async (opts) => {
-      const { userId } = opts.ctx.auth;
-
-      const result = await opts.ctx.db
-        .deleteFrom("ApiKey")
-        .where("id", "=", opts.input.id)
-        .where("clerkUserId", "=", String(userId))
-        .executeTakeFirst();
-
-      if (result.numDeletedRows === BigInt(0)) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "API key not found",
-        });
-      }
-
-      return { success: true };
-    }),
-
-  deleteApiKeys: protectedProcedure
+  revokeApiKeys: protectedProcedure
     .input(z.object({ ids: z.string().array() }))
     .mutation(async (opts) => {
       const { userId } = opts.ctx.auth;
 
       const result = await opts.ctx.db
-        .deleteFrom("ApiKey")
+        .updateTable("ApiKey")
+        .set({ revokedAt: new Date() })
         .where("id", "in", opts.input.ids)
         .where("clerkUserId", "=", String(userId))
+        .where("revokedAt", "is", null)
         .executeTakeFirst();
 
-      if (result.numDeletedRows === BigInt(0)) {
+      if (result.numUpdatedRows === BigInt(0)) {
         throw new TRPCError({
           code: "NOT_FOUND",
           message: "API key not found",
         });
       }
 
-      return { success: true, numDeletedRows: result.numDeletedRows };
+      return { success: true, numRevoked: result.numUpdatedRows };
     }),
 
   rollApiKey: protectedProcedure

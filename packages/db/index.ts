@@ -18,6 +18,7 @@ export type ApiKey = {
   createdAt: Generated<Timestamp>;
   expiresAt: Timestamp | null;
   lastUsed: Timestamp | null;
+  revokedAt: Timestamp | null;
   projectId: string;
   clerkUserId: string;
   name: Generated<string>;
@@ -34,6 +35,14 @@ export type Customer = {
   paidUntil: Timestamp | null;
   endsAt: Timestamp | null;
 };
+export type Ingestion = {
+  id: string;
+  createdAt: Generated<Timestamp>;
+  projectId: string;
+  apiKey: string;
+  name: string | null;
+  url: string | null;
+};
 export type Project = {
   id: string;
   createdAt: Generated<Timestamp>;
@@ -46,6 +55,7 @@ export type Project = {
 export type DB = {
   ApiKey: ApiKey;
   Customer: Customer;
+  Ingestion: Ingestion;
   Project: Project;
 };
 
