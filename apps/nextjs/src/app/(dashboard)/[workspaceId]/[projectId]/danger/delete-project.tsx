@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Button } from "@acme/ui/button";
 import {
   Card,
@@ -18,9 +20,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@acme/ui/dialog";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 import { useToast } from "@acme/ui/use-toast";
-import { useRouter } from "next/navigation";
 
 import { api } from "~/trpc/client";
 
@@ -50,7 +51,7 @@ export function DeleteProject(props: { projectId: string }) {
               <DialogDescription>{description}</DialogDescription>
             </DialogHeader>
             <div className="flex items-center font-bold text-destructive">
-              <Icons.warning className="mr-2 h-6 w-6" />
+              <Icons.Warning className="mr-2 h-6 w-6" />
               <p>This action can not be reverted</p>
             </div>
             <DialogFooter>

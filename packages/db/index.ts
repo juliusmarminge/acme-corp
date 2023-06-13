@@ -16,8 +16,11 @@ export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 export type ApiKey = {
   id: string;
   createdAt: Generated<Timestamp>;
+  expiresAt: Timestamp | null;
+  lastUsed: Timestamp | null;
   projectId: string;
-  name: Generated<string | null>;
+  clerkUserId: string;
+  name: Generated<string>;
   key: string;
 };
 export type Customer = {

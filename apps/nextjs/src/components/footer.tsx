@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 import { cn } from "@acme/ui";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 import { siteConfig } from "~/app/config";
 
@@ -18,7 +18,7 @@ export function SiteFooter(props: { className?: string }) {
           href="/"
           className="col-start-1 row-start-1 flex items-center gap-2 md:mr-2"
         >
-          <Icons.logo className="h-6 w-6" />
+          <Icons.Logo className="h-6 w-6" />
           <p className="text-lg font-medium md:hidden">Acme Corp</p>
         </Link>
         <p className="col-span-full row-start-2 text-center text-sm leading-loose text-muted-foreground md:flex-1 md:text-left">

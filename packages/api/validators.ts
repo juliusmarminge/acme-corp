@@ -26,3 +26,10 @@ export const purchaseOrgSchema = z.object({
     ),
 });
 export type PurchaseOrg = z.infer<typeof purchaseOrgSchema>;
+
+export const createApiKeySchema = z.object({
+  projectId: z.string(),
+  name: z.string(),
+  expiresAt: z.date().optional(),
+});
+export type CreateApiKey = z.infer<typeof createApiKeySchema>;

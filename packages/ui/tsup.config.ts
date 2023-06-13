@@ -9,6 +9,7 @@ const client = [
   "./src/avatar.tsx",
   "./src/calendar.tsx",
   "./src/command.tsx",
+  "./src/data-table.tsx",
   "./src/dialog.tsx",
   "./src/dropdown-menu.tsx",
   "./src/form.tsx",
@@ -27,6 +28,7 @@ const server = [
   "./src/button.tsx",
   "./src/icons.tsx",
   "./src/card.tsx",
+  "./src/table.tsx",
   "./src/toast.tsx",
 ];
 

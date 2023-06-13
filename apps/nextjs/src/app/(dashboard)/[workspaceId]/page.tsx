@@ -15,6 +15,7 @@ import {
 
 import { getRandomPatternStyle } from "~/lib/generate-pattern";
 import { api } from "~/trpc/server";
+import { DashboardShell } from "../_components/dashboard-shell";
 import { CreateProjectForm } from "./_components/create-project-form";
 
 export const runtime = "edge";
@@ -38,10 +39,10 @@ export default async function Page(props: { params: { workspaceId: string } }) {
     await api.project.listByActiveWorkspace.query();
 
   return (
-    <div className="flex flex-col space-y-6 pt-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-semibold">Your Projects</h1>
-
+    <DashboardShell
+      title="Projects"
+      description="Projects for this workspace will show up here"
+      headerAction={
         <Dialog>
           <DialogTrigger asChild disabled={limitReached}>
             {limitReached ? (
@@ -60,8 +61,8 @@ export default async function Page(props: { params: { workspaceId: string } }) {
             <CreateProjectForm workspaceId={props.params.workspaceId} />
           </DialogContent>
         </Dialog>
-      </div>
-
+      }
+    >
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {projects.map((project) => (
           <li key={project.id}>
@@ -92,6 +93,6 @@ export default async function Page(props: { params: { workspaceId: string } }) {
           </p>
         </div>
       )}
-    </div>
+    </DashboardShell>
   );
 }

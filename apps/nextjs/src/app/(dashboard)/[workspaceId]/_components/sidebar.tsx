@@ -4,28 +4,28 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 
 import { cn } from "@acme/ui";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 const workspaceItems = [
   {
     title: "Projects",
     href: "/",
-    icon: "post",
+    icon: Icons.Post,
   },
   {
     title: "Billing",
     href: "/billing",
-    icon: "billing",
+    icon: Icons.Billing,
   },
   {
     title: "Danger Zone",
     href: "/danger",
-    icon: "warning",
+    icon: Icons.Warning,
   },
   {
     title: "Settings",
     href: "/settings",
-    icon: "settings",
+    icon: Icons.Settings,
   },
 ] as const;
 
@@ -33,12 +33,17 @@ const projectItems = [
   {
     title: "Overview",
     href: "/",
-    icon: "post",
+    icon: Icons.Post,
+  },
+  {
+    title: "API Keys",
+    href: "/api-keys",
+    icon: Icons.Key,
   },
   {
     title: "Danger Zone",
     href: "/danger",
-    icon: "warning",
+    icon: Icons.Warning,
   },
 ] as const;
 
@@ -62,7 +67,7 @@ export function SidebarNav() {
   return (
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
-        const Icon = Icons[item.icon || "arrowRight"];
+        const Icon = item.icon;
 
         let fullPath = `/${params.workspaceId}`;
         if (params.projectId) {

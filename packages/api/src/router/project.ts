@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { genId } from "@acme/db";
 
-import { createProjectSchema } from "../../validators";
+import { createApiKeySchema, createProjectSchema } from "../../validators";
 import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 const PROJECT_LIMITS = {
@@ -126,5 +126,132 @@ export const projectRouter = createTRPCRouter({
       }
 
       return project;
+    }),
+
+  listApiKeys: protectedProcedure
+
+    .input(z.object({ projectId: z.string() }))
+    .query(async (opts) => {
+      const { userId } = opts.ctx.auth;
+      const { projectId } = opts.input;
+
+      const apiKeys = await opts.ctx.db
+        .selectFrom("ApiKey")
+        .select(["id", "name", "key", "createdAt", "lastUsed", "expiresAt"])
+        .where("projectId", "=", projectId)
+        .where("clerkUserId", "=", userId)
+        .execute();
+
+      // TODO: Project admins should maybe be able to see all keys for the project?
+
+      return apiKeys;
+    }),
+
+  createApiKey: protectedProcedure
+    .input(createApiKeySchema)
+    .mutation(async (opts) => {
+      const projectId = opts.input.projectId;
+      const userId = opts.ctx.auth.userId;
+
+      // Verify the user has access to the project
+      const project = await opts.ctx.db
+        .selectFrom("Project")
+        .select(["id", "name", "userId", "organizationId"])
+        .where("id", "=", projectId)
+        .executeTakeFirst();
+
+      if (!project) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Project not found",
+        });
+      }
+
+      if (project.userId && project.userId !== userId) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "You don't have access to this project",
+        });
+      }
+
+      if (project.organizationId) {
+        const orgs = await clerkClient.users.getOrganizationMembershipList({
+          userId,
+        });
+        const isMemberInProjectOrg = orgs.some(
+          (org) => org.organization.id === project.organizationId,
+        );
+
+        if (!isMemberInProjectOrg) {
+          throw new TRPCError({
+            code: "FORBIDDEN",
+            message: "You don't have access to this project",
+          });
+        }
+      }
+
+      // Generate the key
+      const apiKey = "sk_live_" + genId();
+      await opts.ctx.db
+        .insertInto("ApiKey")
+        .values({
+          id: genId(),
+          name: opts.input.name,
+          key: apiKey,
+          expiresAt: opts.input.expiresAt,
+          projectId: opts.input.projectId,
+          clerkUserId: userId,
+        })
+        .execute();
+
+      return apiKey;
+    }),
+
+  deleteApiKey: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async (opts) => {
+      const { userId } = opts.ctx.auth;
+
+      const result = await opts.ctx.db
+        .deleteFrom("ApiKey")
+        .where("id", "=", opts.input.id)
+        .where("clerkUserId", "=", String(userId))
+        .executeTakeFirst();
+
+      if (result.numDeletedRows === BigInt(0)) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "API key not found",
+        });
+      }
+
+      return { success: true };
+    }),
+
+  rollApiKey: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async (opts) => {
+      const apiKey = await opts.ctx.db
+        .selectFrom("ApiKey")
+        .select(["id"])
+        .where("id", "=", opts.input.id)
+        .where("clerkUserId", "=", opts.ctx.auth.userId)
+        .executeTakeFirst();
+
+      if (!apiKey) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "API key not found",
+        });
+      }
+
+      const newKey = "sk_live_" + genId();
+      await opts.ctx.db
+        .updateTable("ApiKey")
+        .set({ key: newKey })
+        .where("id", "=", opts.input.id)
+        .execute();
+
+      return newKey;
     }),
 });

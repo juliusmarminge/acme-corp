@@ -5,7 +5,7 @@ import { useSignIn } from "@clerk/nextjs";
 import type { OAuthStrategy } from "@clerk/types";
 
 import { Button } from "@acme/ui/button";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 import { useToast } from "@acme/ui/use-toast";
 
 export function OAuthSignIn() {
@@ -41,9 +41,9 @@ export function OAuthSignIn() {
         onClick={() => oauthSignIn("oauth_github")}
       >
         {isLoading === "oauth_github" ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.gitHub className="mr-2 h-4 w-4" />
+          <Icons.GitHub className="mr-2 h-4 w-4" />
         )}
         Github
       </Button>
@@ -53,9 +53,9 @@ export function OAuthSignIn() {
         onClick={() => oauthSignIn("oauth_google")}
       >
         {isLoading === "oauth_google" ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+          <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
-          <Icons.google className="mr-2 h-4 w-4" />
+          <Icons.Google className="mr-2 h-4 w-4" />
         )}
         Google
       </Button>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs";
 
 import { buttonVariants } from "@acme/ui/button";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 import { SiteFooter } from "~/components/footer";
 import { MobileDropdown } from "~/components/mobile-nav";
@@ -40,7 +40,7 @@ function DashboardLink() {
     return (
       <Link href="/signin" className={buttonVariants({ variant: "outline" })}>
         Sign In
-        <Icons.chevronRight className="ml-1 h-4 w-4" />
+        <Icons.ChevronRight className="ml-1 h-4 w-4" />
       </Link>
     );
   }
@@ -51,7 +51,7 @@ function DashboardLink() {
       className={buttonVariants({ variant: "outline" })}
     >
       Dashboard
-      <Icons.chevronRight className="ml-1 h-4 w-4" />
+      <Icons.ChevronRight className="ml-1 h-4 w-4" />
     </Link>
   );
 }

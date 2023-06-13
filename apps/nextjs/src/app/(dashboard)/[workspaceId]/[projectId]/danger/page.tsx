@@ -19,27 +19,22 @@ import {
   DialogTrigger,
 } from "@acme/ui/dialog";
 
+import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
 import { DeleteProject } from "./delete-project";
 
 export default function DangerZonePage(props: {
   params: { workspaceId: string; projectId: string };
 }) {
   return (
-    <div>
-      <h1 className="text-xl font-semibold leading-none tracking-tight">
-        Danger Zone
-      </h1>
-      <h2 className="text-base text-muted-foreground">
-        Do dangerous things here
-      </h2>
-
-      <div className="h-4" />
-      <div className="space-y-6">
-        <TransferProjectToOrganization />
-        <TransferProjectToPersonal />
-        <DeleteProject projectId={props.params.projectId} />
-      </div>
-    </div>
+    <DashboardShell
+      title="Danger Zone"
+      description="Do dangerous stuff here"
+      className="space-y-4"
+    >
+      <TransferProjectToOrganization />
+      <TransferProjectToPersonal />
+      <DeleteProject projectId={props.params.projectId} />
+    </DashboardShell>
   );
 }
 

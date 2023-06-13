@@ -52,15 +52,16 @@ model Customer {
 }
 
 model ApiKey {
-    id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
-    createdAt DateTime @default(now())
+    id        String    @id @db.VarChar(30) // prefix_ + nanoid (16)
+    createdAt DateTime  @default(now())
+    expiresAt DateTime?
+    lastUsed  DateTime?
 
-    // A project is tied to a Clerk User or Organization
-    projectId String @db.VarChar(30) // prefix_ + nanoid (16)
+    projectId   String @db.VarChar(30) // prefix_ + nanoid (16)
+    clerkUserId String @db.VarChar(36) // uuid v4
 
-    name String? @default("Secret Key")
-    key  String  @unique
+    name String @default("Secret Key")
+    key  String @unique
 
-    @@unique([projectId, name])
     @@index([projectId])
 }

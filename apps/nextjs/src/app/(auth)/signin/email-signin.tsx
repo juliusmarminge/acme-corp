@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useSignIn, useSignUp } from "@clerk/nextjs";
 
 import { Button } from "@acme/ui/button";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 import { Input } from "@acme/ui/input";
 import { useToast } from "@acme/ui/use-toast";
 
@@ -120,7 +120,7 @@ export function EmailSignIn() {
         />
       </div>
       <Button disabled={isLoading}>
-        {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
+        {isLoading && <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />}
         Sign In with Email
       </Button>
     </form>

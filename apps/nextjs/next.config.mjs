@@ -13,11 +13,11 @@ const config = {
     mdxRs: true,
     serverActions: true,
   },
-  modularizeImports: {
-    "lucide-react": {
-      transform: "lucide-react/dist/esm/icons/{{ kebabCase member }}",
-    },
-  },
+  // modularizeImports: {
+  //   "lucide-react": {
+  //     transform: "lucide-react/dist/esm/icons/{{ kebabCase member }}",
+  //   },
+  // },
 
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },

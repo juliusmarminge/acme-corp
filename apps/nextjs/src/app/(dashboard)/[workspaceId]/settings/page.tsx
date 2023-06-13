@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { auth, clerkClient, UserProfile } from "@clerk/nextjs";
 
+import { DashboardShell } from "../../_components/dashboard-shell";
 import { OrganizationImage } from "./_components/organization-image";
 import { OrganizationName } from "./_components/organization-name";
 
@@ -24,31 +25,22 @@ async function OrganizationSettingsPage() {
   });
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div>
-        <h1 className="text-xl font-semibold leading-none tracking-tight">
-          {org.name}
-        </h1>
-        <h2 className="text-base text-muted-foreground">
-          Manage your organization
-        </h2>
+    <DashboardShell title="Organization" description="Manage your organization">
+      <div className="space-y-4">
+        <OrganizationName orgId={org.id} name={org.name} />
+        <OrganizationImage
+          orgId={org.id}
+          name={org.name}
+          image={org.imageUrl}
+        />
       </div>
-
-      <OrganizationName orgId={org.id} name={org.name} />
-      <OrganizationImage orgId={org.id} name={org.name} image={org.imageUrl} />
-    </div>
+    </DashboardShell>
   );
 }
 
 function UserSettingsPage() {
   return (
-    <div>
-      <h1 className="text-xl font-semibold leading-none tracking-tight">
-        Account
-      </h1>
-      <h2 className="text-base text-muted-foreground">
-        Manage your account details
-      </h2>
+    <DashboardShell title="Account" description="Manage your account details">
       <UserProfile
         appearance={{
           variables: {
@@ -65,6 +57,6 @@ function UserSettingsPage() {
           },
         }}
       />
-    </div>
+    </DashboardShell>
   );
 }

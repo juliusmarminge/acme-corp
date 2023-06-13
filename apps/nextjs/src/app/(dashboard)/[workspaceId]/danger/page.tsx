@@ -18,23 +18,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@acme/ui/dialog";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
+
+import { DashboardShell } from "../../_components/dashboard-shell";
 
 export default function DangerZonePage() {
   return (
-    <div>
-      <h1 className="text-xl font-semibold leading-none tracking-tight">
-        Danger Zone
-      </h1>
-      <h2 className="text-base text-muted-foreground">
-        Do dangerous things here
-      </h2>
-
-      <div className="h-4" />
+    <DashboardShell title="Danger Zone" description="Do dangerous stuff here">
       <div className="space-y-6">
         <DeleteWorkspace />
       </div>
-    </div>
+    </DashboardShell>
   );
 }
 
@@ -68,7 +62,7 @@ function DeleteWorkspace() {
               <DialogDescription>{description}</DialogDescription>
             </DialogHeader>
             <div className="flex items-center font-bold text-destructive">
-              <Icons.warning className="mr-2 h-6 w-6" />
+              <Icons.Warning className="mr-2 h-6 w-6" />
               <p>This action can not be reverted</p>
             </div>
             <DialogFooter>
