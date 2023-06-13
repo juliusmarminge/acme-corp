@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 import { SiteFooter } from "~/components/footer";
 import { UserNav } from "~/components/user-nav";
@@ -13,7 +13,7 @@ export default function DashboardLayout(props: { children: React.ReactNode }) {
       <nav className="border-b">
         <div className="flex h-16 items-center px-4 md:px-8">
           <Link href="/">
-            <Icons.logo />
+            <Icons.Logo />
           </Link>
           <span className="mx-2 text-lg font-bold text-muted-foreground">
             /

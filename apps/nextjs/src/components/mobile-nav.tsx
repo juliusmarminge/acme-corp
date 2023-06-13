@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 
 import { Button } from "@acme/ui/button";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 import { ScrollArea } from "@acme/ui/scroll-area";
 
@@ -30,7 +30,7 @@ export function MobileDropdown() {
           variant="ghost"
           className="mr-2 px-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <Icons.logo className="mr-2 h-6 w-6" />
+          <Icons.Logo className="mr-2 h-6 w-6" />
           <span className="text-lg font-bold tracking-tight">Acme Corp</span>
         </Button>
       </PopoverTrigger>

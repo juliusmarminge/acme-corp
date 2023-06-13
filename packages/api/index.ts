@@ -4,6 +4,9 @@ import type { AppRouter } from "./src/root";
 
 export { createTRPCContext, createInnerTRPCContext } from "./src/trpc";
 
+// TODO: Maybe just export `createAction` instead of the whole `trpc` object?
+export { t } from "./src/trpc";
+
 export type { AppRouter } from "./src/root";
 
 /**

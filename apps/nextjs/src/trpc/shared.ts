@@ -31,8 +31,6 @@ export const endingLink = (opts?: { headers?: HTTPHeaders }) =>
       const path = ctx.op.path.split(".") as [string, ...string[]];
       const endpoint = lambdas.includes(path[0]) ? "lambda" : "edge";
 
-      console.log({ endpoint, path });
-
       const newCtx = {
         ...ctx,
         op: { ...ctx.op, path: path.join(".") },

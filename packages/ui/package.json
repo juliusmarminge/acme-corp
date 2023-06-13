@@ -12,30 +12,36 @@
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.3",
+    "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-scroll-area": "^1.0.4",
     "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.4",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
     "lucide-react": "^0.241.0",
-    "tailwind-merge": "^1.13.1"
+    "tailwind-merge": "^1.13.1",
+    "zod": "^3.21.4"
   },
   "peerDependencies": {
+    "@tanstack/react-table": "^8.9.2",
     "react": "^18.2.0",
     "react-day-picker": "^8.7.1",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
     "tailwindcss": "^3.3.2",
     "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
     "@acme/eslint-config": "0.2.0",
     "@acme/tailwind-config": "0.1.0",
+    "@tanstack/react-table": "^8.9.2",
     "@types/react": "^18.2.11",
     "@types/react-dom": "^18.2.4",
     "date-fns": "^2.30.0",
@@ -44,6 +50,7 @@
     "react": "18.2.0",
     "react-day-picker": "^8.7.1",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.44.3",
     "tailwindcss": "^3.3.2",
     "tailwindcss-animate": "^1.0.6",
     "tsup": "^6.7.0",
@@ -63,9 +70,17 @@
       "import": "./dist/calendar.mjs",
       "types": "./dist/calendar.d.ts"
     },
+    "./checkbox": {
+      "import": "./dist/checkbox.mjs",
+      "types": "./dist/checkbox.d.ts"
+    },
     "./command": {
       "import": "./dist/command.mjs",
       "types": "./dist/command.d.ts"
+    },
+    "./data-table": {
+      "import": "./dist/data-table.mjs",
+      "types": "./dist/data-table.d.ts"
     },
     "./dialog": {
       "import": "./dist/dialog.mjs",
@@ -74,6 +89,10 @@
     "./dropdown-menu": {
       "import": "./dist/dropdown-menu.mjs",
       "types": "./dist/dropdown-menu.d.ts"
+    },
+    "./form": {
+      "import": "./dist/form.mjs",
+      "types": "./dist/form.d.ts"
     },
     "./input": {
       "import": "./dist/input.mjs",
@@ -122,6 +141,10 @@
     "./card": {
       "import": "./dist/card.mjs",
       "types": "./dist/card.d.ts"
+    },
+    "./table": {
+      "import": "./dist/table.mjs",
+      "types": "./dist/table.d.ts"
     },
     "./toast": {
       "import": "./dist/toast.mjs",
@@ -183,6 +206,18 @@
       ],
       "scroll-area": [
         "dist/scroll-area.d.ts"
+      ],
+      "form": [
+        "dist/form.d.ts"
+      ],
+      "data-table": [
+        "dist/data-table.d.ts"
+      ],
+      "table": [
+        "dist/table.d.ts"
+      ],
+      "checkbox": [
+        "dist/checkbox.d.ts"
       ]
     }
   }

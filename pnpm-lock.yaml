@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -153,6 +153,9 @@ importers:
       '@clerk/nextjs':
         specifier: ^4.20.0
         version: 4.20.0(next@13.4.4)(react-dom@18.2.0)(react@18.2.0)
+      '@hookform/resolvers':
+        specifier: ^3.1.0
+        version: 3.1.0(react-hook-form@7.44.3)
       '@next/mdx':
         specifier: ^13.4.4
         version: 13.4.4
@@ -162,6 +165,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^4.29.11
         version: 4.29.11(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tanstack/react-table':
+        specifier: ^8.9.2
+        version: 8.9.2(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
         specifier: ^10.30.0
         version: 10.30.0(@trpc/server@10.30.0)
@@ -195,6 +201,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.44.3
+        version: 7.44.3(react@18.2.0)
       react-image-crop:
         specifier: ^10.1.4
         version: 10.1.4(react@18.2.0)
@@ -376,6 +385,9 @@ importers:
       '@radix-ui/react-avatar':
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-checkbox':
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-dialog':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
@@ -394,6 +406,9 @@ importers:
       '@radix-ui/react-select':
         specifier: ^1.2.2
         version: 1.2.2(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-slot':
+        specifier: ^1.0.2
+        version: 1.0.2(@types/react@18.2.11)(react@18.2.0)
       '@radix-ui/react-tabs':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
@@ -415,6 +430,9 @@ importers:
       tailwind-merge:
         specifier: ^1.13.1
         version: 1.13.1
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
     devDependencies:
       '@acme/eslint-config':
         specifier: 0.2.0
@@ -422,6 +440,9 @@ importers:
       '@acme/tailwind-config':
         specifier: 0.1.0
         version: link:../config/tailwind
+      '@tanstack/react-table':
+        specifier: ^8.9.2
+        version: 8.9.2(react-dom@18.2.0)(react@18.2.0)
       '@types/react':
         specifier: ^18.2.11
         version: 18.2.11
@@ -446,6 +467,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.44.3
+        version: 7.44.3(react@18.2.0)
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
@@ -2648,6 +2672,14 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: false
 
+  /@hookform/resolvers@3.1.0(react-hook-form@7.44.3):
+    resolution: {integrity: sha512-z0A8K+Nxq+f83Whm/ajlwE6VtQlp/yPHZnXw7XWVPIGm1Vx0QV8KThU3BpbBRfAZ7/dYqCKKBNnQh85BkmBKkA==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.44.3(react@18.2.0)
+    dev: false
+
   /@humanwhocodes/config-array@0.11.10:
     resolution: {integrity: sha512-KVVjQmNUepDVGXNuoRRdmmEjruj0KfiGSbS8LVc12LMsWDQzRXJ0qdhN8L8uUigKpfEHRhlaQFY0ib1tnUbNeQ==}
     engines: {node: '>=10.10.0'}
@@ -3263,6 +3295,34 @@ packages:
       '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.11)(react@18.2.0)
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.11)(react@18.2.0)
+      '@types/react': 18.2.11
+      '@types/react-dom': 18.2.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@radix-ui/react-checkbox@1.0.4(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-CBuGQa52aAYnADZVt/KBQzXrwx6TqnlwtcIPGtVt5JkkzQwMOLJjPukimhfKEr4GQNd43C+djUh5Ikopj8pSLg==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.22.3
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.2.11)(react@18.2.0)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.2.11)(react@18.2.0)
+      '@radix-ui/react-presence': 1.0.1(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.4)(@types/react@18.2.11)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.2.11)(react@18.2.0)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.2.11)(react@18.2.0)
+      '@radix-ui/react-use-size': 1.0.1(@types/react@18.2.11)(react@18.2.0)
       '@types/react': 18.2.11
       '@types/react-dom': 18.2.4
       react: 18.2.0
@@ -4536,6 +4596,21 @@ packages:
       react-native: 0.71.8(@babel/core@7.22.1)(@babel/preset-env@7.22.4)(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
+
+  /@tanstack/react-table@8.9.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Irvw4wqVF9hhuYzmNrlae4IKdlmgSyoRWnApSLebvYzqHoi5tEsYzBj6YPd0hX78aB/L+4w/jgK2eBQVpGfThQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.9.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+
+  /@tanstack/table-core@8.9.2:
+    resolution: {integrity: sha512-ajc0OF+karBAdaSz7OK09rCoAHB1XI1+wEhu+tDNMPc+XcO+dTlXXN/Vc0a8vym4kElvEjXEDd9c8Zfgt4bekA==}
+    engines: {node: '>=12'}
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -11141,6 +11216,14 @@ packages:
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
     dev: false
+
+  /react-hook-form@7.44.3(react@18.2.0):
+    resolution: {integrity: sha512-/tHId6p2ViAka1wECMw8FEPn/oz/w226zehHrJyQ1oIzCBNMIJCaj6ZkQcv+MjDxYh9MWR7RQic7Qqwe4a5nkw==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
 
   /react-image-crop@10.1.4(react@18.2.0):
     resolution: {integrity: sha512-bEc/SfJRPU06ApivtzuNmofEH3rqf1WsKgWNwloiZ4ttCB37DEETwR4KsQb+KkW87srvRtWpCbOhPs0a4TVAKw==}

@@ -31,6 +31,7 @@ import { db } from "@acme/db";
  */
 type CreateContextOptions = {
   auth: SignedInAuthObject | SignedOutAuthObject;
+  apiKey?: string | null;
 };
 
 /**
@@ -44,7 +45,7 @@ type CreateContextOptions = {
  */
 export const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
-    auth: opts.auth,
+    ...opts,
     db,
   };
 };
@@ -56,9 +57,11 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  */
 export const createTRPCContext = (opts: FetchCreateContextFnOptions) => {
   const auth = getAuth(opts.req as NextRequest);
+  const apiKey = opts.req.headers.get("x-acme-api-key");
 
   return createInnerTRPCContext({
     auth,
+    apiKey,
   });
 };
 
@@ -122,6 +125,34 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
 });
 
 /**
+ * Middleware to authenticate API requests with an API key
+ */
+const enforceApiKey = t.middleware(async ({ ctx, next }) => {
+  if (!ctx.apiKey) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  // Check db for API key
+  const apiKey = await ctx.db
+    .selectFrom("ApiKey")
+    .select("id")
+    .where("ApiKey.key", "=", ctx.apiKey)
+    .executeTakeFirst();
+
+  if (!apiKey) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  void ctx.db
+    .updateTable("ApiKey")
+    .set({ lastUsed: new Date() })
+    .where("id", "=", apiKey.id)
+    .execute();
+
+  return next({ ctx: { apiKey: ctx.apiKey } });
+});
+
+/**
  * Protected (authed) procedure
  *
  * If you want a query or mutation to ONLY be accessible to logged in users, use
@@ -131,3 +162,4 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+export const protectedApiProcedure = t.procedure.use(enforceApiKey);

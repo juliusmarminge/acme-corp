@@ -7,24 +7,20 @@ import {
 } from "@acme/ui/card";
 
 import { api } from "~/trpc/server";
+import { DashboardShell } from "../../_components/dashboard-shell";
 import { SubscriptionForm } from "./subscription-form";
 
 export default function BillingPage() {
   return (
-    <div>
-      <h1 className="text-xl font-semibold leading-none tracking-tight">
-        Billing
-      </h1>
-      <h2 className="text-base text-muted-foreground">
-        Manage your subscription and billing details
-      </h2>
-
-      <div className="h-4" />
-
+    <DashboardShell
+      title="Billing"
+      description="Manage your subscription and billing details"
+      className="space-y-4"
+    >
       <SubscriptionCard />
 
       <UsageCard />
-    </div>
+    </DashboardShell>
   );
 }
 

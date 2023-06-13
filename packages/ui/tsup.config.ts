@@ -8,9 +8,12 @@ import type { Options } from "tsup";
 const client = [
   "./src/avatar.tsx",
   "./src/calendar.tsx",
+  "./src/checkbox.tsx",
   "./src/command.tsx",
+  "./src/data-table.tsx",
   "./src/dialog.tsx",
   "./src/dropdown-menu.tsx",
+  "./src/form.tsx",
   "./src/input.tsx",
   "./src/label.tsx",
   "./src/popover.tsx",
@@ -26,6 +29,7 @@ const server = [
   "./src/button.tsx",
   "./src/icons.tsx",
   "./src/card.tsx",
+  "./src/table.tsx",
   "./src/toast.tsx",
 ];
 

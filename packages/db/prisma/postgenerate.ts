@@ -16,7 +16,7 @@ const outputFile = path.join(process.cwd(), "index.ts");
 
 import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
-import { nanoid } from "nanoid";
+import { customAlphabet } from "nanoid";
 
 ${dbTypes}
 
@@ -26,7 +26,9 @@ export const db = new Kysely<DB>({
   }),
 });
 
-export const genId = nanoid;
+// Use custom alphabet without special chars for less chaotic, copy-able URLs
+// Will not collide for a long long time: https://zelark.github.io/nano-id-cc/
+export const genId = customAlphabet("0123456789abcdefghijklmnopqrstuvwxyz", 16);
 `;
 
   await writeFile(outputFile, output, "utf-8");

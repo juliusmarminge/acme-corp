@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 import { SiteFooter } from "~/components/footer";
 
@@ -21,7 +21,7 @@ export default function AuthLayout(props: { children: React.ReactNode }) {
             href="/"
             className="absolute left-8 top-8 z-20 flex items-center text-lg font-bold tracking-tight"
           >
-            <Icons.logo className="mr-2 h-6 w-6" />
+            <Icons.Logo className="mr-2 h-6 w-6" />
             <span>Acme Corp</span>
           </Link>
         </div>

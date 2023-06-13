@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@acme/ui/card";
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 import { marketingFeatures, siteConfig } from "~/app/config";
 
@@ -56,7 +56,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icons.gitHub className="mr-1 h-4 w-4" />
+            <Icons.GitHub className="mr-1 h-4 w-4" />
             <span>Star on GitHub</span>
           </a>
         </div>

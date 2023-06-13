@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useClerk } from "@clerk/nextjs";
 import type { HandleOAuthCallbackParams } from "@clerk/types";
 
-import { Icons } from "@acme/ui/icons";
+import * as Icons from "@acme/ui/icons";
 
 export const runtime = "edge";
 
@@ -19,7 +19,7 @@ export default function SSOCallback(props: {
 
   return (
     <div className="flex items-center justify-center">
-      <Icons.spinner className="mr-2 h-16 w-16 animate-spin" />
+      <Icons.Spinner className="mr-2 h-16 w-16 animate-spin" />
     </div>
   );
 }
