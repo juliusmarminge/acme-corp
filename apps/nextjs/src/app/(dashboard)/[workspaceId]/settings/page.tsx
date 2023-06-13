@@ -25,15 +25,13 @@ async function OrganizationSettingsPage() {
   });
 
   return (
-    <DashboardShell title="Organization" description="Manage your organization">
-      <div className="space-y-4">
-        <OrganizationName orgId={org.id} name={org.name} />
-        <OrganizationImage
-          orgId={org.id}
-          name={org.name}
-          image={org.imageUrl}
-        />
-      </div>
+    <DashboardShell
+      title="Organization"
+      description="Manage your organization"
+      className="space-y-4"
+    >
+      <OrganizationName orgId={org.id} name={org.name} />
+      <OrganizationImage orgId={org.id} name={org.name} image={org.imageUrl} />
     </DashboardShell>
   );
 }

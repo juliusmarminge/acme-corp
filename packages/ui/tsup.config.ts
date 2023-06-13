@@ -8,6 +8,7 @@ import type { Options } from "tsup";
 const client = [
   "./src/avatar.tsx",
   "./src/calendar.tsx",
+  "./src/checkbox.tsx",
   "./src/command.tsx",
   "./src/data-table.tsx",
   "./src/dialog.tsx",

@@ -228,6 +228,27 @@ export const projectRouter = createTRPCRouter({
       return { success: true };
     }),
 
+  deleteApiKeys: protectedProcedure
+    .input(z.object({ ids: z.string().array() }))
+    .mutation(async (opts) => {
+      const { userId } = opts.ctx.auth;
+
+      const result = await opts.ctx.db
+        .deleteFrom("ApiKey")
+        .where("id", "in", opts.input.ids)
+        .where("clerkUserId", "=", String(userId))
+        .executeTakeFirst();
+
+      if (result.numDeletedRows === BigInt(0)) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "API key not found",
+        });
+      }
+
+      return { success: true, numDeletedRows: result.numDeletedRows };
+    }),
+
   rollApiKey: protectedProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async (opts) => {

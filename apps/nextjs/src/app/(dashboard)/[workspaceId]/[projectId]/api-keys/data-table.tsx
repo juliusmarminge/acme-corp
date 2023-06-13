@@ -13,6 +13,7 @@ import { Eye, EyeOff } from "lucide-react";
 
 import type { RouterOutputs } from "@acme/api";
 import { Button } from "@acme/ui/button";
+import { Checkbox } from "@acme/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,6 +38,24 @@ export type ApiKeyColumn = RouterOutputs["project"]["listApiKeys"][number];
 const columnHelper = createColumnHelper<ApiKeyColumn>();
 
 const columns = [
+  columnHelper.display({
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllRowsSelected()}
+        disabled={table.getRowModel().rows.length === 0}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select"
+      />
+    ),
+  }),
   columnHelper.accessor("key", {
     // TODO: Show/Hide + Copy
     cell: function Key(t) {
@@ -110,6 +129,46 @@ const columns = [
   }),
   columnHelper.display({
     id: "actions",
+    header: function ActionsHeader(t) {
+      const router = useRouter();
+      const toaster = useToast();
+
+      const { rows } = t.table.getSelectedRowModel();
+      const ids = rows.map((row) => row.original.id);
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild disabled={ids.length < 1}>
+            <Button variant="ghost" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <Icons.Ellipsis className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem
+              onClick={async () => {
+                try {
+                  const { numDeletedRows } =
+                    await api.project.deleteApiKeys.mutate({ ids });
+                  router.refresh();
+                  toaster.toast({
+                    title: `Deleted ${numDeletedRows} API keys`,
+                  });
+                } catch {
+                  toaster.toast({
+                    title: "Failed to delete API Keys",
+                    variant: "destructive",
+                  });
+                }
+              }}
+              className="text-destructive"
+            >
+              Delete {ids.length} API key{ids.length > 1 ? "s" : ""}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
     cell: function Actions(t) {
       const apiKey = t.row.original;
       const router = useRouter();
@@ -167,10 +226,16 @@ const columns = [
 ];
 
 export function DataTable(props: { data: ApiKeyColumn[] }) {
+  const [rowSelection, setRowSelection] = useState({});
+
   const table = useReactTable({
     data: props.data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    onRowSelectionChange: setRowSelection,
+    state: {
+      rowSelection,
+    },
   });
 
   return (
