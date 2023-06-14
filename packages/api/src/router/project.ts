@@ -119,9 +119,6 @@ export const projectRouter = createTRPCRouter({
           ]),
         );
 
-      console.log("finding project", { id, userId, orgIds });
-      console.log(query.compile());
-
       const project = await query.executeTakeFirst();
       console.log("found project", project);
       if (!project) {
