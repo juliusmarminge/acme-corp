@@ -110,12 +110,12 @@ export const projectRouter = createTRPCRouter({
         .where(({ cmpr, and, or }) =>
           and([
             cmpr("id", "=", id),
-            or([
-              cmpr("userId", "=", userId),
-              ...(orgIds.length > 0
-                ? [cmpr("organizationId", "in", orgIds)]
-                : []),
-            ]),
+            orgIds.length > 0
+              ? or([
+                  cmpr("userId", "=", userId),
+                  cmpr("organizationId", "in", orgIds),
+                ])
+              : cmpr("userId", "=", userId),
           ]),
         );
 
