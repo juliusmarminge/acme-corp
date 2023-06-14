@@ -32,7 +32,7 @@ import { LoadingCard } from "./_components/loading-card";
 export default function DashboardPage(props: {
   params: { workspaceId: string; projectId: string };
 }) {
-  const { projectId } = props.params;
+  const { projectId, workspaceId } = props.params;
 
   return (
     <DashboardShell
@@ -137,7 +137,10 @@ export default function DashboardPage(props: {
                 />
               }
             >
-              <RecentIngestions projectId={projectId} />
+              <RecentIngestions
+                projectId={projectId}
+                workspaceId={workspaceId}
+              />
             </Suspense>
           </div>
         </TabsContent>
@@ -146,19 +149,26 @@ export default function DashboardPage(props: {
   );
 }
 
-function IngestionCard(props: RouterOutputs["ingestion"]["list"][number]) {
-  const { adds, subs } = props;
+function IngestionCard(props: {
+  projectId: string;
+  workspaceId: string;
+  ingestion: RouterOutputs["ingestion"]["list"][number];
+}) {
+  const { ingestion } = props;
+  const { adds, subs } = ingestion;
 
   const N_SQUARES = 5;
   const addSquares = Math.round((adds / (adds + subs)) * N_SQUARES);
 
   return (
-    <Link href={`/ingestions/${props.id}`}>
+    <Link
+      href={`/${props.workspaceId}/${props.projectId}/ingestions/${ingestion.id}`}
+    >
       <div className="flex items-center rounded py-1 hover:bg-muted">
         <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">{props.hash}</p>
+          <p className="text-sm font-medium leading-none">{ingestion.hash}</p>
           <p className="text-sm text-muted-foreground">
-            {formatRelative(props.createdAt, new Date())}
+            {formatRelative(ingestion.createdAt, new Date())}
           </p>
         </div>
         <div className="ml-auto flex flex-col items-center text-sm">
@@ -185,7 +195,10 @@ function IngestionCard(props: RouterOutputs["ingestion"]["list"][number]) {
   );
 }
 
-async function RecentIngestions(props: { projectId: string }) {
+async function RecentIngestions(props: {
+  projectId: string;
+  workspaceId: string;
+}) {
   const ingestions = await api.ingestion.list.query({
     projectId: props.projectId,
     limit: 5,
@@ -202,7 +215,12 @@ async function RecentIngestions(props: { projectId: string }) {
       </CardHeader>
       <CardContent>
         {ingestions.map((ingestion) => (
-          <IngestionCard key={ingestion.id} {...ingestion} />
+          <IngestionCard
+            key={ingestion.id}
+            ingestion={ingestion}
+            projectId={props.projectId}
+            workspaceId={props.workspaceId}
+          />
         ))}
       </CardContent>
       <CardFooter>
