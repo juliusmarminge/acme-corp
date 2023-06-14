@@ -72,10 +72,10 @@ model Ingestion {
     createdAt DateTime @default(now())
 
     projectId String @db.VarChar(30) // prefix_ + nanoid (16)
-    apiKey    String @db.VarChar(30) // prefix_ + nanoid (16)
+    apiKeyId  String @db.VarChar(30) // prefix_ + nanoid (16)
 
-    name String?
-    url  String?
+    hash   String
+    schema Json
 
     @@index([projectId])
 }

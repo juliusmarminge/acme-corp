@@ -10,7 +10,7 @@ const getBaseUrl = () => {
   return `http://localhost:3000`;
 };
 
-const lambdas = ["stripe"];
+const lambdas = ["stripe", "ingestion"];
 
 export const endingLink = (opts?: { headers?: HTTPHeaders }) =>
   ((runtime) => {

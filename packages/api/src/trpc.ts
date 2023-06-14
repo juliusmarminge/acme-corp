@@ -14,7 +14,6 @@ import type {
 } from "@clerk/nextjs/api";
 import { getAuth } from "@clerk/nextjs/server";
 import { initTRPC, TRPCError } from "@trpc/server";
-import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
@@ -30,8 +29,9 @@ import { db } from "@acme/db";
  *
  */
 type CreateContextOptions = {
-  auth: SignedInAuthObject | SignedOutAuthObject;
+  auth: SignedInAuthObject | SignedOutAuthObject | null;
   apiKey?: string | null;
+  req?: NextRequest;
 };
 
 /**
@@ -55,13 +55,14 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = (opts: FetchCreateContextFnOptions) => {
-  const auth = getAuth(opts.req as NextRequest);
+export const createTRPCContext = (opts: { req: NextRequest }) => {
+  const auth = getAuth(opts.req);
   const apiKey = opts.req.headers.get("x-acme-api-key");
 
   return createInnerTRPCContext({
     auth,
     apiKey,
+    req: opts.req,
   });
 };
 
@@ -113,7 +114,7 @@ export const publicProcedure = t.procedure;
  * procedure
  */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.auth.userId) {
+  if (!ctx.auth?.userId) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
@@ -150,9 +151,20 @@ const enforceApiKey = t.middleware(async ({ ctx, next }) => {
     .where("id", "=", apiKey.id)
     .execute();
 
-  return next({ ctx: { apiKey: ctx.apiKey } });
+  return next({ ctx: { apiKey: ctx.apiKey, apiKeyId: apiKey.id } });
 });
 
+/**
+ * Middleware to parse form data and put it in the rawInput
+ */
+export const formdataMiddleware = t.middleware(async (opts) => {
+  const formData = await opts.ctx.req?.formData?.();
+  if (!formData) throw new TRPCError({ code: "BAD_REQUEST" });
+
+  return opts.next({
+    rawInput: formData,
+  });
+});
 /**
  * Protected (authed) procedure
  *
@@ -164,3 +176,6 @@ const enforceApiKey = t.middleware(async ({ ctx, next }) => {
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
 export const protectedApiProcedure = t.procedure.use(enforceApiKey);
+export const protectedApiFormDataProcedure = t.procedure
+  .use(formdataMiddleware)
+  .use(enforceApiKey);

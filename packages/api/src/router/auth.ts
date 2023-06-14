@@ -13,7 +13,7 @@ export const authRouter = createTRPCRouter({
     return { plan: customer.plan ?? null, endsAt: customer.endsAt ?? null };
   }),
   getSession: publicProcedure.query(({ ctx }) => {
-    return ctx.auth.session;
+    return ctx.auth?.session;
   }),
   getSecretMessage: protectedProcedure.query(() => {
     // testing type validation of overridden next-auth Session in @acme/auth package

@@ -31,9 +31,9 @@ const workspaceItems = [
 
 const projectItems = [
   {
-    title: "Overview",
+    title: "Dashboard",
     href: "/",
-    icon: Icons.Post,
+    icon: Icons.Dashboard,
   },
   {
     title: "API Keys",
@@ -50,8 +50,6 @@ const projectItems = [
 export function SidebarNav() {
   const params = useParams();
   const path = usePathname();
-
-  console.log(path, params);
 
   // remove the workspaceId and projectId from the path when comparing active links in sidebar
   const pathname =
@@ -74,8 +72,6 @@ export function SidebarNav() {
           fullPath += `/${params.projectId}`;
         }
         fullPath += item.href;
-
-        console.log(fullPath);
 
         return (
           item.href && (

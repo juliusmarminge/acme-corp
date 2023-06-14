@@ -39,9 +39,9 @@ export type Ingestion = {
   id: string;
   createdAt: Generated<Timestamp>;
   projectId: string;
-  apiKey: string;
-  name: string | null;
-  url: string | null;
+  apiKeyId: string;
+  hash: string;
+  schema: unknown;
 };
 export type Project = {
   id: string;

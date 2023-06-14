@@ -1,4 +1,5 @@
 import { edgeRouter } from "./edge";
+import { ingestionRouter } from "./router/ingestion";
 import { stripeRouter } from "./router/stripe";
 import { createTRPCRouter } from "./trpc";
 
@@ -6,6 +7,7 @@ import { createTRPCRouter } from "./trpc";
 export const lambdaRouter = createTRPCRouter({
   edge: edgeRouter,
   stripe: stripeRouter,
+  ingestion: ingestionRouter,
 });
 
 export { stripe } from "./router/stripe/shared";
