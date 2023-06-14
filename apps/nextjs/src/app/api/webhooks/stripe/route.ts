@@ -1,3 +1,4 @@
+import type { NextRequest } from "next/server";
 import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 
@@ -6,7 +7,7 @@ import { lambdaRouter, stripe } from "@acme/api/src/lambda";
 
 import { env } from "~/env.mjs";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const payload = await req.text();
   const signature = req.headers.get("Stripe-Signature");
   if (!signature) return new Response("No signature", { status: 400 });
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
     /**
      * Forward to tRPC API to handle the webhook event
      */
-    const ctx = createTRPCContext({ req, resHeaders: {} as Headers });
+    const ctx = createTRPCContext({ req });
     const caller = lambdaRouter.createCaller(ctx);
 
     switch (event.type) {
