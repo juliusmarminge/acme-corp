@@ -33,3 +33,14 @@ export const createApiKeySchema = z.object({
   expiresAt: z.date().optional(),
 });
 export type CreateApiKey = z.infer<typeof createApiKeySchema>;
+
+export const MEMBERSHIP = {
+  Member: "basic_member",
+  Admin: "admin",
+} as const;
+
+export const inviteOrgMemberSchema = z.object({
+  email: z.string().email(),
+  role: z.nativeEnum(MEMBERSHIP),
+});
+export type InviteOrgMember = z.infer<typeof inviteOrgMemberSchema>;

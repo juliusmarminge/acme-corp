@@ -1,4 +1,5 @@
 import { authRouter } from "./router/auth";
+import { organizationsRouter } from "./router/organizations";
 import { projectRouter } from "./router/project";
 import { createTRPCRouter } from "./trpc";
 
@@ -6,4 +7,5 @@ import { createTRPCRouter } from "./trpc";
 export const edgeRouter = createTRPCRouter({
   project: projectRouter,
   auth: authRouter,
+  organization: organizationsRouter,
 });

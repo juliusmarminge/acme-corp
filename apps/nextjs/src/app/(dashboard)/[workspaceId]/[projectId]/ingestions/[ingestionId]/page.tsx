@@ -27,7 +27,7 @@ export default async function IngestionPage(props: {
     >
       <Table>
         <TableHeader>
-          <TableRow className="bg-muted">
+          <TableRow className="pointer-events-none bg-muted">
             <TableHead>Id</TableHead>
             <TableHead>Created At</TableHead>
             <TableHead>Commit</TableHead>
