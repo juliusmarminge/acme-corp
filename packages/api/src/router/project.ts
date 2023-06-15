@@ -120,7 +120,6 @@ export const projectRouter = createTRPCRouter({
         );
 
       const project = await query.executeTakeFirst();
-      console.log("found project", project);
       if (!project) {
         throw new TRPCError({
           code: "NOT_FOUND",
