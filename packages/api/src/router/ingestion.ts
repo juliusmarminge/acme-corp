@@ -76,25 +76,17 @@ export const ingestionRouter = createTRPCRouter({
     .mutation(async (opts) => {
       const fileContent = await opts.input.schema.text();
 
-      // Could be inferred from the API key but nice to
-      // have it directly on the ingestion itself
-      const { projectId } = await opts.ctx.db
-        .selectFrom("ApiKey")
-        .select("projectId")
-        .where("id", "=", opts.ctx.apiKeyId)
-        .executeTakeFirstOrThrow();
-
       const id = "ingest_" + genId();
       await opts.ctx.db
         .insertInto("Ingestion")
         .values({
           id,
-          projectId,
+          projectId: opts.ctx.apiKey.projectId,
           hash: opts.input.hash,
           parent: opts.input.parent,
           origin: opts.input.origin,
           schema: fileContent,
-          apiKeyId: opts.ctx.apiKeyId,
+          apiKeyId: opts.ctx.apiKey.id,
         })
         .executeTakeFirst();
 
