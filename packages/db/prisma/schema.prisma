@@ -23,7 +23,7 @@ model Project {
     organizationId String? @db.VarChar(36) // uuid v4
     userId         String? @db.VarChar(36) // uuid v4
 
-    name String?
+    name String
     tier ProjectTier @default(FREE)
     url  String?
 
@@ -74,8 +74,10 @@ model Ingestion {
     projectId String @db.VarChar(30) // prefix_ + nanoid (16)
     apiKeyId  String @db.VarChar(30) // prefix_ + nanoid (16)
 
-    hash   String
     schema Json
+    hash   String  @db.VarChar(40) // sha1
+    parent String? @db.VarChar(40) // sha1
+    origin String  @db.VarChar(100)
 
     @@index([projectId])
 }

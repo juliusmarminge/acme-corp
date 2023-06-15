@@ -19,8 +19,8 @@ export const purchaseOrgSchema = z.object({
     .refine(
       (str) =>
         [
-          env.STRIPE_STD_MONTHLY_PRICE_ID,
-          env.STRIPE_PRO_MONTHLY_PRICE_ID,
+          env.NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID,
+          env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
         ].includes(str),
       "Invalid planId",
     ),

@@ -40,15 +40,17 @@ export type Ingestion = {
   createdAt: Generated<Timestamp>;
   projectId: string;
   apiKeyId: string;
-  hash: string;
   schema: unknown;
+  hash: string;
+  parent: string | null;
+  origin: string;
 };
 export type Project = {
   id: string;
   createdAt: Generated<Timestamp>;
   organizationId: string | null;
   userId: string | null;
-  name: string | null;
+  name: string;
   tier: Generated<ProjectTier>;
   url: string | null;
 };

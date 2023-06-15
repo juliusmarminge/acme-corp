@@ -8,7 +8,8 @@ export const stripe = new Stripe(env.STRIPE_API_KEY, {
 });
 
 export function stripePriceToSubscriptionPlan(priceId: string | undefined) {
-  if (priceId === env.STRIPE_PRO_MONTHLY_PRICE_ID) return "PRO";
-  if (priceId === env.STRIPE_STD_MONTHLY_PRICE_ID) return "STANDARD";
+  if (priceId === env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID) return "PRO";
+  if (priceId === env.NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID)
+    return "STANDARD";
   throw new Error(`Invalid price id: ${priceId}`);
 }

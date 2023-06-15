@@ -9,7 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 import { ScrollArea } from "@acme/ui/scroll-area";
 
 import { Search } from "~/app/(dashboard)/_components/search";
-import { navItems } from "~/app/config";
+import { navItems, siteConfig } from "~/app/config";
 import ThemeToggle from "./theme-toggle";
 
 export function MobileDropdown() {
@@ -31,7 +31,9 @@ export function MobileDropdown() {
           className="mr-2 px-0 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
           <Icons.Logo className="mr-2 h-6 w-6" />
-          <span className="text-lg font-bold tracking-tight">Acme Corp</span>
+          <span className="text-lg font-bold tracking-tight">
+            {siteConfig.name}
+          </span>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="z-40 mt-2 h-[calc(100vh-4rem)] w-screen animate-none rounded-none border-none transition-transform">

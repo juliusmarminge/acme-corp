@@ -125,7 +125,7 @@ export function WorkspaceSwitcher() {
                     setSwitcherOpen(false);
                     router.push(`/${user.id}`);
                   }}
-                  className="text-sm"
+                  className="cursor-pointer text-sm"
                 >
                   <Avatar className="mr-2 h-5 w-5">
                     <AvatarImage
@@ -155,7 +155,7 @@ export function WorkspaceSwitcher() {
                       setSwitcherOpen(false);
                       router.push(`/${org.id}`);
                     }}
-                    className="text-sm"
+                    className="cursor-pointer text-sm"
                   >
                     <Avatar className="mr-2 h-5 w-5">
                       <AvatarImage
@@ -188,6 +188,7 @@ export function WorkspaceSwitcher() {
                       setSwitcherOpen(false);
                       setNewOrgDialogOpen(true);
                     }}
+                    className="cursor-pointer"
                   >
                     <PlusCircle className="mr-2 h-5 w-5" />
                     Create Organization
@@ -270,7 +271,10 @@ function NewOrganizationDialog(props: { closeDialog: () => void }) {
                     What&apos;s included in each plan?
                   </Link>
                 </div>
-                <Select {...field}>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
                   <FormControl>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a plan" />

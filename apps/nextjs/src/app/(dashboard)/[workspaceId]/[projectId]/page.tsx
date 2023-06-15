@@ -160,13 +160,15 @@ function IngestionCard(props: {
   const N_SQUARES = 5;
   const addSquares = Math.round((adds / (adds + subs)) * N_SQUARES);
 
+  const truncatedHash = ingestion.hash.slice(0, 15);
+
   return (
     <Link
       href={`/${props.workspaceId}/${props.projectId}/ingestions/${ingestion.id}`}
     >
-      <div className="flex items-center rounded py-1 hover:bg-muted">
-        <div className="ml-4 space-y-1">
-          <p className="text-sm font-medium leading-none">{ingestion.hash}</p>
+      <div className="flex items-center rounded p-1 hover:bg-muted">
+        <div className="space-y-1">
+          <p className="text-sm font-medium leading-none">{truncatedHash}</p>
           <p className="text-sm text-muted-foreground">
             {formatRelative(ingestion.createdAt, new Date())}
           </p>

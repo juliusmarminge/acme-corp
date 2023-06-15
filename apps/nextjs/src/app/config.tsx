@@ -4,9 +4,9 @@ import { Component, CreditCard, Globe } from "lucide-react";
 import * as Icons from "@acme/ui/icons";
 
 export const siteConfig = {
-  name: "Acme Corp Lib",
+  name: "Acme Corp",
   description:
-    "The perfect starter template for your next TypeScript library. Batteries included powered by PNPM Workspaces, Turborepo, tsup & Changesets.",
+    "Next.js starter kit that includes everything you need to build a modern web application. Mobile application preconfigured, ready to go.",
   github: "https://github.com/juliusmarminge/acme-corp",
   twitter: "https://twitter.com/jullerino",
 };

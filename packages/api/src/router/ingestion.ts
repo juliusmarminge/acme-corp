@@ -23,7 +23,23 @@ const myFileValidator = z.preprocess(
   zfd.file(z.instanceof(File)),
 );
 
+/**
+ * FIXME: Not all of these have to run on lambda, just the upload one
+ */
+
 export const ingestionRouter = createTRPCRouter({
+  byId: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async (opts) => {
+      const ingestion = await opts.ctx.db
+        .selectFrom("Ingestion")
+        .select(["id", "createdAt", "hash", "schema", "origin", "parent"])
+        .where("id", "=", opts.input.id)
+        .executeTakeFirstOrThrow();
+
+      return ingestion;
+    }),
+
   list: protectedProcedure
     .input(
       z.object({
@@ -34,7 +50,7 @@ export const ingestionRouter = createTRPCRouter({
     .query(async (opts) => {
       let query = opts.ctx.db
         .selectFrom("Ingestion")
-        .selectAll()
+        .select(["id", "createdAt", "hash"])
         .where("projectId", "=", opts.input.projectId);
 
       if (opts.input.limit) {
@@ -52,6 +68,8 @@ export const ingestionRouter = createTRPCRouter({
     .input(
       zfd.formData({
         hash: zfd.text(),
+        parent: zfd.text().optional(),
+        origin: zfd.text(),
         schema: myFileValidator,
       }),
     )
@@ -73,6 +91,8 @@ export const ingestionRouter = createTRPCRouter({
           id,
           projectId,
           hash: opts.input.hash,
+          parent: opts.input.parent,
+          origin: opts.input.origin,
           schema: fileContent,
           apiKeyId: opts.ctx.apiKeyId,
         })

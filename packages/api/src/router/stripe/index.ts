@@ -25,7 +25,7 @@ export const stripeRouter = createTRPCRouter({
         .where("clerkUserId", "=", userId)
         .executeTakeFirst();
 
-      const returnUrl = env.NEXTJS_URL + "/settings/billing";
+      const returnUrl = env.NEXTJS_URL + "/dashboard";
 
       if (customer && customer.plan !== "FREE") {
         /**
@@ -55,7 +55,9 @@ export const stripeRouter = createTRPCRouter({
         subscription_data: { metadata: { userId } },
         cancel_url: returnUrl,
         success_url: returnUrl,
-        line_items: [{ price: env.STRIPE_PRO_MONTHLY_PRICE_ID, quantity: 1 }],
+        line_items: [
+          { price: env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID, quantity: 1 },
+        ],
       });
 
       if (!session.url) return { success: false as const };
@@ -64,10 +66,10 @@ export const stripeRouter = createTRPCRouter({
 
   plans: publicProcedure.query(async () => {
     const proPrice = await stripe.prices.retrieve(
-      env.STRIPE_PRO_MONTHLY_PRICE_ID,
+      env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
     );
     const stdPrice = await stripe.prices.retrieve(
-      env.STRIPE_STD_MONTHLY_PRICE_ID,
+      env.NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID,
     );
 
     return [
@@ -96,7 +98,6 @@ export const stripeRouter = createTRPCRouter({
     .mutation(async (opts) => {
       const { userId } = opts.ctx.auth;
       const { orgName, planId } = opts.input;
-      const orgSlug = orgName.toLowerCase().replace(/\s/g, "-");
 
       const session = await stripe.checkout.sessions.create({
         mode: "subscription",
@@ -105,8 +106,7 @@ export const stripeRouter = createTRPCRouter({
         subscription_data: {
           metadata: { userId, organizationName: orgName },
         },
-        success_url: `${env.NEXTJS_URL}/settings/organizations/${orgSlug}?isNew=true`,
-        cancel_url: env.NEXTJS_URL,
+        success_url: `${env.NEXTJS_URL}/dashboard`, // TODO: Maybe onboarding?        cancel_url: env.NEXTJS_URL,
         line_items: [{ price: planId, quantity: 1 }],
       });
 
