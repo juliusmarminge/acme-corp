@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useParams, useRouter } from "next/navigation";
-import { Check, ChevronsUpDown, PlusCircle } from "lucide-react";
+import { Check, ChevronsUpDown, LayoutGrid } from "lucide-react";
 
 import type { RouterOutputs } from "@acme/api";
 import { cn } from "@acme/ui";
@@ -15,20 +15,18 @@ import {
   CommandList,
   CommandSeparator,
 } from "@acme/ui/command";
-import { Dialog, DialogContent, DialogTrigger } from "@acme/ui/dialog";
 import { Popover, PopoverContent, PopoverTrigger } from "@acme/ui/popover";
 
-import { CreateProjectForm } from "../[workspaceId]/_components/create-project-form";
+import { getRandomPatternStyle } from "~/lib/generate-pattern";
 
 export function ProjectSwitcher(props: {
   projectsPromise: Promise<RouterOutputs["project"]["listByActiveWorkspace"]>;
 }) {
   const router = useRouter();
 
-  const { projects, limitReached } = React.use(props.projectsPromise);
+  const { projects } = React.use(props.projectsPromise);
 
   const [switcherOpen, setSwitcherOpen] = React.useState(false);
-  const [newOrgDialogOpen, setNewOrgDialogOpen] = React.useState(false);
 
   const { workspaceId, projectId } = useParams();
   const activeProject = projects.find((p) => p.id === projectId);
@@ -54,82 +52,72 @@ export function ProjectSwitcher(props: {
     <>
       <span className="mx-2 text-lg font-bold text-muted-foreground">/</span>
 
-      <Dialog open={newOrgDialogOpen} onOpenChange={setNewOrgDialogOpen}>
-        <Popover open={switcherOpen} onOpenChange={setSwitcherOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="ghost"
-              size="sm"
-              role="combobox"
-              aria-expanded={switcherOpen}
-              aria-label="Select a workspace"
-              className="w-52 justify-between"
-            >
-              {activeProject?.name}
-              <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-52 p-0">
-            <Command>
-              <CommandList>
-                <CommandInput placeholder="Search project..." />
+      <Popover open={switcherOpen} onOpenChange={setSwitcherOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            role="combobox"
+            aria-expanded={switcherOpen}
+            aria-label="Select a project"
+            className="relative w-52 justify-between"
+          >
+            <div
+              style={getRandomPatternStyle(projectId)}
+              className="absolute inset-1 opacity-25"
+            />
+            <span className="z-10 font-semibold">{activeProject?.name}</span>
+            <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-52 p-0">
+          <Command>
+            <CommandList>
+              <CommandInput placeholder="Search project..." />
 
-                {projects.map((project) => (
-                  <CommandItem
-                    key={project.id}
-                    onSelect={() => {
-                      setSwitcherOpen(false);
-                      router.push(`/${workspaceId}/${project.id}`);
-                    }}
-                    className="text-sm"
-                  >
-                    {project.name}
-                    <Check
-                      className={cn(
-                        "ml-auto h-4 w-4",
-                        project.id === activeProject?.id
-                          ? "opacity-100"
-                          : "opacity-0",
-                      )}
-                    />
-                  </CommandItem>
-                ))}
-              </CommandList>
-              <CommandSeparator />
-              <CommandList>
-                <CommandGroup>
-                  <DialogTrigger asChild>
-                    <CommandItem
-                      onSelect={() => {
-                        setSwitcherOpen(false);
-                        setNewOrgDialogOpen(true);
-                      }}
-                      disabled={limitReached}
-                      className={cn(limitReached && "opacity-50")}
-                    >
-                      <PlusCircle className="mr-2 h-5 w-5" />
-                      Create Project
-                    </CommandItem>
-                  </DialogTrigger>
-                </CommandGroup>
-              </CommandList>
-            </Command>
-          </PopoverContent>
-        </Popover>
-
-        <NewProjectDialog />
-      </Dialog>
+              {projects.map((project) => (
+                <CommandItem
+                  key={project.id}
+                  onSelect={() => {
+                    setSwitcherOpen(false);
+                    router.push(`/${workspaceId}/${project.id}`);
+                  }}
+                  className="text-sm font-semibold"
+                >
+                  <div
+                    style={getRandomPatternStyle(project.id)}
+                    className="absolute inset-1 opacity-25"
+                  />
+                  {project.name}
+                  <Check
+                    className={cn(
+                      "ml-auto h-4 w-4",
+                      project.id === activeProject?.id
+                        ? "opacity-100"
+                        : "opacity-0",
+                    )}
+                  />
+                </CommandItem>
+              ))}
+            </CommandList>
+            <CommandSeparator />
+            <CommandList>
+              <CommandGroup>
+                <CommandItem
+                  onSelect={() => {
+                    router.push(`/${workspaceId}`);
+                    setSwitcherOpen(false);
+                  }}
+                  className="cursor-pointer"
+                >
+                  <LayoutGrid className="mr-2 h-5 w-5" />
+                  Browse projects
+                </CommandItem>
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </>
-  );
-}
-
-function NewProjectDialog() {
-  const { workspaceId } = useParams();
-
-  if (!workspaceId) return null;
-  return (
-    <DialogContent>
-      <CreateProjectForm workspaceId={workspaceId} />
-    </DialogContent>
   );
 }
