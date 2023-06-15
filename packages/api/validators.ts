@@ -44,3 +44,9 @@ export const inviteOrgMemberSchema = z.object({
   role: z.nativeEnum(MEMBERSHIP),
 });
 export type InviteOrgMember = z.infer<typeof inviteOrgMemberSchema>;
+
+export const transferToOrgSchema = z.object({
+  projectId: z.string(),
+  orgId: z.string(),
+});
+export type TransferToOrg = z.infer<typeof transferToOrgSchema>;

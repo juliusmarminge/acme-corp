@@ -1,6 +1,7 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 
 import { Button } from "@acme/ui/button";
 import {
@@ -25,13 +26,13 @@ import { useToast } from "@acme/ui/use-toast";
 
 import { api } from "~/trpc/client";
 
-export function DeleteProject() {
-  const { projectId } = useParams();
+export function DeleteWorkspace() {
   const toaster = useToast();
   const router = useRouter();
+  const { orgId } = useAuth();
 
-  const title = "Delete project";
-  const description = "This will delete the project and all of its data.";
+  const title = "Delete workspace";
+  const description = "This will delete the workspace and all of its data.";
 
   return (
     <Card>
@@ -43,9 +44,14 @@ export function DeleteProject() {
       </CardHeader>
       <CardFooter className="flex justify-between">
         <Dialog>
-          <DialogTrigger asChild>
+          <DialogTrigger asChild disabled={!orgId}>
             <Button variant="destructive">{title}</Button>
           </DialogTrigger>
+          {!orgId && (
+            <span className="mr-auto px-2 text-sm text-muted-foreground">
+              You can not delete your personal workspace
+            </span>
+          )}
           <DialogContent>
             <DialogHeader>
               <DialogTitle>{title}</DialogTitle>
@@ -63,22 +69,18 @@ export function DeleteProject() {
                 variant="destructive"
                 onClick={async () => {
                   try {
-                    if (!projectId) throw new Error("No project ID");
-
-                    await api.project.delete.mutate({
-                      id: projectId,
-                    });
-                    toaster.toast({ title: "Project deleted" });
+                    await api.organization.deleteOrganization.mutate();
+                    toaster.toast({ title: "Workspace deleted" });
                     router.push(`/dashboard`);
                   } catch {
                     toaster.toast({
-                      title: "Project could not be deleted",
+                      title: "The workspace could not be deleted",
                       variant: "destructive",
                     });
                   }
                 }}
               >
-                {`I'm sure. Delete this project`}
+                {`I'm sure. Delete this workspace`}
               </Button>
             </DialogFooter>
           </DialogContent>

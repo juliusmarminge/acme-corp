@@ -4,8 +4,16 @@ import { z } from "zod";
 
 import { genId } from "@acme/db";
 
-import { createApiKeySchema, createProjectSchema } from "../../validators";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import {
+  createApiKeySchema,
+  createProjectSchema,
+  transferToOrgSchema,
+} from "../../validators";
+import {
+  createTRPCRouter,
+  protectedAdminProcedure,
+  protectedProcedure,
+} from "../trpc";
 
 const PROJECT_LIMITS = {
   FREE: 1,
@@ -68,6 +76,106 @@ export const projectRouter = createTRPCRouter({
       }
 
       return await deleteQuery.where("userId", "=", userId).execute();
+    }),
+
+  transferToPersonal: protectedAdminProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async (opts) => {
+      const project = await opts.ctx.db
+        .selectFrom("Project")
+        .select(["id", "userId", "organizationId"])
+        .where("id", "=", opts.input.id)
+        .executeTakeFirst();
+
+      if (!project) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Project not found",
+        });
+      }
+
+      if (!project.organizationId) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Project is already personal",
+        });
+      }
+
+      await opts.ctx.db
+        .updateTable("Project")
+        .set({
+          userId: opts.ctx.auth.userId,
+          organizationId: null,
+        })
+        .where("id", "=", project.id)
+        .execute();
+    }),
+
+  transferToOrganization: protectedProcedure
+    .input(transferToOrgSchema)
+    .mutation(async (opts) => {
+      const { userId, orgId: userOrgId, orgRole } = opts.ctx.auth;
+      const { orgId: targetOrgId } = opts.input;
+
+      const orgs = await clerkClient.users.getOrganizationMembershipList({
+        userId: userId,
+      });
+      const org = orgs.find((org) => org.organization.id === targetOrgId);
+
+      if (!org) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "You're not a member of the target organization",
+        });
+      }
+
+      const project = await opts.ctx.db
+        .selectFrom("Project")
+        .select(["id", "userId", "organizationId"])
+        .where(({ cmpr, and, or }) =>
+          and([
+            cmpr("id", "=", opts.input.projectId),
+            or([
+              cmpr("userId", "=", userId),
+              cmpr("organizationId", "=", userOrgId ?? ""),
+            ]),
+          ]),
+        )
+        .executeTakeFirst();
+
+      if (!project) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Project not found",
+        });
+      }
+
+      if (project.organizationId === targetOrgId) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "Project is already in the target organization",
+        });
+      }
+
+      if (
+        project.organizationId &&
+        project.organizationId !== userOrgId &&
+        orgRole !== "admin"
+      ) {
+        throw new TRPCError({
+          code: "UNAUTHORIZED",
+          message: "You must be an admin to transfer this project",
+        });
+      }
+
+      await opts.ctx.db
+        .updateTable("Project")
+        .set({
+          userId: null,
+          organizationId: targetOrgId,
+        })
+        .where("id", "=", project.id)
+        .execute();
     }),
 
   listByActiveWorkspace: protectedProcedure.query(async (opts) => {

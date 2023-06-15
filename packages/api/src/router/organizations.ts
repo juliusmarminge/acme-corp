@@ -3,14 +3,15 @@ import { TRPCError } from "@trpc/server";
 import * as z from "zod";
 
 import { inviteOrgMemberSchema } from "../../validators";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import {
+  createTRPCRouter,
+  protectedAdminProcedure,
+  protectedOrgProcedure,
+} from "../trpc";
 
 export const organizationsRouter = createTRPCRouter({
-  listMembers: protectedProcedure.query(async (opts) => {
+  listMembers: protectedOrgProcedure.query(async (opts) => {
     const { orgId } = opts.ctx.auth;
-    if (!orgId) {
-      throw new TRPCError({ code: "UNAUTHORIZED" });
-    }
 
     const members =
       await clerkClient.organizations.getOrganizationMembershipList({
@@ -30,20 +31,10 @@ export const organizationsRouter = createTRPCRouter({
     }));
   }),
 
-  deleteMember: protectedProcedure
+  deleteMember: protectedAdminProcedure
     .input(z.object({ userId: z.string() }))
     .mutation(async (opts) => {
-      const { orgId, orgRole } = opts.ctx.auth;
-      if (!orgId) {
-        throw new TRPCError({ code: "UNAUTHORIZED" });
-      }
-
-      if (orgRole !== "admin") {
-        throw new TRPCError({
-          code: "UNAUTHORIZED",
-          message: "Only admins can delete members",
-        });
-      }
+      const { orgId } = opts.ctx.auth;
 
       const member =
         await clerkClient.organizations.deleteOrganizationMembership({
@@ -51,23 +42,13 @@ export const organizationsRouter = createTRPCRouter({
           userId: opts.input.userId,
         });
 
-      return { success: true, memberName: member.publicUserData?.firstName };
+      return { memberName: member.publicUserData?.firstName };
     }),
 
-  inviteMember: protectedProcedure
+  inviteMember: protectedAdminProcedure
     .input(inviteOrgMemberSchema)
     .mutation(async (opts) => {
-      const { orgId, orgRole } = opts.ctx.auth;
-      if (!orgId) {
-        throw new TRPCError({ code: "UNAUTHORIZED" });
-      }
-
-      if (orgRole !== "admin") {
-        throw new TRPCError({
-          code: "UNAUTHORIZED",
-          message: "Only admins can delete members",
-        });
-      }
+      const { orgId } = opts.ctx.auth;
 
       const { email } = opts.input;
       const users = await clerkClient.users.getUserList({
@@ -99,4 +80,10 @@ export const organizationsRouter = createTRPCRouter({
       const { firstName, lastName } = member.publicUserData ?? {};
       return { name: [firstName, lastName].join(" ") };
     }),
+
+  deleteOrganization: protectedAdminProcedure.mutation(async (opts) => {
+    const { orgId } = opts.ctx.auth;
+
+    await clerkClient.organizations.deleteOrganization(orgId);
+  }),
 });

@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 
 import { Button } from "@acme/ui/button";
 import {
@@ -20,18 +21,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@acme/ui/dialog";
-import * as Icons from "@acme/ui/icons";
 import { useToast } from "@acme/ui/use-toast";
 
 import { api } from "~/trpc/client";
 
-export function DeleteProject() {
+export function TransferProjectToPersonal() {
   const { projectId } = useParams();
+  const { userId } = useAuth();
   const toaster = useToast();
   const router = useRouter();
 
-  const title = "Delete project";
-  const description = "This will delete the project and all of its data.";
+  const title = "Transfer to Personal";
+  const description = "Transfer this project to your personal workspace";
 
   return (
     <Card>
@@ -51,10 +52,7 @@ export function DeleteProject() {
               <DialogTitle>{title}</DialogTitle>
               <DialogDescription>{description}</DialogDescription>
             </DialogHeader>
-            <div className="flex items-center font-bold text-destructive">
-              <Icons.Warning className="mr-2 h-6 w-6" />
-              <p>This action can not be reverted</p>
-            </div>
+
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="secondary">Cancel</Button>
@@ -65,20 +63,20 @@ export function DeleteProject() {
                   try {
                     if (!projectId) throw new Error("No project ID");
 
-                    await api.project.delete.mutate({
+                    await api.project.transferToPersonal.mutate({
                       id: projectId,
                     });
-                    toaster.toast({ title: "Project deleted" });
-                    router.push(`/dashboard`);
+                    toaster.toast({ title: "Project transferred" });
+                    router.push(`/${userId}/${projectId}`);
                   } catch {
                     toaster.toast({
-                      title: "Project could not be deleted",
+                      title: "Project could not be transferred",
                       variant: "destructive",
                     });
                   }
                 }}
               >
-                {`I'm sure. Delete this project`}
+                {`I'm sure. Transfer this project`}
               </Button>
             </DialogFooter>
           </DialogContent>

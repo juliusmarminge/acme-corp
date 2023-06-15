@@ -125,6 +125,46 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   });
 });
 
+const enforceUserInOrg = enforceUserIsAuthed.unstable_pipe(
+  async ({ ctx, next }) => {
+    if (!ctx.auth.orgId) {
+      throw new TRPCError({
+        code: "UNAUTHORIZED",
+        message: "You must be in an organization to perform this action",
+      });
+    }
+
+    return next({
+      ctx: {
+        auth: {
+          ...ctx.auth,
+          orgId: ctx.auth.orgId,
+        },
+      },
+    });
+  },
+);
+
+const enforceUserIsAdmin = enforceUserInOrg.unstable_pipe(
+  async ({ ctx, next }) => {
+    if (ctx.auth.orgRole !== "admin") {
+      throw new TRPCError({
+        code: "UNAUTHORIZED",
+        message: "You must be an admin to perform this action",
+      });
+    }
+
+    return next({
+      ctx: {
+        auth: {
+          ...ctx.auth,
+          orgRole: ctx.auth.orgRole,
+        },
+      },
+    });
+  },
+);
+
 /**
  * Middleware to authenticate API requests with an API key
  */
@@ -179,6 +219,9 @@ export const formdataMiddleware = t.middleware(async (opts) => {
  * @see https://trpc.io/docs/procedures
  */
 export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+export const protectedOrgProcedure = t.procedure.use(enforceUserInOrg);
+export const protectedAdminProcedure = t.procedure.use(enforceUserIsAdmin);
+
 export const protectedApiProcedure = t.procedure.use(enforceApiKey);
 export const protectedApiFormDataProcedure = t.procedure
   .use(formdataMiddleware)
