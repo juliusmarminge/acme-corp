@@ -69,7 +69,7 @@ export default function Home() {
         <p className="pb-8 pt-4 text-center text-lg">
           <Balancer>
             This repo comes fully stacked with everything you need for your
-            enterprice startup. Stop worrying about boilerplate integrations and
+            enterprise startup. Stop worrying about boilerplate integrations and
             start building your product today!
           </Balancer>
         </p>
