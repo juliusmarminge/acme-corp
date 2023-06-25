@@ -17,9 +17,7 @@ export const env = createEnv({
     NEXT_PUBLIC_STRIPE_PRO_PRODUCT_ID: z.string(),
     NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID: z.string(),
   },
-  runtimeEnv: {
-    NEXTJS_URL: process.env.NEXTJS_URL,
-    STRIPE_API_KEY: process.env.STRIPE_API_KEY,
+  experimental__runtimeEnv: {
     NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID:
       process.env.NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID,
     NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID:
