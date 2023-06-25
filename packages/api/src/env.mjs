@@ -2,6 +2,7 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import * as z from "zod";
 
 export const env = createEnv({
+  shared: {},
   server: {
     NEXTJS_URL: z.preprocess(
       (str) =>
@@ -17,6 +18,8 @@ export const env = createEnv({
     NEXT_PUBLIC_STRIPE_PRO_PRODUCT_ID: z.string(),
     NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID: z.string(),
   },
+  // Client side variables gets destructured here due to Next.js static analysis
+  // Shared ones are also included here for good measure since the behavior has been inconsistent
   experimental__runtimeEnv: {
     NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID:
       process.env.NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID,
