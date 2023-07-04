@@ -72,8 +72,8 @@ export const webhookRouter = createTRPCRouter({
      * User is not subscribed, create a new customer and org
      */
     const organization = await clerkClient.organizations.createOrganization({
-      createdBy: userId as string,
-      name: organizationName as string,
+      createdBy: userId!,
+      name: organizationName!,
     });
 
     await opts.ctx.db

@@ -3,8 +3,8 @@ const config = {
   extends: [
     "turbo",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
     "prettier",
   ],
   env: {
@@ -12,10 +12,11 @@ const config = {
     node: true,
   },
   parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: true,
+  },
   plugins: ["@typescript-eslint", "import"],
   rules: {
-    "@next/next/no-html-link-for-pages": "off",
-    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },

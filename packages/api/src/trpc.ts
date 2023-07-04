@@ -28,11 +28,11 @@ import { db } from "@acme/db";
  * processing a request
  *
  */
-type CreateContextOptions = {
+interface CreateContextOptions {
   auth: SignedInAuthObject | SignedOutAuthObject | null;
   apiKey?: string | null;
   req?: NextRequest;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
