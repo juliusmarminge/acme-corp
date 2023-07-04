@@ -75,7 +75,14 @@ export const InviteMemberForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Role *</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                onValueChange={(val) =>
+                  field.onChange(
+                    val as (typeof MEMBERSHIP)[keyof typeof MEMBERSHIP],
+                  )
+                }
+                defaultValue={field.value}
+              >
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a plan" />
