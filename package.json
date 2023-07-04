@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.0.2",
-    "@manypkg/cli": "^0.20.0",
+    "@manypkg/cli": "^0.21.0",
     "@types/prettier": "^2.7.3",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
