@@ -12,8 +12,8 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2(prettier@2.8.8)
       '@manypkg/cli':
-        specifier: ^0.20.0
-        version: 0.20.0
+        specifier: ^0.21.0
+        version: 0.21.0
       '@types/prettier':
         specifier: ^2.7.3
         version: 2.7.3
@@ -3899,8 +3899,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@manypkg/cli@0.20.0:
-    resolution: {integrity: sha512-xOAyzHp4cF6+1VxCeVi14k4WJBbKAExuYVA+wXlCHPLoTUv64D2HQrLUOFO8bXtzW9KFhGhdP2xGFq9n9rSDiw==}
+  /@manypkg/cli@0.21.0:
+    resolution: {integrity: sha512-q/JF25il2EXtyPpc5U/Pp7TMgJot/WmFkyh7M9FiutQkliHp58UqUxIPeUObLu9EtoAp/uP21t+TMDsq1DMbeg==}
     engines: {node: '>=14.18.0'}
     hasBin: true
     dependencies:
