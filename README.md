@@ -28,3 +28,7 @@ This project features the next-generation stack for building fullstack applicati
 The stack originates from [create-t3-app](https://github.com/t3-oss/create-t3-app).
 
 A [blog post](https://jumr.dev/blog/t3-turbo) where I wrote how to migrate a T3 app into this.
+
+## Questions?
+
+<a href="https://cal.com/juliusm/quick-chat?utm_source=banner&utm_campaign=oss"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
