@@ -45,6 +45,11 @@ const projectItems = [
     href: "/danger",
     icon: Icons.Warning,
   },
+  {
+    title: "Settings",
+    href: "/settings",
+    icon: Icons.Settings,
+  },
 ] as const;
 
 export function SidebarNav() {
