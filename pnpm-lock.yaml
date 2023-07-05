@@ -431,8 +431,8 @@ importers:
         specifier: ^0.258.0
         version: 0.258.0(react@18.2.0)
       tailwind-merge:
-        specifier: ^1.13.1
-        version: 1.13.1
+        specifier: ^1.13.2
+        version: 1.13.2
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -13730,8 +13730,8 @@ packages:
       react: 18.2.0
     dev: false
 
-  /tailwind-merge@1.13.1:
-    resolution: {integrity: sha512-tRtRN22TDokGi2TuYSvuHQuuW6BJ/zlUEG+iYpAQ9i66msc/0eU/+HPccbPnNNH0mCPp0Ob8thaC8Uy9CxHitQ==}
+  /tailwind-merge@1.13.2:
+    resolution: {integrity: sha512-R2/nULkdg1VR/EL4RXg4dEohdoxNUJGLMnWIQnPKL+O9Twu7Cn3Rxi4dlXkDzZrEGtR+G+psSXFouWlpTyLhCQ==}
     dev: false
 
   /tailwindcss-animate@1.0.6(tailwindcss@3.3.2):
