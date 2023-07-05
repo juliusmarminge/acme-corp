@@ -7,6 +7,7 @@ import { genId } from "@acme/db";
 import {
   createApiKeySchema,
   createProjectSchema,
+  renameProjectSchema,
   transferToOrgSchema,
 } from "../../validators";
 import {
@@ -56,6 +57,22 @@ export const projectRouter = createTRPCRouter({
         .execute();
 
       return projectId;
+    }),
+
+  rename: protectedProcedure
+    .input(renameProjectSchema)
+    .mutation(async (opts) => {
+      const { projectId, name } = opts.input;
+
+      // TODO: Validate permissions, should anyone with access to the project be able to change the name?
+
+      await opts.ctx.db
+        .updateTable("Project")
+        .set({
+          name,
+        })
+        .where("id", "=", projectId)
+        .execute();
     }),
 
   delete: protectedProcedure

@@ -12,6 +12,12 @@ export const createProjectSchema = z.object({
 });
 export type CreateProject = z.infer<typeof createProjectSchema>;
 
+export const renameProjectSchema = z.object({
+  projectId: z.string(),
+  name: z.string().min(5, "Name must be at least 5 characters"),
+});
+export type RenameProject = z.infer<typeof renameProjectSchema>;
+
 export const purchaseOrgSchema = z.object({
   orgName: z.string().min(5, "Name must be at least 5 characters"),
   planId: z
