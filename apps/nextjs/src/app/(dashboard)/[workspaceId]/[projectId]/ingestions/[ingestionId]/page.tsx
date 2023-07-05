@@ -10,11 +10,14 @@ import {
 } from "@acme/ui/table";
 
 import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
+import { userCanAccess } from "~/lib/project-guard";
 import { api } from "~/trpc/server";
 
 export default async function IngestionPage(props: {
   params: { workspaceId: string; projectId: string; ingestionId: string };
 }) {
+  await userCanAccess(props.params.projectId);
+
   const ingestion = await api.ingestion.byId.query({
     id: props.params.ingestionId,
   });

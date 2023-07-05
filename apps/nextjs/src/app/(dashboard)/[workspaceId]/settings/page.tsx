@@ -20,7 +20,30 @@ export default function WorkspaceSettingsPage(props: {
   const { workspaceId } = props.params;
   const isOrg = workspaceId.startsWith("org_");
 
-  if (isOrg) return <OrganizationSettingsPage />;
+  if (isOrg)
+    return (
+      <Suspense
+        fallback={
+          <DashboardShell
+            title="Organization"
+            description="Manage your organization"
+          >
+            <Tabs defaultValue="general">
+              <TabsList className="mb-2 w-full justify-start">
+                <TabsTrigger value="general">General</TabsTrigger>
+                <TabsTrigger value="members">Members</TabsTrigger>
+              </TabsList>
+              <TabsContent value="general" className="space-y-4">
+                <OrganizationName orgId="org_123" name="" />
+                <OrganizationImage orgId="org_123" name="" image="" />
+              </TabsContent>
+            </Tabs>
+          </DashboardShell>
+        }
+      >
+        <OrganizationSettingsPage />
+      </Suspense>
+    );
 
   return <UserSettingsPage />;
 }
@@ -32,6 +55,8 @@ async function OrganizationSettingsPage() {
   const org = await clerkClient.organizations.getOrganization({
     organizationId: orgId,
   });
+
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <DashboardShell title="Organization" description="Manage your organization">

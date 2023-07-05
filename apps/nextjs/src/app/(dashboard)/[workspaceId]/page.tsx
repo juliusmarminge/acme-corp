@@ -14,6 +14,7 @@ import {
 } from "@acme/ui/dialog";
 
 import { getRandomPatternStyle } from "~/lib/generate-pattern";
+import type { RouterOutputs } from "~/trpc/server";
 import { api } from "~/trpc/server";
 import { DashboardShell } from "../_components/dashboard-shell";
 import { CreateProjectForm } from "./_components/create-project-form";
@@ -66,21 +67,10 @@ export default async function Page(props: { params: { workspaceId: string } }) {
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {projects.map((project) => (
           <li key={project.id}>
-            <Link href={`/${props.params.workspaceId}/${project.id}`}>
-              <Card className="overflow-hidden">
-                <div
-                  className="h-32"
-                  style={getRandomPatternStyle(project.id)}
-                />
-                <CardHeader>
-                  <CardTitle className="flex items-center justify-between">
-                    <span>{project.name}</span>
-                    <ProjectTierIndicator tier={project.tier} />
-                  </CardTitle>
-                  <CardDescription>{project.url}&nbsp;</CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
+            <ProjectCard
+              project={project}
+              workspaceId={props.params.workspaceId}
+            />
           </li>
         ))}
       </ul>
@@ -94,5 +84,26 @@ export default async function Page(props: { params: { workspaceId: string } }) {
         </div>
       )}
     </DashboardShell>
+  );
+}
+
+function ProjectCard(props: {
+  workspaceId: string;
+  project: RouterOutputs["project"]["listByActiveWorkspace"]["projects"][number];
+}) {
+  const { project } = props;
+  return (
+    <Link href={`/${props.workspaceId}/${project.id}`}>
+      <Card className="overflow-hidden">
+        <div className="h-32" style={getRandomPatternStyle(project.id)} />
+        <CardHeader>
+          <CardTitle className="flex items-center justify-between">
+            <span>{project.name}</span>
+            <ProjectTierIndicator tier={project.tier} />
+          </CardTitle>
+          <CardDescription>{project.url}&nbsp;</CardDescription>
+        </CardHeader>
+      </Card>
+    </Link>
   );
 }

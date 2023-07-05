@@ -24,15 +24,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
 
 import { CalendarDateRangePicker } from "~/app/(dashboard)/_components/date-range-picker";
 import { Overview } from "~/app/(dashboard)/[workspaceId]/[projectId]/_components/overview";
+import { userCanAccess } from "~/lib/project-guard";
 import type { RouterOutputs } from "~/trpc/server";
 import { api } from "~/trpc/server";
 import { DashboardShell } from "../../_components/dashboard-shell";
 import { LoadingCard } from "./_components/loading-card";
 
-export default function DashboardPage(props: {
+export default async function DashboardPage(props: {
   params: { workspaceId: string; projectId: string };
 }) {
   const { projectId, workspaceId } = props.params;
+  await userCanAccess(projectId);
 
   return (
     <DashboardShell
