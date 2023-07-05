@@ -205,8 +205,8 @@ importers:
         specifier: ^7.45.1
         version: 7.45.1(react@18.2.0)
       react-image-crop:
-        specifier: ^10.1.4
-        version: 10.1.4(react@18.2.0)
+        specifier: ^10.1.5
+        version: 10.1.5(react@18.2.0)
       react-wrap-balancer:
         specifier: ^1.0.0
         version: 1.0.0(react@18.2.0)
@@ -12418,8 +12418,8 @@ packages:
     dependencies:
       react: 18.2.0
 
-  /react-image-crop@10.1.4(react@18.2.0):
-    resolution: {integrity: sha512-bEc/SfJRPU06ApivtzuNmofEH3rqf1WsKgWNwloiZ4ttCB37DEETwR4KsQb+KkW87srvRtWpCbOhPs0a4TVAKw==}
+  /react-image-crop@10.1.5(react@18.2.0):
+    resolution: {integrity: sha512-BL8Rd/UHCE4O5GcYQiWDKVh5JOJb0Ic/Gde2W171v5nY7RyQzFLM1cxIzlYfESLO/lNgBVhDHuEV9RHnqALMkA==}
     peerDependencies:
       react: '>=16.13.1'
     dependencies:
