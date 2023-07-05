@@ -10,12 +10,17 @@ import {
 } from "@acme/ui/card";
 
 import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
+import { userCanAccess } from "~/lib/project-guard";
 import { api } from "~/trpc/server";
 import { DeleteProject } from "./delete-project";
 import { TransferProjectToOrganization } from "./transfer-to-organization";
 import { TransferProjectToPersonal } from "./transfer-to-personal";
 
-export default function DangerZonePage() {
+export default async function DangerZonePage(props: {
+  params: { projectId: string; workspaceId: string };
+}) {
+  await userCanAccess(props.params.projectId);
+
   return (
     <DashboardShell
       title="Danger Zone"
