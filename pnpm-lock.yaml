@@ -419,8 +419,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4(@types/react-dom@18.2.6)(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
       class-variance-authority:
-        specifier: ^0.6.0
-        version: 0.6.0(typescript@5.1.6)
+        specifier: ^0.6.1
+        version: 0.6.1
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
@@ -7157,16 +7157,10 @@ packages:
       static-extend: 0.1.2
     dev: false
 
-  /class-variance-authority@0.6.0(typescript@5.1.6):
-    resolution: {integrity: sha512-qdRDgfjx3GRb9fpwpSvn+YaidnT7IUJNe4wt5/SWwM+PmUwJUhQRk/8zAyNro0PmVfmen2635UboTjIBXXxy5A==}
-    peerDependencies:
-      typescript: '>= 4.5.5 < 6'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
+  /class-variance-authority@0.6.1:
+    resolution: {integrity: sha512-eurOEGc7YVx3majOrOb099PNKgO3KnKSApOprXI4BTq6bcfbqbQXPN2u+rPPmIJ2di23bMwhk0SxCCthBmszEQ==}
     dependencies:
       clsx: 1.2.1
-      typescript: 5.1.6
     dev: false
 
   /classnames@2.3.2:
