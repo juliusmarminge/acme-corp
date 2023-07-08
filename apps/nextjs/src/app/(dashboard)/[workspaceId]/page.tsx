@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@acme/ui/dialog";
+import * as Icons from "@acme/ui/icons";
 
 import { getRandomPatternStyle } from "~/lib/generate-pattern";
 import type { RouterOutputs } from "~/trpc/server";
@@ -49,7 +50,10 @@ export default async function Page(props: { params: { workspaceId: string } }) {
             {limitReached ? (
               <Button className="min-w-max">Project limit reached</Button>
             ) : (
-              <Button className="min-w-max">Create a new project</Button>
+              <Button className="aspect-square min-w-max p-1 md:aspect-auto md:px-4 md:py-2">
+                <Icons.Add className="block h-5 w-5 md:hidden" />
+                <span className="hidden md:block">Create a new project</span>
+              </Button>
             )}
           </DialogTrigger>
           <DialogContent>

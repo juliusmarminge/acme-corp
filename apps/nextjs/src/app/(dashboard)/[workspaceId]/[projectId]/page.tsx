@@ -1,13 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { formatRelative } from "date-fns";
-import {
-  Activity,
-  CreditCard,
-  DollarSign,
-  Download,
-  Users,
-} from "lucide-react";
+import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
 
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
@@ -22,7 +16,6 @@ import {
 import * as Icons from "@acme/ui/icons";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@acme/ui/tabs";
 
-import { CalendarDateRangePicker } from "~/app/(dashboard)/_components/date-range-picker";
 import { Overview } from "~/app/(dashboard)/[workspaceId]/[projectId]/_components/overview";
 import { userCanAccess } from "~/lib/project-guard";
 import type { RouterOutputs } from "~/trpc/server";
@@ -40,15 +33,6 @@ export default async function DashboardPage(props: {
     <DashboardShell
       title="Dashboard"
       description="Get an overview of how the project is going"
-      headerAction={
-        <div className="flex items-center gap-2">
-          <CalendarDateRangePicker align="start" />
-          <Button size="sm">
-            <Download className="mr-2 h-4 w-4" />
-            Download
-          </Button>
-        </div>
-      }
     >
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
@@ -120,8 +104,8 @@ export default async function DashboardPage(props: {
               </CardContent>
             </Card>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
+            <Card className="col-span-7 md:col-span-2 lg:col-span-4">
               <CardHeader>
                 <CardTitle>Overview</CardTitle>
               </CardHeader>
@@ -135,7 +119,7 @@ export default async function DashboardPage(props: {
                 <LoadingCard
                   title="Recent Ingestions"
                   description="Loading recent ingestions..."
-                  className="col-span-3"
+                  className="col-span-7 md:col-span-2 lg:col-span-3"
                 />
               }
             >
@@ -209,7 +193,7 @@ async function RecentIngestions(props: {
   });
 
   return (
-    <Card className="col-span-3">
+    <Card className="col-span-7 md:col-span-2 lg:col-span-3">
       <CardHeader>
         <CardTitle>Recent Ingestions</CardTitle>
         <CardDescription>
