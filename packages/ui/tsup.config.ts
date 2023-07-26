@@ -50,7 +50,7 @@ export default defineConfig((opts) => {
     },
     {
       ...common,
-      entry: client,
+      entry: ["./src/index.ts", ...client],
       esbuildOptions: (opts) => {
         opts.banner = {
           js: '"use client";',

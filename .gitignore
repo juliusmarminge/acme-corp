@@ -46,3 +46,10 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# intelliJ and WebStorm
+.idea/
+.idea/acme-corp.iml
+.idea/modules.xml
+.idea/workspace.xml
+./vcs.xml

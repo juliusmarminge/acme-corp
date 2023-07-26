@@ -354,6 +354,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@paralleldrive/cuid2':
+        specifier: ^2.2.1
+        version: 2.2.1
       '@planetscale/database':
         specifier: ^1.7.0
         version: 1.7.0
@@ -4056,6 +4059,11 @@ packages:
     hasBin: true
     dev: false
 
+  /@noble/hashes@1.3.1:
+    resolution: {integrity: sha512-EbqwksQwz9xDRGfDST86whPBgM65E0OH/pCgqW0GBVzO22bNE+NuIbeTb714+IfSjU3aRk47EUvXIb5bTsenKA==}
+    engines: {node: '>= 16'}
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -4132,6 +4140,12 @@ packages:
     resolution: {integrity: sha512-hO+bdeGOlJwqowUBoZF5LyP3ORUFOP1G0GRv8N45W/cztXbT2ZEXaAzfokRS9Xc9FWmYrDj32mF6SzH6wuoIyA==}
     engines: {node: '>=14'}
     dev: true
+
+  /@paralleldrive/cuid2@2.2.1:
+    resolution: {integrity: sha512-GJhHYlMhyT2gWemDL7BGMWfTNhspJKkikLKh9wAy3z4GTTINvTYALkUd+eGQK7aLeVkVzPuSA0VCT3H5eEWbbw==}
+    dependencies:
+      '@noble/hashes': 1.3.1
+    dev: false
 
   /@peculiar/asn1-schema@2.3.6:
     resolution: {integrity: sha512-izNRxPoaeJeg/AyH8hER6s+H7p4itk+03QCa4sbxI3lNdseQYCuxzgsuNK8bTXChtLTjpJz6NmXKA73qLa3rCA==}
