@@ -1,7 +1,7 @@
 import * as Lucide from "lucide-react";
-import type { Icon as LucideIcon } from "lucide-react";
+import type { LucideProps } from "lucide-react";
 
-export type Icon = LucideIcon;
+export type Icon = (props: LucideProps) => JSX.Element;
 
 export const Logo = Lucide.Command;
 export const Dashboard = Lucide.Activity;

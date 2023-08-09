@@ -1,5 +1,9 @@
 import { loggerLink } from "@trpc/client";
-import { experimental_createTRPCNextAppDirClient } from "@trpc/next/app-dir/client";
+import {
+  experimental_createActionHook,
+  experimental_createTRPCNextAppDirClient,
+  experimental_serverActionLink,
+} from "@trpc/next/app-dir/client";
 import superjson from "superjson";
 
 import type { AppRouter } from "@acme/api";
@@ -23,3 +27,8 @@ export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
 });
 
 export { type RouterInputs, type RouterOutputs } from "@acme/api";
+
+export const useAction = experimental_createActionHook({
+  links: [experimental_serverActionLink()],
+  transformer: superjson,
+});

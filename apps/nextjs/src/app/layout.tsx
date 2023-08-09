@@ -48,7 +48,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <>
       <ClerkProvider>
-        <html lang="en" suppressHydrationWarning className="bg-background">
+        <html lang="en" suppressHydrationWarning>
           <body
             className={cn(
               "min-h-screen font-sans antialiased",

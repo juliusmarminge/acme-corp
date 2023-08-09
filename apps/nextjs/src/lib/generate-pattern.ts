@@ -488,7 +488,6 @@ export const getRandomPatternStyle = (seed: string) => {
   const [nPatterns, nColors] = [patterns.length, colors.length];
   const pattern = patterns[((hash % nPatterns) + nPatterns) % nPatterns];
   const fgColor = colors[((hash % nColors) + nColors) % nColors];
-  const bgColor = "#fff";
   const opacity = 0.4;
 
   if (!pattern || !fgColor) {
@@ -496,7 +495,6 @@ export const getRandomPatternStyle = (seed: string) => {
   }
 
   return {
-    backgroundColor: bgColor,
     backgroundImage: bgPattern(pattern, fgColor, opacity),
   };
 };
