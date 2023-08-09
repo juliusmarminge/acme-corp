@@ -26,7 +26,7 @@ import { useToast } from "@acme/ui/use-toast";
 import { api } from "~/trpc/client";
 
 export function DeleteProject() {
-  const { projectId } = useParams();
+  const { projectId } = useParams() as { projectId: string };
   const toaster = useToast();
   const router = useRouter();
 
