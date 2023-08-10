@@ -15,7 +15,7 @@ You can use the `create-turbo` CLI to bootstrap your project using this template
 npx create-turbo@latest -e https://github.com/juliusmarminge/acme-corp
 ```asdasdfasdasdfasd
 
-foossasadfasasdasdfasdasdfasdf
+foossasadfasasdasdfasdasdfasdfasdasdf
 asdasdfasdasfdasdasdfasdfasdf
 asdasdf
 ssadf
