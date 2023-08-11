@@ -14,7 +14,7 @@ You can use the `create-turbo` CLI to bootstrap your project using this template
 ```bash
 npx create-turbo@latest -e https://github.com/juliusmarminge/acme-corpsdf
 ```asdasdfasdasdfasd
-asdfasdfasdfa
+asdfasdfasdfaasdfasfasdf
 foossasadfasasdasdfasdasdfasdfasdasdf
 asdasdfasdasfdasdasdfasdfasasdfasdfdfsadasdf
 asdasdf
