@@ -34,7 +34,7 @@
     "@vercel/analytics": "^1.0.1",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.15.1",
-    "next": "13.4.15",
+    "next": "13.4.13",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-day-picker": "^8.8.0",
