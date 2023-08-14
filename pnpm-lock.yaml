@@ -355,14 +355,14 @@ importers:
   packages/db:
     dependencies:
       '@planetscale/database':
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.10.0
+        version: 1.10.0
       kysely:
         specifier: ^0.25.0
         version: 0.25.0
       kysely-planetscale:
         specifier: ^1.3.0
-        version: 1.3.0(@planetscale/database@1.7.0)(kysely@0.25.0)
+        version: 1.3.0(@planetscale/database@1.10.0)(kysely@0.25.0)
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2
@@ -3275,8 +3275,8 @@ packages:
       webcrypto-core: 1.7.7
     dev: false
 
-  /@planetscale/database@1.7.0:
-    resolution: {integrity: sha512-lWR6biXChUyQnxsT4RT1CIeR3ZJvwTQXiQ+158MnY3VjLwjHEGakDzdH9kwUGPk6CHvu6UeqRXp1DgUOVHJFTw==}
+  /@planetscale/database@1.10.0:
+    resolution: {integrity: sha512-XMfNRjIPgGTga6g1YpGr7E21CcnHZcHZdyhRUIiZ/AlpD+ts65UF2B3wKjcu7MKMynmmcOGs6R9kAT6D1OTlZQ==}
     engines: {node: '>=16'}
     dev: false
 
@@ -8941,13 +8941,13 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
-  /kysely-planetscale@1.3.0(@planetscale/database@1.7.0)(kysely@0.25.0):
+  /kysely-planetscale@1.3.0(@planetscale/database@1.10.0)(kysely@0.25.0):
     resolution: {integrity: sha512-lAldOF+Yg2raVvRfyXjBqlZ63ONpNZRpfWUK9WrtEdVUIYJxOhbgzihYaRtb4lHVFNyAZyuSCvatEsK7hszcJg==}
     peerDependencies:
       '@planetscale/database': '*'
       kysely: '*'
     dependencies:
-      '@planetscale/database': 1.7.0
+      '@planetscale/database': 1.10.0
       date-fns: 2.30.0
       kysely: 0.25.0
     dev: false
