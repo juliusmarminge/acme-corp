@@ -25,7 +25,13 @@ export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
             (opts.direction === "down" && opts.result instanceof Error),
         }),
         endingLink({
-          headers: Object.fromEntries(headers().entries()),
+          headers: () => {
+            const h = new Map(headers());
+            h.delete("connection");
+            h.delete("transfer-encoding");
+            h.set("x-trpc-source", "server");
+            return Object.fromEntries(h.entries());
+          },
         }),
       ],
     };
