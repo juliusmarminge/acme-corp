@@ -21,7 +21,7 @@
     "@acme/ui": "^0.1.0",
     "@clerk/nextjs": "^4.23.2",
     "@hookform/resolvers": "^3.1.1",
-    "@next/mdx": "^13.4.15",
+    "@next/mdx": "^13.4.13",
     "@dinero.js/currencies": "2.0.0-alpha.14",
     "dinero.js": "2.0.0-alpha.14",
     "@t3-oss/env-nextjs": "^0.6.0",
