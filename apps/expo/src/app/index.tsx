@@ -1,48 +1,54 @@
 import React from "react";
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Stack, useRouter } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 
 import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
 
-// const PostCard: React.FC<{
-//   post: RouterOutputs["post"]["all"][number];
-//   onDelete: () => void;
-// }> = ({ post, onDelete }) => {
-//   const router = useRouter();
+function PostCard(props: {
+  post: RouterOutputs["post"]["all"][number];
+  onDelete: () => void;
+}) {
+  return (
+    <View className="flex flex-row rounded-lg bg-white/10 p-4">
+      <View className="flex-grow">
+        <Link
+          asChild
+          href={{
+            pathname: "/post/[id]",
+            params: { id: props.post.id },
+          }}
+        >
+          <TouchableOpacity>
+            <Text className="text-xl font-semibold text-pink-400">
+              {props.post.title}
+            </Text>
+            <Text className="mt-2 text-white">{props.post.content}</Text>
+          </TouchableOpacity>
+        </Link>
+      </View>
+      <TouchableOpacity onPress={props.onDelete}>
+        <Text className="font-bold uppercase text-pink-400">Delete</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
 
-//   return (
-//     <View className="flex flex-row rounded-lg bg-white/10 p-4">
-//       <View className="flex-grow">
-//         <TouchableOpacity onPress={() => router.push(`/post/${post.id}`)}>
-//           <Text className="text-xl font-semibold text-pink-400">
-//             {post.title}
-//           </Text>
-//           <Text className="mt-2 text-white">{post.content}</Text>
-//         </TouchableOpacity>
-//       </View>
-//       <TouchableOpacity onPress={onDelete}>
-//         <Text className="font-bold uppercase text-pink-400">Delete</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-// };
-
-const CreatePost: React.FC = () => {
+function CreatePost() {
   const utils = api.useContext();
 
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
 
-  // const { mutate, error } = api.post.create.useMutation({
-  //   async onSuccess() {
-  //     setTitle("");
-  //     setContent("");
-  //     await utils.post.all.invalidate();
-  //   },
-  // });
+  const { mutate, error } = api.post.create.useMutation({
+    async onSuccess() {
+      setTitle("");
+      setContent("");
+      await utils.post.all.invalidate();
+    },
+  });
 
   return (
     <View className="mt-4">
@@ -53,11 +59,11 @@ const CreatePost: React.FC = () => {
         onChangeText={setTitle}
         placeholder="Title"
       />
-      {/* {error?.data?.zodError?.fieldErrors.title && (
+      {error?.data?.zodError?.fieldErrors.title && (
         <Text className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.title}
         </Text>
-      )} */}
+      )}
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
@@ -65,7 +71,7 @@ const CreatePost: React.FC = () => {
         onChangeText={setContent}
         placeholder="Content"
       />
-      {/* {error?.data?.zodError?.fieldErrors.content && (
+      {error?.data?.zodError?.fieldErrors.content && (
         <Text className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.content}
         </Text>
@@ -80,19 +86,19 @@ const CreatePost: React.FC = () => {
         }}
       >
         <Text className="font-semibold text-white">Publish post</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
     </View>
   );
-};
+}
 
 const Index = () => {
   const utils = api.useContext();
 
-  // const postQuery = api.post.all.useQuery();
+  const postQuery = api.post.all.useQuery();
 
-  // const deletePostMutation = api.post.delete.useMutation({
-  //   onSettled: () => utils.post.all.invalidate(),
-  // });
+  const deletePostMutation = api.post.delete.useMutation({
+    onSettled: () => utils.post.all.invalidate(),
+  });
 
   return (
     <SafeAreaView className="bg-[#1F104A]">
@@ -103,7 +109,7 @@ const Index = () => {
           Create <Text className="text-pink-400">T3</Text> Turbo
         </Text>
 
-        {/* <Button
+        <Button
           onPress={() => void utils.post.all.invalidate()}
           title="Refresh posts"
           color={"#f472b6"}
@@ -125,7 +131,7 @@ const Index = () => {
               onDelete={() => deletePostMutation.mutate(p.item.id)}
             />
           )}
-        /> */}
+        />
 
         <CreatePost />
       </View>
