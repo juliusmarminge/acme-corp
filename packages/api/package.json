@@ -8,7 +8,8 @@
     "clean": "rm -rf .turbo node_modules",
     "lint": "SKIP_ENV_VALIDATION=1  eslint .",
     "lint:fix": "pnpm lint --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "typecheck": "pnpm type-check"
   },
   "dependencies": {
     "@acme/db": "^0.1.0",
