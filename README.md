@@ -15,6 +15,10 @@ You can use the `create-turbo` CLI to bootstrap your project using this template
 npx create-turbo@latest -e https://github.com/juliusmarminge/acme-corp
 ```
 
+### Add a new package
+
+Run `pnpm turbo gen init` to initialize a new project with all the basics setup. Provide the name and deps the package need and sit back and relax while the generator does it's thing.
+
 ## About
 
 This project features the next-generation stack for building fullstack application. It's structured as a monorepo with a shared API using tRPC. Built on the new app router in Next.js 13 with React Server Components.
