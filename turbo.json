@@ -16,7 +16,7 @@
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
-      "outputs": [".next/**", ".expo/**", "dist/**"]
+      "outputs": [".next/**", ".expo/**", "dist/**", "next-env.d.ts"]
     },
     "lint": {
       "dependsOn": ["build"]
