@@ -1,4 +1,4 @@
-import clerkClient from "@clerk/clerk-sdk-node";
+import { clerkClient } from "@clerk/nextjs";
 import { TRPCError } from "@trpc/server";
 import type Stripe from "stripe";
 import * as z from "zod";
@@ -42,6 +42,13 @@ export const webhookRouter = createTRPCRouter({
         : subscription.customer.id;
     const { userId, organizationName } = subscription.metadata;
 
+    if (!userId) {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message: "Missing user id",
+      });
+    }
+
     const customer = await opts.ctx.db
       .selectFrom("Customer")
       .select("id")
@@ -72,15 +79,17 @@ export const webhookRouter = createTRPCRouter({
      * User is not subscribed, create a new customer and org
      */
     const organization = await clerkClient.organizations.createOrganization({
-      createdBy: userId!,
+      createdBy: userId,
       name: organizationName!,
     });
+
+    // TODO: SET ACTIVE ORG WHEN CLERK CAN BOTHER TO LET ME DO TAHT SERVERSIDE!!!
 
     await opts.ctx.db
       .insertInto("Customer")
       .values({
         id: genId(),
-        clerkUserId: userId ?? "wh",
+        clerkUserId: userId,
         clerkOrganizationId: organization.id,
         stripeId: customerId,
         subscriptionId: subscription.id,

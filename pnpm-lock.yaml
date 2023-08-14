@@ -268,6 +268,9 @@ importers:
       '@clerk/nextjs':
         specifier: ^4.23.2
         version: 4.23.2(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
+      '@dinero.js/currencies':
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
       '@t3-oss/env-nextjs':
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
@@ -277,6 +280,9 @@ importers:
       '@trpc/server':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
         version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53
+      dinero.js:
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
       stripe:
         specifier: ^12.11.0
         version: 12.11.0
@@ -2208,6 +2214,22 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       csstype: 3.1.1
+    dev: false
+
+  /@dinero.js/calculator-number@2.0.0-alpha.14:
+    resolution: {integrity: sha512-Vmlu6eXNtkFU2cqlrpqfq8KQP9onALf8Es2d34liVa3k3RHjuhizgFUU3V3/tsjOu5WekZq+gYPOr58XVTkB7A==}
+    dependencies:
+      '@dinero.js/core': 2.0.0-alpha.14
+    dev: false
+
+  /@dinero.js/core@2.0.0-alpha.14:
+    resolution: {integrity: sha512-CtKELJ783joUbaU62fRM2xDXb4XYSy0MgOuIkPWgVOS3SYKKb6+2Ec9bNlvrW8lsPROz/RsvCuYVTphrZ79twg==}
+    dependencies:
+      '@dinero.js/currencies': 2.0.0-alpha.14
+    dev: false
+
+  /@dinero.js/currencies@2.0.0-alpha.14:
+    resolution: {integrity: sha512-Ck5ZLjRI7Pl7Y4VkeOst4WEwiN5vZezv8GHcXWsVLUfTNsmkV37VeLYDRAuTUP4akEJyIry+1o1qHYNtLq3eNw==}
     dev: false
 
   /@egjs/hammerjs@2.0.17:
@@ -6839,6 +6861,14 @@ packages:
 
   /didyoumean@1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
+
+  /dinero.js@2.0.0-alpha.14:
+    resolution: {integrity: sha512-dkURHd9P+2TjuSTMUAnvrB7SsL4GbBYG/WPtIBV8M+L7Xf80x84sJcUUTxIS33S4AlkIbVANlaL86w2g5zdrmg==}
+    dependencies:
+      '@dinero.js/calculator-number': 2.0.0-alpha.14
+      '@dinero.js/core': 2.0.0-alpha.14
+      '@dinero.js/currencies': 2.0.0-alpha.14
+    dev: false
 
   /dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}

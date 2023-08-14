@@ -1,3 +1,4 @@
+import { toDecimal } from "dinero.js";
 import { CheckCircle2 } from "lucide-react";
 import { Balancer } from "react-wrap-balancer";
 
@@ -9,11 +10,12 @@ import {
   CardTitle,
 } from "@acme/ui/card";
 
+import { currencySymbol } from "~/lib/currency";
 import type { RouterOutputs } from "~/trpc/server";
 import { api } from "~/trpc/server";
 import { SubscribeNow } from "./subscribe-now";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export default async function PricingPage() {
   const plans = await api.stripe.plans.query();
@@ -36,17 +38,6 @@ export default async function PricingPage() {
   );
 }
 
-function CurrencyIcon(props: { currency: string }) {
-  switch (props.currency) {
-    case "usd":
-      return <span>$</span>;
-    case "eur":
-      return <span>€</span>;
-    default:
-      return <span>{props.currency}</span>;
-  }
-}
-
 function PricingCard(props: {
   plan: RouterOutputs["stripe"]["plans"][number];
 }) {
@@ -55,8 +46,10 @@ function PricingCard(props: {
       <CardHeader>
         <CardTitle>{props.plan.name}</CardTitle>
         <div className="text-2xl font-bold">
-          <CurrencyIcon currency={props.plan.currency} />
-          {props.plan.amount / 100}
+          {toDecimal(
+            props.plan.price,
+            ({ value, currency }) => `${currencySymbol(currency.code)}${value}`,
+          )}
           <span className="text-base font-normal"> / month</span>
         </div>{" "}
         <CardDescription>{props.plan.description}</CardDescription>

@@ -8,12 +8,12 @@ import superjson from "superjson";
 
 import type { AppRouter } from "@acme/api";
 
-import { endingLink } from "./shared";
+import { endingLink, transformer } from "./shared";
 
 export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   config() {
     return {
-      transformer: superjson,
+      transformer,
       links: [
         loggerLink({
           enabled: (opts) =>

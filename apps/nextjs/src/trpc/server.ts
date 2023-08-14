@@ -7,18 +7,17 @@ import {
   experimental_createServerActionHandler,
   experimental_createTRPCNextAppDirServer,
 } from "@trpc/next/app-dir/server";
-import superjson from "superjson";
 
 import { createInnerTRPCContext } from "@acme/api";
 import type { AppRouter } from "@acme/api";
 import { edgeRouter } from "@acme/api/src/edge";
 
-import { endingLink } from "./shared";
+import { endingLink, transformer } from "./shared";
 
 export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
   config() {
     return {
-      transformer: superjson,
+      transformer,
       links: [
         loggerLink({
           enabled: (opts) =>

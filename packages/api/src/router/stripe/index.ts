@@ -1,4 +1,6 @@
 import { currentUser } from "@clerk/nextjs";
+import * as currencies from "@dinero.js/currencies";
+import { dinero } from "dinero.js";
 import * as z from "zod";
 
 import { purchaseOrgSchema } from "../../../validators";
@@ -42,6 +44,7 @@ export const stripeRouter = createTRPCRouter({
        * User is not subscribed, create a checkout session
        * Use existing email address if available
        */
+
       const user = await currentUser();
       const email = user?.emailAddresses.find(
         (addr) => addr.id === user?.primaryEmailAddressId,
@@ -77,16 +80,24 @@ export const stripeRouter = createTRPCRouter({
         id: stdPrice.id,
         name: "Standard",
         description: "For individuals",
-        amount: stdPrice.unit_amount!,
-        currency: stdPrice.currency,
+        price: dinero({
+          amount: stdPrice.unit_amount!,
+          currency:
+            currencies[stdPrice.currency as keyof typeof currencies] ??
+            currencies.USD,
+        }),
         features: ["Invite up to 1 team member", "Lorem ipsum dolor sit amet"],
       },
       {
         id: proPrice.id,
         name: "Pro",
         description: "For teams",
-        amount: proPrice.unit_amount!,
-        currency: proPrice.currency,
+        price: dinero({
+          amount: proPrice.unit_amount!,
+          currency:
+            currencies[proPrice.currency as keyof typeof currencies] ??
+            currencies.USD,
+        }),
         preFeatures: "Everything in standard, plus",
         features: ["Invite up to 5 team members", "Unlimited projects"],
       },
@@ -99,6 +110,8 @@ export const stripeRouter = createTRPCRouter({
       const { userId } = opts.ctx.auth;
       const { orgName, planId } = opts.input;
 
+      const baseUrl = new URL(opts.ctx.req?.nextUrl ?? env.NEXTJS_URL).origin;
+
       const session = await stripe.checkout.sessions.create({
         mode: "subscription",
         payment_method_types: ["card"],
@@ -106,7 +119,8 @@ export const stripeRouter = createTRPCRouter({
         subscription_data: {
           metadata: { userId, organizationName: orgName },
         },
-        success_url: `${env.NEXTJS_URL}/dashboard`, // TODO: Maybe onboarding?        cancel_url: env.NEXTJS_URL,
+        success_url: baseUrl + "/onboarding",
+        cancel_url: baseUrl,
         line_items: [{ price: planId, quantity: 1 }],
       });
 
