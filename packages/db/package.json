@@ -22,7 +22,7 @@
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
     "prisma": "^4.16.2",
-    "prisma-kysely": "^1.4.2",
+    "prisma-kysely": "^1.5.0",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   }
