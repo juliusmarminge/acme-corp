@@ -7,18 +7,17 @@ import {
   experimental_createServerActionHandler,
   experimental_createTRPCNextAppDirServer,
 } from "@trpc/next/app-dir/server";
-import superjson from "superjson";
 
 import { createInnerTRPCContext } from "@acme/api";
 import type { AppRouter } from "@acme/api";
 import { edgeRouter } from "@acme/api/src/edge";
 
-import { endingLink } from "./shared";
+import { endingLink, transformer } from "./shared";
 
 export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
   config() {
     return {
-      transformer: superjson,
+      transformer,
       links: [
         loggerLink({
           enabled: (opts) =>
@@ -26,7 +25,13 @@ export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
             (opts.direction === "down" && opts.result instanceof Error),
         }),
         endingLink({
-          headers: Object.fromEntries(headers().entries()),
+          headers: () => {
+            const h = new Map(headers());
+            h.delete("connection");
+            h.delete("transfer-encoding");
+            h.set("x-trpc-source", "server");
+            return Object.fromEntries(h.entries());
+          },
         }),
       ],
     };

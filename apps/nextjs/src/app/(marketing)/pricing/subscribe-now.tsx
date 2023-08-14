@@ -19,7 +19,7 @@ export function SubscribeNow(props: { planId: string }) {
         const billingPortal = await api.stripe.createSession.mutate({
           planId: props.planId,
         });
-        if (billingPortal.success) window.location.href = billingPortal.url;
+        if (billingPortal.success) router.push(billingPortal.url);
       }}
     >
       Subscribe now

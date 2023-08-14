@@ -3,6 +3,8 @@ import { httpBatchLink } from "@trpc/client";
 
 import type { AppRouter } from "@acme/api";
 
+export { transformer } from "@acme/api/src/transformer";
+
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return "";
   const vc = process.env.VERCEL_URL;
@@ -10,9 +12,11 @@ const getBaseUrl = () => {
   return `http://localhost:3000`;
 };
 
-const lambdas = ["stripe", "ingestion"];
+const lambdas = ["ingestion"];
 
-export const endingLink = (opts?: { headers?: HTTPHeaders }) =>
+export const endingLink = (opts?: {
+  headers?: HTTPHeaders | (() => HTTPHeaders);
+}) =>
   ((runtime) => {
     const sharedOpts = {
       headers: opts?.headers,
