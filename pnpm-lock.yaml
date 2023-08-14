@@ -152,7 +152,7 @@ importers:
         version: 4.21.13(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
       '@hookform/resolvers':
         specifier: ^3.1.1
-        version: 3.1.1(react-hook-form@7.45.1)
+        version: 3.1.1(react-hook-form@7.45.4)
       '@next/mdx':
         specifier: ^13.4.13
         version: 13.4.13
@@ -202,8 +202,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: ^7.45.1
-        version: 7.45.1(react@18.2.0)
+        specifier: ^7.45.4
+        version: 7.45.4(react@18.2.0)
       react-image-crop:
         specifier: ^10.1.5
         version: 10.1.5(react@18.2.0)
@@ -471,8 +471,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       react-hook-form:
-        specifier: ^7.45.1
-        version: 7.45.1(react@18.2.0)
+        specifier: ^7.45.4
+        version: 7.45.4(react@18.2.0)
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
@@ -2866,12 +2866,12 @@ packages:
       '@hapi/hoek': 9.3.0
     dev: false
 
-  /@hookform/resolvers@3.1.1(react-hook-form@7.45.1):
+  /@hookform/resolvers@3.1.1(react-hook-form@7.45.4):
     resolution: {integrity: sha512-tS16bAUkqjITNSvbJuO1x7MXbn7Oe8ZziDTJdA9mMvsoYthnOOiznOTGBYwbdlYBgU+tgpI/BtTU3paRbCuSlg==}
     peerDependencies:
       react-hook-form: ^7.0.0
     dependencies:
-      react-hook-form: 7.45.1(react@18.2.0)
+      react-hook-form: 7.45.4(react@18.2.0)
     dev: false
 
   /@humanwhocodes/config-array@0.11.10:
@@ -10922,8 +10922,8 @@ packages:
       shallowequal: 1.1.0
     dev: false
 
-  /react-hook-form@7.45.1(react@18.2.0):
-    resolution: {integrity: sha512-6dWoFJwycbuFfw/iKMcl+RdAOAOHDiF11KWYhNDRN/OkUt+Di5qsZHwA0OwsVnu9y135gkHpTw9DJA+WzCeR9w==}
+  /react-hook-form@7.45.4(react@18.2.0):
+    resolution: {integrity: sha512-HGDV1JOOBPZj10LB3+OZgfDBTn+IeEsNOKiq/cxbQAIbKaiJUe/KV8DBUzsx0Gx/7IG/orWqRRm736JwOfUSWQ==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
