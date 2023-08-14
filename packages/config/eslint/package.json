@@ -8,12 +8,12 @@
     "./react.js"
   ],
   "dependencies": {
-    "@next/eslint-plugin-next": "^13.4.8",
+    "@next/eslint-plugin-next": "^13.4.13",
     "@types/eslint": "^8.40.2",
     "@typescript-eslint/eslint-plugin": "^6.0.0-alpha.165",
     "@typescript-eslint/parser": "^6.0.0-alpha.165",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-config-turbo": "^1.10.7",
+    "eslint-config-turbo": "^1.10.12",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",

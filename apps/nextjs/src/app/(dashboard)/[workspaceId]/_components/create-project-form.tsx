@@ -20,7 +20,11 @@ import { useToast } from "@acme/ui/use-toast";
 import { useZodForm } from "~/lib/zod-form";
 import { api } from "~/trpc/client";
 
-export const CreateProjectForm = (props: { workspaceId: string }) => {
+export const CreateProjectForm = (props: {
+  workspaceId: string;
+  // defaults to redirecting to the project page
+  onSuccess?: (project: CreateProject & { id: string }) => void;
+}) => {
   const router = useRouter();
   const toaster = useToast();
 
@@ -29,7 +33,14 @@ export const CreateProjectForm = (props: { workspaceId: string }) => {
   async function onSubmit(data: CreateProject) {
     try {
       const projectId = await api.project.create.mutate(data);
-      router.push(`/${props.workspaceId}/${projectId}`);
+      if (props.onSuccess) {
+        props.onSuccess({
+          ...data,
+          id: projectId,
+        });
+      } else {
+        router.push(`/${props.workspaceId}/${projectId}/overview`);
+      }
       toaster.toast({
         title: "Project created",
         description: `Project ${data.name} created successfully.`,
@@ -73,9 +84,7 @@ export const CreateProjectForm = (props: { workspaceId: string }) => {
               <FormControl>
                 <Input {...field} placeholder="https://acme-corp.com" />
               </FormControl>
-              <FormDescription>
-                The URL where your tRPC router is deployed
-              </FormDescription>
+              <FormDescription>The URL of your app</FormDescription>
               <FormMessage />
             </FormItem>
           )}

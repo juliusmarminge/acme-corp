@@ -53,7 +53,10 @@ const projectItems = [
 ] as const;
 
 export function SidebarNav() {
-  const params = useParams();
+  const params = useParams() as {
+    workspaceId: string;
+    projectId?: string;
+  };
   const path = usePathname();
 
   // remove the workspaceId and projectId from the path when comparing active links in sidebar

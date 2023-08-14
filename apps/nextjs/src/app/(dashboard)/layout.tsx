@@ -12,7 +12,7 @@ import { WorkspaceSwitcher } from "./_components/workspace-switcher";
 
 export default function DashboardLayout(props: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen overflow-hidden rounded-[0.5rem] bg-background">
+    <div className="min-h-screen overflow-hidden rounded-[0.5rem]">
       <nav className="border-b">
         <div className="flex h-16 items-center px-4 md:px-8">
           <Link href="/">
