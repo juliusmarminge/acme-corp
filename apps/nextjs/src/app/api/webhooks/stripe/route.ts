@@ -3,7 +3,7 @@ import { TRPCError } from "@trpc/server";
 import { getHTTPStatusCodeFromError } from "@trpc/server/http";
 
 import { createTRPCContext } from "@acme/api";
-import { lambdaRouter, stripe } from "@acme/api/src/lambda";
+import { edgeRouter, stripe } from "@acme/api/src/edge";
 
 import { env } from "~/env.mjs";
 
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
      * Forward to tRPC API to handle the webhook event
      */
     const ctx = createTRPCContext({ req });
-    const caller = lambdaRouter.createCaller(ctx);
+    const caller = edgeRouter.createCaller(ctx);
 
     switch (event.type) {
       case "checkout.session.completed":

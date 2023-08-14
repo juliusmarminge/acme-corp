@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useOrganization, useOrganizationList, useUser } from "@clerk/nextjs";
+import { toDecimal } from "dinero.js";
 import { Check, ChevronsUpDown, PlusCircle } from "lucide-react";
 
 import type { PurchaseOrg } from "@acme/api/validators";
@@ -47,6 +48,7 @@ import {
 } from "@acme/ui/select";
 import { useToast } from "@acme/ui/use-toast";
 
+import { currencySymbol } from "~/lib/currency";
 import { useZodForm } from "~/lib/zod-form";
 import { api } from "~/trpc/client";
 
@@ -285,7 +287,12 @@ function NewOrganizationDialog(props: { closeDialog: () => void }) {
                       <SelectItem key={plan.id} value={plan.id}>
                         <span className="font-medium">{plan.name}</span> -{" "}
                         <span className="text-muted-foreground">
-                          ${plan.amount / 100} per month
+                          {toDecimal(
+                            plan.price,
+                            ({ value, currency }) =>
+                              `${currencySymbol(currency.code)}${value}`,
+                          )}{" "}
+                          per month
                         </span>
                       </SelectItem>
                     ))}

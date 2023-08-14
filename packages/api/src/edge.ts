@@ -11,3 +11,5 @@ export const edgeRouter = createTRPCRouter({
   stripe: stripeRouter,
   organization: organizationsRouter,
 });
+
+export { stripe } from "./router/stripe/shared";
