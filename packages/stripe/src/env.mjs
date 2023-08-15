@@ -31,9 +31,4 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
-
-  onInvalidAccess: (variable) => {
-    console.trace(`Invalid access to ${variable}`);
-    throw new Error("Invalid access");
-  },
 });
