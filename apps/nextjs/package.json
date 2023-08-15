@@ -29,7 +29,7 @@
     "@trpc/next": "10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde",
     "@trpc/react-query": "10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde",
     "@trpc/server": "10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde",
-    "@vercel/analytics": "^1.0.1",
+    "@vercel/analytics": "^1.0.2",
     "date-fns": "^2.30.0",
     "dinero.js": "2.0.0-alpha.14",
     "framer-motion": "^10.15.2",
