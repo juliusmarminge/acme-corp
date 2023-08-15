@@ -32,7 +32,7 @@
     "@vercel/analytics": "^1.0.1",
     "date-fns": "^2.30.0",
     "dinero.js": "2.0.0-alpha.14",
-    "framer-motion": "^10.15.1",
+    "framer-motion": "^10.15.2",
     "next": "13.4.13",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
