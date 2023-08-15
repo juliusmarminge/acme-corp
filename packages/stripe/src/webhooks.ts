@@ -4,7 +4,8 @@ import type Stripe from "stripe";
 
 import { db, genId } from "@acme/db";
 
-import { stripe, stripePriceToSubscriptionPlan } from "..";
+import { stripe } from ".";
+import { stripePriceToSubscriptionPlan } from "./plans";
 
 export async function handleEvent(event: Stripe.DiscriminatedEvent) {
   switch (event.type) {

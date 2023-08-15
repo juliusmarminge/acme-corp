@@ -1,6 +1,6 @@
 generator kysely {
     provider     = "prisma-kysely"
-    output       = ".."
+    output       = "."
     enumFileName = "enums.ts"
 }
 

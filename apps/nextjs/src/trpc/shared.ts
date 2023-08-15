@@ -3,7 +3,7 @@ import { httpBatchLink } from "@trpc/client";
 
 import type { AppRouter } from "@acme/api";
 
-export { transformer } from "@acme/api/src/transformer";
+export { transformer } from "@acme/api/transformer";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return "";

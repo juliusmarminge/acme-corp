@@ -1,9 +1,9 @@
 import { Stripe } from "stripe";
 
-import { env } from "./src/env.mjs";
+import { env } from "./env.mjs";
 
-export * from "./src/plans";
-export * from "./src/webhooks";
+export * from "./plans";
+export * from "./webhooks";
 
 export type { Stripe };
 

@@ -5,16 +5,16 @@ import { z } from "zod";
 import { genId } from "@acme/db";
 
 import {
-  createApiKeySchema,
-  createProjectSchema,
-  renameProjectSchema,
-  transferToOrgSchema,
-} from "../../validators";
-import {
   createTRPCRouter,
   protectedAdminProcedure,
   protectedProcedure,
 } from "../trpc";
+import {
+  createApiKeySchema,
+  createProjectSchema,
+  renameProjectSchema,
+  transferToOrgSchema,
+} from "../validators";
 
 const PROJECT_LIMITS = {
   FREE: 1,

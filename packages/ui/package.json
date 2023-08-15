@@ -1,8 +1,7 @@
 {
   "name": "@acme/ui",
+  "private": true,
   "version": "0.1.0",
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "clean": "git clean -xdf dist .turbo node_modules",
@@ -55,6 +54,13 @@
     "tailwindcss-animate": "^1.0.6",
     "tsup": "^6.7.0",
     "typescript": "^5.1.6"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base",
+      "@acme/eslint-config/react"
+    ]
   },
   "exports": {
     "./package.json": "./package.json",
@@ -153,71 +159,11 @@
   },
   "typesVersions": {
     "*": {
-      "toast": [
-        "dist/toast.d.ts"
+      ".": [
+        "dist/index.d.ts"
       ],
-      "avatar": [
-        "dist/avatar.d.ts"
-      ],
-      "calendar": [
-        "dist/calendar.d.ts"
-      ],
-      "command": [
-        "dist/command.d.ts"
-      ],
-      "dialog": [
-        "dist/dialog.d.ts"
-      ],
-      "dropdown-menu": [
-        "dist/dropdown-menu.d.ts"
-      ],
-      "input": [
-        "dist/input.d.ts"
-      ],
-      "label": [
-        "dist/label.d.ts"
-      ],
-      "popover": [
-        "dist/popover.d.ts"
-      ],
-      "select": [
-        "dist/select.d.ts"
-      ],
-      "tabs": [
-        "dist/tabs.d.ts"
-      ],
-      "toaster": [
-        "dist/toaster.d.ts"
-      ],
-      "use-toast": [
-        "dist/use-toast.d.ts"
-      ],
-      "button": [
-        "dist/button.d.ts"
-      ],
-      "icons": [
-        "dist/icons.d.ts"
-      ],
-      "card": [
-        "dist/card.d.ts"
-      ],
-      "sheet": [
-        "dist/sheet.d.ts"
-      ],
-      "scroll-area": [
-        "dist/scroll-area.d.ts"
-      ],
-      "form": [
-        "dist/form.d.ts"
-      ],
-      "data-table": [
-        "dist/data-table.d.ts"
-      ],
-      "table": [
-        "dist/table.d.ts"
-      ],
-      "checkbox": [
-        "dist/checkbox.d.ts"
+      "*": [
+        "dist/*"
       ]
     }
   }

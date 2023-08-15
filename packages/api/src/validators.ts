@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import { PLANS } from "@acme/stripe";
+import { PLANS } from "@acme/stripe/plans";
 
 /**
  * Shared validators used in both the frontend and backend

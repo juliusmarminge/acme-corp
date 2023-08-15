@@ -2,12 +2,12 @@ import { clerkClient } from "@clerk/nextjs";
 import { TRPCError } from "@trpc/server";
 import * as z from "zod";
 
-import { inviteOrgMemberSchema } from "../../validators";
 import {
   createTRPCRouter,
   protectedAdminProcedure,
   protectedOrgProcedure,
 } from "../trpc";
+import { inviteOrgMemberSchema } from "../validators";
 
 export const organizationsRouter = createTRPCRouter({
   listMembers: protectedOrgProcedure.query(async (opts) => {

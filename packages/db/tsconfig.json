@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["*.ts", "prisma/postgenerate.ts"]
+  "include": ["*.ts", "prisma"]
 }

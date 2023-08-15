@@ -1,9 +1,18 @@
 {
   "name": "@acme/stripe",
+  "private": true,
   "version": "0.1.0",
   "exports": {
-    ".": "./index.ts",
+    ".": "./src/index.ts",
+    "./plans": "./src/plans.ts",
     "./env": "./src/env.mjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/*"
+      ]
+    }
   },
   "license": "MIT",
   "scripts": {

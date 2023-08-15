@@ -5,9 +5,9 @@ import * as z from "zod";
 
 import { PLANS, stripe } from "@acme/stripe";
 
-import { purchaseOrgSchema } from "../../validators";
 import { env } from "../env.mjs";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { purchaseOrgSchema } from "../validators";
 
 export const stripeRouter = createTRPCRouter({
   createSession: protectedProcedure

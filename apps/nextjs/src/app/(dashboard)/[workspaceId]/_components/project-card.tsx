@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import type { RouterOutputs } from "@acme/api";
-import { ProjectTier } from "@acme/db/enums";
+import { ProjectTier } from "@acme/db";
 import { cn } from "@acme/ui";
 import { Card, CardDescription, CardHeader, CardTitle } from "@acme/ui/card";
 

@@ -10,7 +10,7 @@ import {
 
 import { createInnerTRPCContext } from "@acme/api";
 import type { AppRouter } from "@acme/api";
-import { edgeRouter } from "@acme/api/src/edge";
+import { edgeRouter } from "@acme/api/edge";
 
 import { endingLink, transformer } from "./shared";
 

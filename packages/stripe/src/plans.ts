@@ -1,4 +1,4 @@
-import { SubscriptionPlan } from "@acme/db/enums";
+import { SubscriptionPlan } from "@acme/db";
 
 import { env } from "./env.mjs";
 

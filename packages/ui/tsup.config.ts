@@ -77,7 +77,6 @@ export default defineConfig((opts) => {
               import: "./dist/" + file + ".mjs",
               types: "./dist/" + file + ".d.ts",
             };
-            pkgJson.typesVersions["*"][file] = ["dist/" + file + ".d.ts"];
           });
 
         await writeFile("./package.json", JSON.stringify(pkgJson, null, 2));
@@ -86,7 +85,7 @@ export default defineConfig((opts) => {
   ];
 });
 
-type PackageJson = {
+interface PackageJson {
   name: string;
   exports: Record<string, { import: string; types: string } | string>;
   typesVersions: Record<"*", Record<string, string[]>>;
@@ -95,4 +94,4 @@ type PackageJson = {
   pnpm: {
     overrides: Record<string, string>;
   };
-};
+}
