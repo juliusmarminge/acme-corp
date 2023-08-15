@@ -14,9 +14,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.6.0",
-    "@clerk/nextjs": "^4.23.2",
     "@acme/db": "^0.1.0",
+    "@clerk/nextjs": "^4.23.2",
+    "@t3-oss/env-nextjs": "^0.6.0",
     "stripe": "^12.18.0"
   },
   "devDependencies": {
