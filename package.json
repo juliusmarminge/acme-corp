@@ -20,7 +20,7 @@
     "typecheck": "turbo type-check"
   },
   "dependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.0.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
     "@manypkg/cli": "^0.21.0",
     "@turbo/gen": "^1.10.12",
     "@types/prettier": "^2.7.3",
