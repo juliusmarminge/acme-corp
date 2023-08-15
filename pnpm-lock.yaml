@@ -42,14 +42,14 @@ importers:
         specifier: 1.5.0
         version: 1.5.0(@babel/runtime@7.22.10)(react-native@0.72.4)(react@18.2.0)
       '@tanstack/react-query':
-        specifier: ^5.0.0-beta.15
-        version: 5.0.0-beta.15(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
+        specifier: ^5.0.0-beta.16
+        version: 5.0.0-beta.16(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
       '@trpc/client':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
         version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)
       '@trpc/react-query':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
-        version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.15)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0)
+        version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
         version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53
@@ -169,8 +169,8 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
       '@tanstack/react-query':
-        specifier: ^5.0.0-beta.15
-        version: 5.0.0-beta.15(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
+        specifier: ^5.0.0-beta.16
+        version: 5.0.0-beta.16(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
       '@tanstack/react-table':
         specifier: ^8.9.3
         version: 8.9.3(react-dom@18.2.0)(react@18.2.0)
@@ -179,10 +179,10 @@ importers:
         version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)
       '@trpc/next':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
-        version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.15)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/react-query@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(next@13.4.16)(react-dom@18.2.0)(react@18.2.0)
+        version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/react-query@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(next@13.4.16)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/react-query':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
-        version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.15)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0)
+        version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
         specifier: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde
         version: 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53
@@ -4818,8 +4818,8 @@ packages:
     resolution: {integrity: sha512-NaL5qp1K5IhnDD5wEegYpXB0OMPsb+QZNcGR5hWQaDS+30Ga8+zKpfjDn7wHlCKPO2mHCTRqUbQnLWIlt5FKoQ==}
     dev: false
 
-  /@tanstack/react-query@5.0.0-beta.15(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-kD6ZQ/5jf+0FmooIkeUMxMVaa2QLaZFiH0iosFC5YC8cGu2iquUWVV4T/2nyMOwa6nDc1RKRQE0QHDSbHnsD2A==}
+  /@tanstack/react-query@5.0.0-beta.16(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-60/jq4W4A4kG4Yk18SjpXa3BnzIFCP3kt12u54Vtc/ul7ZIcs18Hvj02UVddfEWAw3rL3er8ez92pqaNYSVeBw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -4869,7 +4869,7 @@ packages:
       '@trpc/server': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53
     dev: false
 
-  /@trpc/next@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.15)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/react-query@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(next@13.4.16)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/next@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/react-query@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(next@13.4.16)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-qCUYxYPaXR1NA2rZFHFpx9WAH7ADpOBeuwAB7N9UsHkFVp3bBBAvrruwddXdG8mX2Vzbeygj6AjEGCtg8b0j1Q==}
     peerDependencies:
       '@tanstack/react-query': ^5.0.0-beta.9
@@ -4880,9 +4880,9 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 5.0.0-beta.15(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
+      '@tanstack/react-query': 5.0.0-beta.16(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
       '@trpc/client': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)
-      '@trpc/react-query': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.15)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/react-query': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53
       next: 13.4.16(@babel/core@7.22.10)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -4890,7 +4890,7 @@ packages:
       react-ssr-prepass: 1.5.0(react@18.2.0)
     dev: false
 
-  /@trpc/react-query@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.15)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0):
+  /@trpc/react-query@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@tanstack/react-query@5.0.0-beta.16)(@trpc/client@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-dCfMd7t8tvQCT0l1vgCB6dAZKeOCJRnmlPk3h3Qwtux5eup/Vu1QzuHmkKMS/wrqCijPG8+7QZNgMwpvTEJcCA==}
     peerDependencies:
       '@tanstack/react-query': ^5.0.0-beta.9
@@ -4899,7 +4899,7 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
-      '@tanstack/react-query': 5.0.0-beta.15(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
+      '@tanstack/react-query': 5.0.0-beta.16(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
       '@trpc/client': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53(@trpc/server@10.32.1-alpha-actions-2-2023-08-14-10-36-36.53)
       '@trpc/server': 10.32.1-alpha-actions-2-2023-08-14-10-36-36.53
       react: 18.2.0
