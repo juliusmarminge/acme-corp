@@ -5,9 +5,7 @@
   "scripts": {
     "build": "pnpm with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "dev:stripe": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
-    "dev:next": "pnpm with-env next dev",
-    "dev": "conc -c auto npm:dev:*",
+    "dev": "pnpm with-env next dev",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
     "lint:fix": "pnpm lint --fix",
     "start": "pnpm with-env next start",
@@ -17,6 +15,7 @@
   "dependencies": {
     "@acme/api": "^0.1.0",
     "@acme/db": "^0.1.0",
+    "@acme/stripe": "^0.1.0",
     "@acme/tailwind-config": "^0.1.0",
     "@acme/ui": "^0.1.0",
     "@clerk/nextjs": "^4.23.2",
@@ -54,7 +53,6 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.15",
-    "concurrently": "^8.2.0",
     "dotenv-cli": "^7.2.1",
     "eslint": "^8.47.0",
     "postcss": "8.4.26",

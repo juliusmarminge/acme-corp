@@ -144,6 +144,9 @@ importers:
       '@acme/db':
         specifier: ^0.1.0
         version: link:../../packages/db
+      '@acme/stripe':
+        specifier: ^0.1.0
+        version: link:../../packages/stripe
       '@acme/tailwind-config':
         specifier: ^0.1.0
         version: link:../../packages/config/tailwind
@@ -274,6 +277,9 @@ importers:
       '@acme/db':
         specifier: ^0.1.0
         version: link:../db
+      '@acme/stripe':
+        specifier: ^0.1.0
+        version: link:../stripe
       '@clerk/nextjs':
         specifier: ^4.23.2
         version: 4.23.2(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
@@ -292,9 +298,6 @@ importers:
       dinero.js:
         specifier: 2.0.0-alpha.14
         version: 2.0.0-alpha.14
-      stripe:
-        specifier: ^12.11.0
-        version: 12.11.0
       superjson:
         specifier: 1.13.1
         version: 1.13.1
@@ -394,6 +397,31 @@ importers:
       tsx:
         specifier: ^3.12.7
         version: 3.12.7
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
+
+  packages/stripe:
+    dependencies:
+      '@acme/db':
+        specifier: ^0.1.0
+        version: link:../db
+      '@clerk/nextjs':
+        specifier: ^4.23.2
+        version: 4.23.2(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
+      '@t3-oss/env-nextjs':
+        specifier: ^0.6.0
+        version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
+      stripe:
+        specifier: ^12.18.0
+        version: 12.18.0
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: 0.2.0
+        version: link:../config/eslint
+      eslint:
+        specifier: ^8.47.0
+        version: 8.47.0
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -12653,8 +12681,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  /stripe@12.11.0:
-    resolution: {integrity: sha512-nyVumI9TXqr+B32397lLHF8VPbTWNvCF/rdY6oLXHLZr+7S8q2PJzo2TUvfowD0eSNz5Hz0O0I2kw9Qb2EyGQA==}
+  /stripe@12.18.0:
+    resolution: {integrity: sha512-cYjgBM2SY/dTm8Lr6eMyyONaHTZHA/QjHxFUIW5WH8FevSRIGAVtXEmBkUXF1fsqe7QvvRgQSGSJZmjDacegGg==}
     engines: {node: '>=12.*'}
     dependencies:
       '@types/node': 18.17.5
