@@ -17,7 +17,7 @@
   "dependencies": {
     "@expo/metro-config": "^0.10.7",
     "@shopify/flash-list": "1.5.0",
-    "@tanstack/react-query": "^5.0.0-beta.15",
+    "@tanstack/react-query": "^5.0.0-beta.16",
     "@trpc/client": "10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde",
     "@trpc/react-query": "10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde",
     "@trpc/server": "10.32.1-alpha-actions-2-2023-08-14-10-36-36.53+ccbe40fde",
