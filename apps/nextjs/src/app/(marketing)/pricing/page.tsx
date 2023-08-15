@@ -30,7 +30,7 @@ export default async function PricingPage() {
 
         <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {plans.map((plan) => (
-            <PricingCard key={plan.id} plan={plan} />
+            <PricingCard key={plan.priceId} plan={plan} />
           ))}
         </div>
       </div>
@@ -68,7 +68,7 @@ function PricingCard(props: {
       </ul>
 
       <CardFooter>
-        <SubscribeNow planId={props.plan.id} />
+        <SubscribeNow planId={props.plan.priceId} />
       </CardFooter>
     </Card>
   );

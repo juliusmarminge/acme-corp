@@ -284,7 +284,7 @@ function NewOrganizationDialog(props: { closeDialog: () => void }) {
                   </FormControl>
                   <SelectContent>
                     {plans.map((plan) => (
-                      <SelectItem key={plan.id} value={plan.id}>
+                      <SelectItem key={plan.priceId} value={plan.priceId}>
                         <span className="font-medium">{plan.name}</span> -{" "}
                         <span className="text-muted-foreground">
                           {toDecimal(

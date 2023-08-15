@@ -1,0 +1,32 @@
+{
+  "name": "@acme/stripe",
+  "version": "0.1.0",
+  "exports": {
+    ".": "./index.ts",
+    "./env": "./src/env.mjs"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "dev": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@acme/db": "^0.1.0",
+    "@clerk/nextjs": "^4.23.2",
+    "@t3-oss/env-nextjs": "^0.6.0",
+    "stripe": "^12.18.0"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "0.2.0",
+    "eslint": "^8.47.0",
+    "typescript": "^5.1.6"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
+  }
+}

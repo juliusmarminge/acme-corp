@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-import { env } from "./src/env.mjs";
+import { PLANS } from "@acme/stripe";
 
 /**
  * Shared validators used in both the frontend and backend
@@ -20,16 +20,13 @@ export type RenameProject = z.infer<typeof renameProjectSchema>;
 
 export const purchaseOrgSchema = z.object({
   orgName: z.string().min(5, "Name must be at least 5 characters"),
-  planId: z
-    .string()
-    .refine(
-      (str) =>
-        [
-          env.NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID,
-          env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
-        ].includes(str),
-      "Invalid planId",
-    ),
+  planId: z.string().refine(
+    (str) =>
+      Object.values(PLANS)
+        .map((p) => p.priceId)
+        .includes(str),
+    "Invalid planId",
+  ),
 });
 export type PurchaseOrg = z.infer<typeof purchaseOrgSchema>;
 

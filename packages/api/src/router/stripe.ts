@@ -3,19 +3,13 @@ import * as currencies from "@dinero.js/currencies";
 import { dinero } from "dinero.js";
 import * as z from "zod";
 
-import { purchaseOrgSchema } from "../../../validators";
-import { env } from "../../env.mjs";
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "../../trpc";
-import { stripe } from "./shared";
-import { webhookRouter } from "./webhooks";
+import { PLANS, stripe } from "@acme/stripe";
+
+import { purchaseOrgSchema } from "../../validators";
+import { env } from "../env.mjs";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const stripeRouter = createTRPCRouter({
-  webhooks: webhookRouter,
-
   createSession: protectedProcedure
     .input(z.object({ planId: z.string() }))
     .mutation(async (opts) => {
@@ -58,9 +52,7 @@ export const stripeRouter = createTRPCRouter({
         subscription_data: { metadata: { userId } },
         cancel_url: returnUrl,
         success_url: returnUrl,
-        line_items: [
-          { price: env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID, quantity: 1 },
-        ],
+        line_items: [{ price: PLANS.PRO?.priceId, quantity: 1 }],
       });
 
       if (!session.url) return { success: false as const };
@@ -68,38 +60,27 @@ export const stripeRouter = createTRPCRouter({
     }),
 
   plans: publicProcedure.query(async () => {
-    const proPrice = await stripe.prices.retrieve(
-      env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID,
-    );
-    const stdPrice = await stripe.prices.retrieve(
-      env.NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID,
-    );
+    const proPrice = await stripe.prices.retrieve(PLANS.PRO.priceId);
+    const stdPrice = await stripe.prices.retrieve(PLANS.STANDARD.priceId);
 
     return [
       {
-        id: stdPrice.id,
-        name: "Standard",
-        description: "For individuals",
+        ...PLANS.STANDARD,
         price: dinero({
           amount: stdPrice.unit_amount!,
           currency:
             currencies[stdPrice.currency as keyof typeof currencies] ??
             currencies.USD,
         }),
-        features: ["Invite up to 1 team member", "Lorem ipsum dolor sit amet"],
       },
       {
-        id: proPrice.id,
-        name: "Pro",
-        description: "For teams",
+        ...PLANS.PRO,
         price: dinero({
           amount: proPrice.unit_amount!,
           currency:
             currencies[proPrice.currency as keyof typeof currencies] ??
             currencies.USD,
         }),
-        preFeatures: "Everything in standard, plus",
-        features: ["Invite up to 5 team members", "Unlimited projects"],
       },
     ];
   }),
