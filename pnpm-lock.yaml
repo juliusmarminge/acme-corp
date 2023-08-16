@@ -339,8 +339,8 @@ importers:
         specifier: ^0.26.1
         version: 0.26.1
       kysely-planetscale:
-        specifier: ^1.3.0
-        version: 1.3.0(@planetscale/database@1.10.0)(kysely@0.26.1)
+        specifier: ^1.4.0
+        version: 1.4.0(@planetscale/database@1.10.0)(kysely@0.26.1)
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2
@@ -9198,8 +9198,8 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
-  /kysely-planetscale@1.3.0(@planetscale/database@1.10.0)(kysely@0.26.1):
-    resolution: {integrity: sha512-lAldOF+Yg2raVvRfyXjBqlZ63ONpNZRpfWUK9WrtEdVUIYJxOhbgzihYaRtb4lHVFNyAZyuSCvatEsK7hszcJg==}
+  /kysely-planetscale@1.4.0(@planetscale/database@1.10.0)(kysely@0.26.1):
+    resolution: {integrity: sha512-dM2xgOM50+IiOIrSCEn/6lgXcE7J752oNpV6NcIYNgG/AfYGMtWm2ZK7PyeIPy5JG1jZvQvqwTFbGK4HGH/hJw==}
     peerDependencies:
       '@planetscale/database': '*'
       kysely: '*'
