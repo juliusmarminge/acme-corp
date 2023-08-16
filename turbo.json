@@ -2,6 +2,13 @@
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["**/.env"],
   "pipeline": {
+    "topo": {
+      "dependsOn": ["^topo"]
+    },
+    "build": {
+      "dependsOn": ["^build", "^db:generate"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
+    },
     "db:generate": {
       "inputs": ["prisma/schema.prisma"],
       "cache": false
@@ -14,41 +21,36 @@
       "persistent": true,
       "cache": false
     },
-    "build": {
-      "dependsOn": ["^build", "^db:generate"],
-      "outputs": [".next/**", ".expo/**", "dist/**", "next-env.d.ts"]
+    "format": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+      "outputMode": "new-only"
     },
     "lint": {
-      "dependsOn": ["build"]
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/.eslintcache"]
     },
-    "lint:fix": {},
+    "typecheck": {
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+    },
     "clean": {
       "cache": false
     },
     "//#clean": {
       "cache": false
-    },
-    "type-check": {
-      "dependsOn": ["^db:generate", "build"],
-      "cache": false
     }
   },
   "globalEnv": [
-    "CI",
     "CLERK_SECRET_KEY",
     "DATABASE_URL",
-    "EXPO_ROUTER_APP_ROOT",
     "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY",
     "NEXTJS_URL",
-    "NODE_ENV",
     "SKIP_ENV_VALIDATION",
     "STRIPE_API_KEY",
     "STRIPE_WEBHOOK_SECRET",
     "NEXT_PUBLIC_STRIPE_STD_PRODUCT_ID",
     "NEXT_PUBLIC_STRIPE_STD_MONTHLY_PRICE_ID",
     "NEXT_PUBLIC_STRIPE_PRO_PRODUCT_ID",
-    "NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID",
-    "VERCEL",
-    "VERCEL_URL"
+    "NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID"
   ]
 }

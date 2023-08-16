@@ -4,7 +4,7 @@ import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
 import { customAlphabet } from "nanoid";
 
-import { DB } from "./prisma/types";
+import type { DB } from "./prisma/types";
 
 export { jsonArrayFrom, jsonObjectFrom } from "kysely/helpers/postgres";
 

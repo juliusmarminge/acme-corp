@@ -1,28 +1,25 @@
 {
-  "name": "@acme/{{ name }}",
-  "private": true,
+  "name": "@acme/tailwind-config",
   "version": "0.1.0",
-  "exports": {
-    ".": "./index.ts"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "src/*"
-      ]
-    }
-  }
+  "main": "index.ts",
   "license": "MIT",
+  "files": [
+    "index.ts",
+    "postcss.js"
+  ],
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "format": "prettier --check \"**/*.{js,ts,json}\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.15",
+    "postcss": "8.4.26",
+    "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "0.2.0",
+    "@acme/eslint-config": "^0.2.0",
     "@acme/prettier-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
     "eslint": "^8.47.0",
@@ -30,6 +27,7 @@
     "typescript": "^5.1.6"
   },
   "eslintConfig": {
+    "root": true,
     "extends": [
       "@acme/eslint-config/base"
     ]

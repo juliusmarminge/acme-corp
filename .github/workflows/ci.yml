@@ -50,7 +50,7 @@ jobs:
       - run: cp .env.example .env.local
 
       - name: Build, lint and type-check
-        run: pnpm turbo build lint type-check
+        run: pnpm turbo build lint typecheck format
 
       - name: Check workspaces
         run: pnpm manypkg check

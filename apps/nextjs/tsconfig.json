@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "@acme/tsconfig/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -10,15 +10,8 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
-  "exclude": [],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.cjs",
-    "**/*.mjs",
-    ".next/types/**/*.ts"
-  ]
+  "include": ["next-env.d.ts", ".next/types/**/*.ts", "*.ts", "*.mjs", "src"],
+  "exclude": ["node_modules"]
 }

@@ -11,6 +11,9 @@
     "db:generate": "pnpm with-env prisma generate",
     "db:push": "pnpm with-env prisma db push --skip-generate",
     "dev": "pnpm with-env prisma studio --port 5556",
+    "format": "prisma format && prettier --check \"**/*.{mjs,ts,json}\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
@@ -20,7 +23,12 @@
     "nanoid": "^4.0.2"
   },
   "devDependencies": {
+    "@acme/eslint-config": "^0.2.0",
+    "@acme/prettier-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
     "dotenv-cli": "^7.2.1",
+    "eslint": "^8.47.0",
+    "prettier": "^3.0.2",
     "prisma": "^4.16.2",
     "prisma-kysely": "^1.5.0",
     "typescript": "^5.1.6"
@@ -28,6 +36,10 @@
   "eslintConfig": {
     "extends": [
       "@acme/eslint-config/base"
-    ]
-  }
+    ],
+    "rules": {
+      "@typescript-eslint/consistent-type-definitions": "off"
+    }
+  },
+  "prettier": "@acme/prettier-config"
 }

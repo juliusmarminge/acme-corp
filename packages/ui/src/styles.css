@@ -1,4 +1,0 @@
-/* This is used to gain access to tailwind classes in the package files, but is not used for compilation purposes */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

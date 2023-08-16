@@ -1,83 +1,83 @@
 generator kysely {
-    provider     = "prisma-kysely"
-    output       = "."
-    enumFileName = "enums.ts"
+  provider     = "prisma-kysely"
+  output       = "."
+  enumFileName = "enums.ts"
 }
 
 datasource db {
-    provider     = "mysql"
-    url          = env("DATABASE_URL")
-    relationMode = "prisma"
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 enum ProjectTier {
-    FREE
-    PRO
+  FREE
+  PRO
 }
 
 model Project {
-    id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
-    createdAt DateTime @default(now())
+  id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
+  createdAt DateTime @default(now())
 
-    // A project is tied to a Clerk User or Organization
-    organizationId String? @db.VarChar(36) // uuid v4
-    userId         String? @db.VarChar(36) // uuid v4
+  // A project is tied to a Clerk User or Organization
+  organizationId String? @db.VarChar(36) // uuid v4
+  userId         String? @db.VarChar(36) // uuid v4
 
-    name String
-    tier ProjectTier @default(FREE)
-    url  String?
+  name String
+  tier ProjectTier @default(FREE)
+  url  String?
 
-    @@index([organizationId])
-    @@index([userId])
+  @@index([organizationId])
+  @@index([userId])
 }
 
 enum SubscriptionPlan {
-    FREE
-    STANDARD
-    PRO
+  FREE
+  STANDARD
+  PRO
 }
 
 model Customer {
-    id                  String            @id @db.VarChar(30) // prefix_ + nanoid (16)
-    stripeId            String            @unique
-    subscriptionId      String?
-    clerkUserId         String
-    clerkOrganizationId String?
-    name                String?
-    plan                SubscriptionPlan?
-    paidUntil           DateTime?
-    endsAt              DateTime?
+  id                  String            @id @db.VarChar(30) // prefix_ + nanoid (16)
+  stripeId            String            @unique
+  subscriptionId      String?
+  clerkUserId         String
+  clerkOrganizationId String?
+  name                String?
+  plan                SubscriptionPlan?
+  paidUntil           DateTime?
+  endsAt              DateTime?
 
-    @@index([clerkUserId])
+  @@index([clerkUserId])
 }
 
 model ApiKey {
-    id        String    @id @db.VarChar(30) // prefix_ + nanoid (16)
-    createdAt DateTime  @default(now())
-    expiresAt DateTime?
-    lastUsed  DateTime?
-    revokedAt DateTime?
+  id        String    @id @db.VarChar(30) // prefix_ + nanoid (16)
+  createdAt DateTime  @default(now())
+  expiresAt DateTime?
+  lastUsed  DateTime?
+  revokedAt DateTime?
 
-    projectId   String @db.VarChar(30) // prefix_ + nanoid (16)
-    clerkUserId String @db.VarChar(36) // uuid v4
+  projectId   String @db.VarChar(30) // prefix_ + nanoid (16)
+  clerkUserId String @db.VarChar(36) // uuid v4
 
-    name String @default("Secret Key")
-    key  String @unique
+  name String @default("Secret Key")
+  key  String @unique
 
-    @@index([projectId])
+  @@index([projectId])
 }
 
 model Ingestion {
-    id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
-    createdAt DateTime @default(now())
+  id        String   @id @db.VarChar(30) // prefix_ + nanoid (16)
+  createdAt DateTime @default(now())
 
-    projectId String @db.VarChar(30) // prefix_ + nanoid (16)
-    apiKeyId  String @db.VarChar(30) // prefix_ + nanoid (16)
+  projectId String @db.VarChar(30) // prefix_ + nanoid (16)
+  apiKeyId  String @db.VarChar(30) // prefix_ + nanoid (16)
 
-    schema Json
-    hash   String  @db.VarChar(40) // sha1
-    parent String? @db.VarChar(40) // sha1
-    origin String  @db.VarChar(100)
+  schema Json
+  hash   String  @db.VarChar(40) // sha1
+  parent String? @db.VarChar(40) // sha1
+  origin String  @db.VarChar(100)
 
-    @@index([projectId])
+  @@index([projectId])
 }

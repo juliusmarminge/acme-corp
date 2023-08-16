@@ -19,8 +19,8 @@
     "clean": "rm -rf .turbo node_modules",
     "dev": "stripe listen --forward-to localhost:3000/api/webhooks/stripe",
     "lint": "eslint .",
-    "lint:fix": "pnpm lint --fix",
-    "type-check": "tsc --noEmit"
+    "format": "prettier --check \"**/*.{mjs,ts,json}\"",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/db": "^0.1.0",
@@ -29,13 +29,17 @@
     "stripe": "^12.18.0"
   },
   "devDependencies": {
-    "@acme/eslint-config": "0.2.0",
+    "@acme/eslint-config": "^0.2.0",
+    "@acme/prettier-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
     "eslint": "^8.47.0",
+    "prettier": "^3.0.2",
     "typescript": "^5.1.6"
   },
   "eslintConfig": {
     "extends": [
       "@acme/eslint-config/base"
     ]
-  }
+  },
+  "prettier": "@acme/prettier-config"
 }
