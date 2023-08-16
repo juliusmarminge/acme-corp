@@ -6,8 +6,9 @@
     "build": "tsup",
     "clean": "git clean -xdf dist .turbo node_modules",
     "dev": "tsup --watch",
-    "lint": "eslint src",
-    "type-check": "tsc --noEmit"
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.3",
@@ -39,13 +40,15 @@
   },
   "devDependencies": {
     "@acme/eslint-config": "0.2.0",
+    "@acme/prettier-config": "0.1.0",
     "@acme/tailwind-config": "0.1.0",
+    "@acme/tsconfig": "0.1.0",
     "@tanstack/react-table": "^8.9.3",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "date-fns": "^2.30.0",
     "eslint": "^8.47.0",
-    "postcss": "8.4.26",
+    "prettier": "^3.0.2",
     "react": "18.2.0",
     "react-day-picker": "^8.8.0",
     "react-dom": "18.2.0",
@@ -62,6 +65,7 @@
       "@acme/eslint-config/react"
     ]
   },
+  "prettier": "@acme/prettier-config",
   "exports": {
     "./package.json": "./package.json",
     ".": {

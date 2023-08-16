@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import * as Icons from "@acme/ui/icons";
 
-import { SiteFooter } from "~/components/footer";
 import { siteConfig } from "~/app/config";
+import { SiteFooter } from "~/components/footer";
 
 export default function AuthLayout(props: { children: React.ReactNode }) {
   return (

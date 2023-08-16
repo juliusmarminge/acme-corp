@@ -6,9 +6,9 @@ import { auth } from "@clerk/nextjs";
 import { buttonVariants } from "@acme/ui/button";
 import * as Icons from "@acme/ui/icons";
 
+import { siteConfig } from "~/app/config";
 import { SiteFooter } from "~/components/footer";
 import { MobileDropdown } from "~/components/mobile-nav";
-import { siteConfig } from "~/app/config";
 import { MainNav } from "../(dashboard)/_components/main-nav";
 
 export default function MarketingLayout(props: { children: ReactNode }) {
