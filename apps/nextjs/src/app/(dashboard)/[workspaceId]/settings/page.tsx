@@ -14,6 +14,8 @@ import { OrganizationImage } from "./_components/organization-image";
 import { OrganizationMembers } from "./_components/organization-members";
 import { OrganizationName } from "./_components/organization-name";
 
+export const runtime = "edge";
+
 export default function WorkspaceSettingsPage(props: {
   params: { workspaceId: string };
 }) {

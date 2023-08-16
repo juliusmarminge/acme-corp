@@ -6,6 +6,8 @@ import { handleEvent, stripe } from "@acme/stripe";
 
 import { env } from "~/env.mjs";
 
+export const runtime = "edge";
+
 export async function POST(req: NextRequest) {
   const payload = await req.text();
   const signature = req.headers.get("Stripe-Signature")!;

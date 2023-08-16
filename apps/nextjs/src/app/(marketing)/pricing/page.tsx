@@ -15,6 +15,7 @@ import type { RouterOutputs } from "~/trpc/server";
 import { api } from "~/trpc/server";
 import { SubscribeNow } from "./subscribe-now";
 
+// FIXME: Run this in Edge runtime - currently got some weird transforming error with Dinero.js + Superjson
 // export const runtime = "edge";
 
 export default async function PricingPage() {

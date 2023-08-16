@@ -22,6 +22,8 @@ import { api } from "~/trpc/server";
 import { LoadingCard } from "../_components/loading-card";
 import { DashboardShell } from "../../../_components/dashboard-shell";
 
+export const runtime = "edge";
+
 export default async function DashboardPage(props: {
   params: { workspaceId: string; projectId: string };
 }) {
