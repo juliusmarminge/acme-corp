@@ -1,5 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
-import { format } from "prettier";
+import { format, resolveConfig } from "prettier";
 import { defineConfig } from "tsup";
 import type { Options } from "tsup";
 
@@ -82,7 +82,10 @@ export default defineConfig((opts) => {
 
         await writeFile(
           "./package.json",
-          await format(JSON.stringify(pkgJson, null, 2), { parser: "json" }),
+          await format(
+            JSON.stringify(pkgJson, null, 2),
+            (await resolveConfig("./package.json")) ?? { parser: "json" },
+          ),
         );
       },
     },
