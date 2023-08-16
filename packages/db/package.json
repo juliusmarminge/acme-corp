@@ -11,7 +11,7 @@
     "db:generate": "pnpm with-env prisma generate",
     "db:push": "pnpm with-env prisma db push --skip-generate",
     "dev": "pnpm with-env prisma studio --port 5556",
-    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "format": "prisma format && prettier --check \"**/*.{mjs,ts,json}\"",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env.local --"

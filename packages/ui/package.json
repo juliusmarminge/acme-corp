@@ -6,7 +6,7 @@
     "build": "tsup",
     "clean": "git clean -xdf dist .turbo node_modules",
     "dev": "tsup --watch",
-    "format": "prettier --check \"**/*.{mjs,ts,tsx,md}\"",
+    "format": "prettier --check \"**/*.{ts,tsx,md}\"",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
