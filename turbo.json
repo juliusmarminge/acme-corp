@@ -36,7 +36,7 @@
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
     "typecheck": {
-      "dependsOn": ["^topo"],
+      "dependsOn": ["^topo", "^build"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
     "clean": {
