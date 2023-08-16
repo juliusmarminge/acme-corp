@@ -32,7 +32,7 @@
       "outputMode": "new-only"
     },
     "lint": {
-      "dependsOn": ["^topo", "^build"],
+      "dependsOn": ["^topo", "build"],
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
     "typecheck": {
