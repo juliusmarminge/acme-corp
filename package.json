@@ -25,7 +25,7 @@
     "@turbo/gen": "^1.10.12",
     "@types/prettier": "^2.7.3",
     "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier-plugin-tailwindcss": "^0.5.3",
     "turbo": "^1.10.12",
     "typescript": "^5.1.6"
   }
