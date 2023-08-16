@@ -6,7 +6,7 @@
     "build": "tsup",
     "clean": "git clean -xdf dist .turbo node_modules",
     "dev": "tsup --watch",
-    "format": "prettier --check \"**/*.{ts,tsx,json}\"",
+    "format": "prettier --check \"**/*.{ts,tsx}\"",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
@@ -60,7 +60,10 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": ["@acme/eslint-config/base", "@acme/eslint-config/react"]
+    "extends": [
+      "@acme/eslint-config/base",
+      "@acme/eslint-config/react"
+    ]
   },
   "prettier": "@acme/prettier-config",
   "exports": {
@@ -160,8 +163,12 @@
   },
   "typesVersions": {
     "*": {
-      ".": ["dist/index.d.ts"],
-      "*": ["dist/*"]
+      ".": [
+        "dist/index.d.ts"
+      ],
+      "*": [
+        "dist/*"
+      ]
     }
   }
 }
