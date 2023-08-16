@@ -40,7 +40,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
     "react-image-crop": "^10.1.5",
-    "react-wrap-balancer": "^1.0.0",
+    "react-wrap-balancer": "^1.1.0",
     "recharts": "^2.7.3",
     "superjson": "1.13.1",
     "tailwindcss-animate": "^1.0.6",
