@@ -29,7 +29,7 @@
     "dotenv-cli": "^7.2.1",
     "eslint": "^8.47.0",
     "prettier": "^3.0.2",
-    "prisma": "^4.16.2",
+    "prisma": "^5.1.1",
     "prisma-kysely": "^1.5.0",
     "typescript": "^5.1.6"
   },
