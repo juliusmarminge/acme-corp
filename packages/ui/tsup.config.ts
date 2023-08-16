@@ -80,12 +80,13 @@ export default defineConfig((opts) => {
             };
           });
 
+        const options = await resolveConfig("./package.json");
         await writeFile(
           "./package.json",
-          await format(
-            JSON.stringify(pkgJson, null, 2),
-            (await resolveConfig("./package.json")) ?? { parser: "json" },
-          ),
+          await format(JSON.stringify(pkgJson, null, 2), {
+            ...options,
+            parser: "json",
+          }),
         );
       },
     },
