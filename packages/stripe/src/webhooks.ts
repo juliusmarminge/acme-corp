@@ -1,5 +1,4 @@
 import { clerkClient } from "@clerk/nextjs";
-import { TRPCError } from "@trpc/server";
 import type Stripe from "stripe";
 
 import { db, genId } from "@acme/db";
@@ -12,10 +11,7 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
     case "checkout.session.completed": {
       const session = event.data.object;
       if (typeof session.subscription !== "string") {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Missing or invalid subscription id",
-        });
+        throw new Error("Missing or invalid subscription id");
       }
       const subscription = await stripe.subscriptions.retrieve(
         session.subscription,
@@ -28,10 +24,7 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
       const { userId, organizationName } = subscription.metadata;
 
       if (!userId) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Missing user id",
-        });
+        throw new Error("Missing user id");
       }
 
       const customer = await db
@@ -88,10 +81,7 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
     case "invoice.payment_succeeded": {
       const invoice = event.data.object;
       if (typeof invoice.subscription !== "string") {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Missing or invalid subscription id",
-        });
+        throw new Error("Missing or invalid subscription id");
       }
       const subscription = await stripe.subscriptions.retrieve(
         invoice.subscription,
