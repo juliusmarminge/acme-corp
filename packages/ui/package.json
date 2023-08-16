@@ -3,9 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "tsup",
-    "clean": "git clean -xdf dist .turbo node_modules",
-    "dev": "tsup --watch",
+    "clean": "git clean -xdf .turbo node_modules",
     "format": "prettier --check \"**/*.{ts,tsx}\"",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
@@ -55,7 +53,6 @@
     "react-hook-form": "^7.45.4",
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "^1.0.6",
-    "tsup": "^6.7.0",
     "typescript": "^5.1.6"
   },
   "eslintConfig": {
@@ -67,107 +64,33 @@
   },
   "prettier": "@acme/prettier-config",
   "exports": {
-    "./package.json": "./package.json",
-    ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
-    "./avatar": {
-      "import": "./dist/avatar.mjs",
-      "types": "./dist/avatar.d.ts"
-    },
-    "./calendar": {
-      "import": "./dist/calendar.mjs",
-      "types": "./dist/calendar.d.ts"
-    },
-    "./checkbox": {
-      "import": "./dist/checkbox.mjs",
-      "types": "./dist/checkbox.d.ts"
-    },
-    "./command": {
-      "import": "./dist/command.mjs",
-      "types": "./dist/command.d.ts"
-    },
-    "./data-table": {
-      "import": "./dist/data-table.mjs",
-      "types": "./dist/data-table.d.ts"
-    },
-    "./dialog": {
-      "import": "./dist/dialog.mjs",
-      "types": "./dist/dialog.d.ts"
-    },
-    "./dropdown-menu": {
-      "import": "./dist/dropdown-menu.mjs",
-      "types": "./dist/dropdown-menu.d.ts"
-    },
-    "./form": {
-      "import": "./dist/form.mjs",
-      "types": "./dist/form.d.ts"
-    },
-    "./input": {
-      "import": "./dist/input.mjs",
-      "types": "./dist/input.d.ts"
-    },
-    "./label": {
-      "import": "./dist/label.mjs",
-      "types": "./dist/label.d.ts"
-    },
-    "./popover": {
-      "import": "./dist/popover.mjs",
-      "types": "./dist/popover.d.ts"
-    },
-    "./scroll-area": {
-      "import": "./dist/scroll-area.mjs",
-      "types": "./dist/scroll-area.d.ts"
-    },
-    "./select": {
-      "import": "./dist/select.mjs",
-      "types": "./dist/select.d.ts"
-    },
-    "./sheet": {
-      "import": "./dist/sheet.mjs",
-      "types": "./dist/sheet.d.ts"
-    },
-    "./tabs": {
-      "import": "./dist/tabs.mjs",
-      "types": "./dist/tabs.d.ts"
-    },
-    "./toaster": {
-      "import": "./dist/toaster.mjs",
-      "types": "./dist/toaster.d.ts"
-    },
-    "./use-toast": {
-      "import": "./dist/use-toast.mjs",
-      "types": "./dist/use-toast.d.ts"
-    },
-    "./button": {
-      "import": "./dist/button.mjs",
-      "types": "./dist/button.d.ts"
-    },
-    "./icons": {
-      "import": "./dist/icons.mjs",
-      "types": "./dist/icons.d.ts"
-    },
-    "./card": {
-      "import": "./dist/card.mjs",
-      "types": "./dist/card.d.ts"
-    },
-    "./table": {
-      "import": "./dist/table.mjs",
-      "types": "./dist/table.d.ts"
-    },
-    "./toast": {
-      "import": "./dist/toast.mjs",
-      "types": "./dist/toast.d.ts"
-    }
+    ".": "./src/index.ts",
+    "./avatar": "./src/avatar.tsx",
+    "./button": "./src/button.tsx",
+    "./calendar": "./src/calendar.tsx",
+    "./card": "./src/card.tsx",
+    "./checkbox": "./src/checkbox.tsx",
+    "./command": "./src/command.tsx",
+    "./data-table": "./src/data-table.tsx",
+    "./dialog": "./src/dialog.tsx",
+    "./dropdown-menu": "./src/dropdown-menu.tsx",
+    "./form": "./src/form.tsx",
+    "./icons": "./src/icons.tsx",
+    "./input": "./src/input.tsx",
+    "./label": "./src/label.tsx",
+    "./popover": "./src/popover.tsx",
+    "./scroll-area": "./src/scroll-area.tsx",
+    "./select": "./src/select.tsx",
+    "./sheet": "./src/sheet.tsx",
+    "./table": "./src/table.tsx",
+    "./tabs": "./src/tabs.tsx",
+    "./toaster": "./src/toaster.tsx",
+    "./use-toast": "./src/use-toast.tsx"
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "dist/index.d.ts"
-      ],
       "*": [
-        "dist/*"
+        "src/*"
       ]
     }
   }
