@@ -11,7 +11,7 @@ export default function OnboardingPage() {
     <>
       <Onboarding workspaceId={orgId ?? userId!} />
 
-      <div className="absolute inset-0 top-12 -z-10 bg-[url('/bg-pattern-light.png')] bg-cover bg-center dark:bg-[url('/bg-pattern-dark.png')]" />
+      <div className="absolute inset-0 top-12 -z-10 bg-cover bg-center" />
     </>
   );
 }
