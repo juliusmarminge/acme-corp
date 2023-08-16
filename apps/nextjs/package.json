@@ -44,7 +44,7 @@
     "recharts": "^2.7.3",
     "superjson": "1.13.1",
     "tailwindcss-animate": "^1.0.6",
-    "zod": "^3.21.4"
+    "zod": "^3.22.1"
   },
   "devDependencies": {
     "@acme/eslint-config": "0.2.0",
