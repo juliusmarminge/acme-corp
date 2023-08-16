@@ -13,6 +13,8 @@ import { DashboardShell } from "~/app/(dashboard)/_components/dashboard-shell";
 import { userCanAccess } from "~/lib/project-guard";
 import { api } from "~/trpc/server";
 
+export const runtime = "edge";
+
 export default async function IngestionPage(props: {
   params: { workspaceId: string; projectId: string; ingestionId: string };
 }) {

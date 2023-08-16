@@ -2,6 +2,8 @@ import { auth } from "@clerk/nextjs";
 
 import { Onboarding } from "./multi-step-form";
 
+export const runtime = "edge";
+
 export default function OnboardingPage() {
   const { orgId, userId } = auth();
 

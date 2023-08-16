@@ -147,9 +147,6 @@ importers:
       '@acme/stripe':
         specifier: ^0.1.0
         version: link:../../packages/stripe
-      '@acme/tailwind-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/tailwind
       '@acme/ui':
         specifier: ^0.1.0
         version: link:../../packages/ui
@@ -241,6 +238,9 @@ importers:
       '@acme/prettier-config':
         specifier: ^0.1.0
         version: link:../../tooling/prettier
+      '@acme/tailwind-config':
+        specifier: ^0.1.0
+        version: link:../../tooling/tailwind
       '@acme/tsconfig':
         specifier: ^0.1.0
         version: link:../../tooling/typescript

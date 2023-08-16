@@ -36,13 +36,21 @@ export const organizationsRouter = createTRPCRouter({
     .mutation(async (opts) => {
       const { orgId } = opts.ctx.auth;
 
-      const member =
-        await clerkClient.organizations.deleteOrganizationMembership({
-          organizationId: orgId,
-          userId: opts.input.userId,
-        });
+      try {
+        const member =
+          await clerkClient.organizations.deleteOrganizationMembership({
+            organizationId: orgId,
+            userId: opts.input.userId,
+          });
 
-      return { memberName: member.publicUserData?.firstName };
+        return { memberName: member.publicUserData?.firstName };
+      } catch (e) {
+        console.log("Error deleting member", e);
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "User not found",
+        });
+      }
     }),
 
   inviteMember: protectedAdminProcedure

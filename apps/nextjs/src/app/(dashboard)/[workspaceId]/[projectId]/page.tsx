@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
+export const runtime = "edge";
+
 /**
  * Suboptimal, would be better off doing this in middleware
  */

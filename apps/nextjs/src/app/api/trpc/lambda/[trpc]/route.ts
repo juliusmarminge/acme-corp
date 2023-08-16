@@ -13,8 +13,8 @@ const handler = (req: NextRequest) =>
     router: lambdaRouter,
     req: req,
     createContext: () => createTRPCContext({ req }),
-    onError: ({ error }) => {
-      console.log("Error in tRPC handler (lambda)");
+    onError: ({ error, path }) => {
+      console.log("Error in tRPC handler (lambda) on path", path);
       console.error(error);
     },
   });
