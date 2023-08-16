@@ -88,11 +88,10 @@ export const projectRouter = createTRPCRouter({
 
       if (orgId) {
         // TODO: Check permissions
-
-        return await deleteQuery.where("organizationId", "=", orgId).execute();
+        await deleteQuery.where("organizationId", "=", orgId).execute();
+      } else {
+        await deleteQuery.where("userId", "=", userId).execute();
       }
-
-      return await deleteQuery.where("userId", "=", userId).execute();
     }),
 
   transferToPersonal: protectedAdminProcedure
