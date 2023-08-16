@@ -60,10 +60,7 @@
   },
   "eslintConfig": {
     "root": true,
-    "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/react"
-    ]
+    "extends": ["@acme/eslint-config/base", "@acme/eslint-config/react"]
   },
   "prettier": "@acme/prettier-config",
   "exports": {
@@ -163,12 +160,8 @@
   },
   "typesVersions": {
     "*": {
-      ".": [
-        "dist/index.d.ts"
-      ],
-      "*": [
-        "dist/*"
-      ]
+      ".": ["dist/index.d.ts"],
+      "*": ["dist/*"]
     }
   }
 }
