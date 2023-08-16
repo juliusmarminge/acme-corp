@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
 import { defineConfig } from "tsup";
 import type { Options } from "tsup";
