@@ -14,8 +14,7 @@
       "cache": false
     },
     "db:push": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
+      "inputs": ["prisma/schema.prisma"]
     },
     "dev": {
       "persistent": true,
