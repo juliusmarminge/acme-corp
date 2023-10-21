@@ -14,7 +14,7 @@ export const stripeRouter = createTRPCRouter({
     .input(z.object({ planId: z.string() }))
     .mutation(async (opts) => {
       const { userId } = opts.ctx.auth;
-
+      const {planId} = opts.input;
       const customer = await opts.ctx.db
         .selectFrom("Customer")
         .select(["id", "plan", "stripeId"])
@@ -52,7 +52,7 @@ export const stripeRouter = createTRPCRouter({
         subscription_data: { metadata: { userId } },
         cancel_url: returnUrl,
         success_url: returnUrl,
-        line_items: [{ price: PLANS.PRO?.priceId, quantity: 1 }],
+        line_items: [{ price: planId, quantity: 1 }],
       });
 
       if (!session.url) return { success: false as const };
