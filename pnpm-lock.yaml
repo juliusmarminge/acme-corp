@@ -385,8 +385,8 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.2.2)(zod@3.22.1)
       stripe:
-        specifier: ^14.2.0
-        version: 14.2.0
+        specifier: ^13.9.0
+        version: 13.9.0
     devDependencies:
       '@acme/eslint-config':
         specifier: ^0.2.0
@@ -12507,8 +12507,8 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  /stripe@14.2.0:
-    resolution: {integrity: sha512-lMjDOyJbt+NVSDvkTathSP7uEV35l7oU8UrhBJrYD8lUi43BWujq8E9QHd3o9D2KPBR1Cze5DCw5s1btnLfdMA==}
+  /stripe@13.9.0:
+    resolution: {integrity: sha512-sQAqodCvaw/iYWauHHdOWlFGj0oZj/3A51zs4rG5PN3SUJUFSSjtnbc9q5Djpls0iz3nXz2UwjzAdKHVP4dVqQ==}
     engines: {node: '>=12.*'}
     dependencies:
       '@types/node': 18.17.5

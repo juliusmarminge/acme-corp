@@ -8,7 +8,7 @@ export * from "./webhooks";
 export type { Stripe };
 
 export const stripe = new Stripe(env.STRIPE_API_KEY, {
-  apiVersion: "2022-11-15",
+  apiVersion: "2023-08-16",
   typescript: true,
 });
 
