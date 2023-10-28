@@ -28,10 +28,10 @@ export function ProjectSwitcher(props: {
 
   const [switcherOpen, setSwitcherOpen] = React.useState(false);
 
-  const { workspaceId, projectId } = useParams() as {
+  const { workspaceId, projectId } = useParams<{
     workspaceId: string;
     projectId: string;
-  };
+  }>();
   const activeProject = projects.find((p) => p.id === projectId);
 
   if (!projectId) return null;

@@ -1,16 +1,10 @@
 "use server";
 
 import { headers } from "next/headers";
-import { auth } from "@clerk/nextjs";
 import { loggerLink } from "@trpc/client";
-import {
-  experimental_createServerActionHandler,
-  experimental_createTRPCNextAppDirServer,
-} from "@trpc/next/app-dir/server";
+import { experimental_createTRPCNextAppDirServer } from "@trpc/next/app-dir/server";
 
-import { createInnerTRPCContext } from "@acme/api";
 import type { AppRouter } from "@acme/api";
-import { edgeRouter } from "@acme/api/edge";
 
 import { endingLink, transformer } from "./shared";
 
@@ -40,7 +34,7 @@ export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
 
 export { type RouterInputs, type RouterOutputs } from "@acme/api";
 
-export const createAction = experimental_createServerActionHandler({
-  router: edgeRouter,
-  createContext: () => createInnerTRPCContext({ auth: auth() }),
-});
+// export const createAction = experimental_createServerActionHandler({
+//   router: edgeRouter,
+//   createContext: () => createInnerTRPCContext({ auth: auth() }),
+// });

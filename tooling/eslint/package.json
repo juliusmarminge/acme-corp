@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@next/eslint-plugin-next": "^13.4.16",
+    "@next/eslint-plugin-next": "^14.0.0",
     "@types/eslint": "^8.44.2",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
@@ -29,8 +29,8 @@
   "devDependencies": {
     "@acme/prettier-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
-    "eslint": "^8.47.0",
-    "typescript": "^5.1.6"
+    "eslint": "^8.52.0",
+    "typescript": "^5.2.2"
   },
   "eslintConfig": {
     "root": true,

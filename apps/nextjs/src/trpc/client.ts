@@ -1,9 +1,5 @@
 import { loggerLink } from "@trpc/client";
-import {
-  experimental_createActionHook,
-  experimental_createTRPCNextAppDirClient,
-  experimental_serverActionLink,
-} from "@trpc/next/app-dir/client";
+import { experimental_createTRPCNextAppDirClient } from "@trpc/next/app-dir/client";
 
 import type { AppRouter } from "@acme/api";
 
@@ -29,9 +25,9 @@ export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   },
 });
 
-export const useAction = experimental_createActionHook({
-  transformer,
-  links: [experimental_serverActionLink()],
-});
+// export const useAction = experimental_createActionHook({
+//   transformer,
+//   links: [experimental_serverActionLink()],
+// });
 
 export { type RouterInputs, type RouterOutputs } from "@acme/api";
