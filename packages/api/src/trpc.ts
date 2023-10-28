@@ -10,7 +10,7 @@ import type { NextRequest } from "next/server";
 import type {
   SignedInAuthObject,
   SignedOutAuthObject,
-} from "@clerk/nextjs/api";
+} from "@clerk/nextjs/server";
 import { getAuth } from "@clerk/nextjs/server";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { ZodError } from "zod";
@@ -208,7 +208,7 @@ export const formdataMiddleware = t.middleware(async (opts) => {
   if (!formData) throw new TRPCError({ code: "BAD_REQUEST" });
 
   return opts.next({
-    rawInput: formData,
+    input: formData,
   });
 });
 /**

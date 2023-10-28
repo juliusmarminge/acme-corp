@@ -11,7 +11,7 @@ import { useOrganizationList } from "@clerk/nextjs";
  * and set it to that.
  */
 export function SyncActiveOrgFromUrl() {
-  const { workspaceId } = useParams() as { workspaceId: string };
+  const { workspaceId } = useParams<{ workspaceId: string }>();
   const { setActive, organizationList, isLoaded } = useOrganizationList();
 
   React.useEffect(() => {

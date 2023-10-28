@@ -26,7 +26,7 @@ import { useToast } from "@acme/ui/use-toast";
 import { api } from "~/trpc/client";
 
 export function TransferProjectToPersonal() {
-  const { projectId } = useParams() as { projectId: string };
+  const { projectId } = useParams<{ projectId: string }>();
   const { userId } = useAuth();
   const toaster = useToast();
   const router = useRouter();
