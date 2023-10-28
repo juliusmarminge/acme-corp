@@ -27,11 +27,11 @@
     "@acme/prettier-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
     "dotenv-cli": "^7.2.1",
-    "eslint": "^8.47.0",
+    "eslint": "^8.52.0",
     "prettier": "^3.0.2",
     "prisma": "^5.1.1",
     "prisma-kysely": "^1.5.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "eslintConfig": {
     "extends": [
