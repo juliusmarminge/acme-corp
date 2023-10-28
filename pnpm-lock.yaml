@@ -164,7 +164,7 @@ importers:
         version: 14.0.0
       '@t3-oss/env-nextjs':
         specifier: ^0.6.0
-        version: 0.6.0(typescript@5.2.2)(zod@3.22.1)
+        version: 0.6.0(typescript@5.2.2)(zod@3.22.3)
       '@tanstack/react-query':
         specifier: ^5.0.5
         version: 5.0.5(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
@@ -229,8 +229,8 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(tailwindcss@3.3.2)
       zod:
-        specifier: ^3.22.1
-        version: 3.22.1
+        specifier: ^3.22.3
+        version: 3.22.3
     devDependencies:
       '@acme/eslint-config':
         specifier: ^0.2.0
@@ -291,7 +291,7 @@ importers:
         version: 2.0.0-alpha.14
       '@t3-oss/env-nextjs':
         specifier: ^0.6.0
-        version: 0.6.0(typescript@5.2.2)(zod@3.22.1)
+        version: 0.6.0(typescript@5.2.2)(zod@3.22.3)
       '@trpc/client':
         specifier: next
         version: 11.0.0-alpha-next-2023-10-26-15-15-56.93(@trpc/server@11.0.0-alpha-next-2023-10-26-15-15-56.93)
@@ -305,11 +305,11 @@ importers:
         specifier: 1.13.1
         version: 1.13.1
       zod:
-        specifier: ^3.22.1
-        version: 3.22.1
+        specifier: ^3.22.3
+        version: 3.22.3
       zod-form-data:
         specifier: ^2.0.1
-        version: 2.0.1(zod@3.22.1)
+        version: 2.0.1(zod@3.22.3)
     devDependencies:
       '@acme/eslint-config':
         specifier: ^0.2.0
@@ -383,7 +383,7 @@ importers:
         version: 4.26.1(next@14.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@t3-oss/env-nextjs':
         specifier: ^0.6.0
-        version: 0.6.0(typescript@5.2.2)(zod@3.22.1)
+        version: 0.6.0(typescript@5.2.2)(zod@3.22.3)
       stripe:
         specifier: ^13.9.0
         version: 13.9.0
@@ -458,8 +458,8 @@ importers:
         specifier: ^1.14.0
         version: 1.14.0
       zod:
-        specifier: ^3.22.1
-        version: 3.22.1
+        specifier: ^3.22.3
+        version: 3.22.3
     devDependencies:
       '@acme/eslint-config':
         specifier: 0.2.0
@@ -4694,25 +4694,25 @@ packages:
       defer-to-connect: 1.1.3
     dev: false
 
-  /@t3-oss/env-core@0.6.0(typescript@5.2.2)(zod@3.22.1):
+  /@t3-oss/env-core@0.6.0(typescript@5.2.2)(zod@3.22.3):
     resolution: {integrity: sha512-3FkPAba069WRZVVab/sB1m3eSGn/rZeypx5k+sWEu1d+k0OQdRDnvFS+7MtxYgqVrwaRk3b7yVnX2dgSPVmWPQ==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
     dependencies:
       typescript: 5.2.2
-      zod: 3.22.1
+      zod: 3.22.3
     dev: false
 
-  /@t3-oss/env-nextjs@0.6.0(typescript@5.2.2)(zod@3.22.1):
+  /@t3-oss/env-nextjs@0.6.0(typescript@5.2.2)(zod@3.22.3):
     resolution: {integrity: sha512-SpzcGNIbUYcQw4zPPFeRJqCC1560zL7QmB0puIqOnuCsmykPkqHPX+n9CNZLXVQerboHzfvb7Kd+jAdouk72Vw==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
     dependencies:
-      '@t3-oss/env-core': 0.6.0(typescript@5.2.2)(zod@3.22.1)
+      '@t3-oss/env-core': 0.6.0(typescript@5.2.2)(zod@3.22.3)
       typescript: 5.2.2
-      zod: 3.22.1
+      zod: 3.22.3
     dev: false
 
   /@tanstack/query-core@5.0.5:
@@ -11069,7 +11069,7 @@ packages:
       '@prisma/generator-helper': 4.13.0
       '@prisma/internals': 4.13.0
       typescript: 4.6.2
-      zod: 3.22.1
+      zod: 3.22.3
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -13686,13 +13686,13 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
-  /zod-form-data@2.0.1(zod@3.22.1):
+  /zod-form-data@2.0.1(zod@3.22.3):
     resolution: {integrity: sha512-4jcsj3vFyFGINLLHEmehfOPKdcw+HqV65RwsV2IdyLHp9wpvGJRVXWg1yY8sq0ASEbQfTVBRtI7LcDGv3Qpj8g==}
     peerDependencies:
       zod: ^3.11.x
     dependencies:
-      zod: 3.22.1
+      zod: 3.22.3
     dev: false
 
-  /zod@3.22.1:
-    resolution: {integrity: sha512-+qUhAMl414+Elh+fRNtpU+byrwjDFOS1N7NioLY+tSlcADTx4TkCUua/hxJvxwDXcV4397/nZ420jy4n4+3WUg==}
+  /zod@3.22.3:
+    resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
