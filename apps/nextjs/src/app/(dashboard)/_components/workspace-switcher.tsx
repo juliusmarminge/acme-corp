@@ -58,14 +58,23 @@ export function WorkspaceSwitcher() {
   const [switcherOpen, setSwitcherOpen] = React.useState(false);
   const [newOrgDialogOpen, setNewOrgDialogOpen] = React.useState(false);
 
-  const orgs = useOrganizationList();
+  const orgs = useOrganizationList({
+    userMemberships: {
+      infinite: true,
+    },
+  });
   const org = useOrganization();
 
   const { user, isSignedIn, isLoaded } = useUser();
   if (isLoaded && !isSignedIn) throw new Error("How did you get here???");
 
   const activeOrg = org.organization ?? user;
-  if (!orgs.isLoaded || !org.isLoaded || !activeOrg) {
+  if (
+    !orgs.isLoaded ||
+    !org.isLoaded ||
+    !activeOrg ||
+    orgs.userMemberships.isLoading
+  ) {
     // Skeleton loader
     return (
       <Button
@@ -149,7 +158,7 @@ export function WorkspaceSwitcher() {
               </CommandGroup>
 
               <CommandGroup heading="Organizations">
-                {orgs.organizationList?.map(({ organization: org }) => (
+                {orgs.userMemberships.data?.map(({ organization: org }) => (
                   <CommandItem
                     key={org.name}
                     onSelect={async () => {

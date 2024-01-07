@@ -12,17 +12,21 @@ import { useOrganizationList } from "@clerk/nextjs";
  */
 export function SyncActiveOrgFromUrl() {
   const { workspaceId } = useParams<{ workspaceId: string }>();
-  const { setActive, organizationList, isLoaded } = useOrganizationList();
+  const { setActive, userMemberships, isLoaded } = useOrganizationList({
+    userMemberships: {
+      infinite: true,
+    },
+  });
 
   React.useEffect(() => {
-    if (!isLoaded) return;
+    if (!isLoaded || userMemberships.isLoading) return;
 
     if (!workspaceId?.startsWith("org_")) {
       void setActive({ organization: null });
       return;
     }
 
-    const org = organizationList?.find(
+    const org = userMemberships?.data?.find(
       ({ organization }) => organization.id === workspaceId,
     );
 
