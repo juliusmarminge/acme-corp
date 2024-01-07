@@ -157,8 +157,8 @@ importers:
         specifier: ^4.29.1
         version: 4.29.1(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
       '@dinero.js/currencies':
-        specifier: 2.0.0-alpha.1
-        version: 2.0.0-alpha.1
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
       '@hookform/resolvers':
         specifier: ^3.3.4
         version: 3.3.4(react-hook-form@7.49.2)
@@ -193,8 +193,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0
       dinero.js:
-        specifier: 1.9.1
-        version: 1.9.1
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
       framer-motion:
         specifier: ^10.17.9
         version: 10.17.9(react-dom@18.2.0)(react@18.2.0)
@@ -3348,10 +3348,6 @@ packages:
     resolution: {integrity: sha512-CtKELJ783joUbaU62fRM2xDXb4XYSy0MgOuIkPWgVOS3SYKKb6+2Ec9bNlvrW8lsPROz/RsvCuYVTphrZ79twg==}
     dependencies:
       '@dinero.js/currencies': 2.0.0-alpha.14
-    dev: false
-
-  /@dinero.js/currencies@2.0.0-alpha.1:
-    resolution: {integrity: sha512-JoKY6q3AOm2II44qLp6VMGn+j+p6QC39m3DFogKZXsucWIIvzt7c2v04DZrrHWLNnDYNzITOnbQ7f2pGbONjig==}
     dev: false
 
   /@dinero.js/currencies@2.0.0-alpha.14:
@@ -8400,10 +8396,6 @@ packages:
   /diff@4.0.2:
     resolution: {integrity: sha512-58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==}
     engines: {node: '>=0.3.1'}
-    dev: false
-
-  /dinero.js@1.9.1:
-    resolution: {integrity: sha512-1HXiF2vv3ZeRQ23yr+9lFxj/PbZqutuYWJnE0qfCB9xYBPnuaJ8lXtli1cJM0TvUXW1JTOaePldmqN5JVNxKSA==}
     dev: false
 
   /dinero.js@2.0.0-alpha.14:
