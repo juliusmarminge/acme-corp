@@ -33,8 +33,3 @@ export const api = experimental_createTRPCNextAppDirServer<AppRouter>({
 });
 
 export { type RouterInputs, type RouterOutputs } from "@acme/api";
-
-// export const createAction = experimental_createServerActionHandler({
-//   router: edgeRouter,
-//   createContext: () => createInnerTRPCContext({ auth: auth() }),
-// });

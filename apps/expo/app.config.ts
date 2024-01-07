@@ -4,7 +4,7 @@ const defineConfig = (): ExpoConfig => ({
   name: "expo",
   slug: "expo",
   scheme: "expo",
-  version: "1.0.0",
+  version: "0.1.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "light",
@@ -18,10 +18,11 @@ const defineConfig = (): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    supportsTablet: true,
     bundleIdentifier: "your.bundle.identifier",
+    supportsTablet: true,
   },
   android: {
+    package: "your.bundle.identifier",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#1F104A",
