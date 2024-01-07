@@ -7,17 +7,15 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import type { NextRequest } from "next/server";
-import type {
-  SignedInAuthObject,
-  SignedOutAuthObject,
-} from "@clerk/nextjs/server";
-import { getAuth } from "@clerk/nextjs/server";
+import type { getAuth } from "@clerk/nextjs/server";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { ZodError } from "zod";
 
 import { db } from "@acme/db";
 
 import { transformer } from "./transformer";
+
+type AuthObject = ReturnType<typeof getAuth>;
 
 /**
  * 1. CONTEXT
@@ -29,7 +27,8 @@ import { transformer } from "./transformer";
  *
  */
 interface CreateContextOptions {
-  auth: SignedInAuthObject | SignedOutAuthObject | null;
+  headers: Headers;
+  auth: AuthObject;
   apiKey?: string | null;
   req?: NextRequest;
 }
@@ -55,14 +54,18 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = (opts: { req: NextRequest }) => {
-  const auth = getAuth(opts.req);
-  const apiKey = opts.req.headers.get("x-acme-api-key");
+export const createTRPCContext = (opts: {
+  headers: Headers;
+  auth: AuthObject;
+  req?: NextRequest;
+}) => {
+  const apiKey = opts.req?.headers.get("x-acme-api-key");
 
   return createInnerTRPCContext({
-    auth,
+    auth: opts.auth,
     apiKey,
     req: opts.req,
+    headers: opts.headers,
   });
 };
 

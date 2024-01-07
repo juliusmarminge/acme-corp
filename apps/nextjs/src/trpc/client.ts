@@ -25,9 +25,4 @@ export const api = experimental_createTRPCNextAppDirClient<AppRouter>({
   },
 });
 
-// export const useAction = experimental_createActionHook({
-//   transformer,
-//   links: [experimental_serverActionLink()],
-// });
-
 export { type RouterInputs, type RouterOutputs } from "@acme/api";
