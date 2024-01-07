@@ -13,7 +13,7 @@ import * as Icons from "@acme/ui/icons";
 
 import { marketingFeatures, siteConfig } from "~/app/config";
 
-// export const runtime = "edge";
+export const runtime = "edge";
 
 export default function Home() {
   return (
