@@ -46,7 +46,7 @@ export function TRPCProvider(props: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     api.createClient({
-      transformer: superjson,
+      transformer: superjson, // TODO: Add transforming for Dinero.js
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
