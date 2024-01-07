@@ -48,6 +48,7 @@ export const api = createTRPCClient<AppRouter>({
     () =>
       ({ op }) =>
         observable((observer) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           createContext()
             .then((ctx) => {
               return callProcedure({
