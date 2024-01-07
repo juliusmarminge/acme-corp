@@ -12,7 +12,7 @@
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push db:generate",
     "db:studio": "pnpm -F db studio",
-    "dev": "FORCE_COLOR=1 turbo dev --parallel",
+    "dev": "cross-env FORCE_COLOR=1 turbo dev --parallel",
     "dev:web": "turbo dev --parallel --filter !@acme/expo --filter !@acme/db",
     "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
     "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
@@ -22,11 +22,12 @@
   },
   "dependencies": {
     "@acme/prettier-config": "^0.1.0",
-    "@manypkg/cli": "^0.21.0",
-    "@turbo/gen": "^1.10.12",
-    "prettier": "^3.0.2",
-    "turbo": "^1.10.12",
-    "typescript": "^5.2.2"
+    "@manypkg/cli": "^0.21.1",
+    "@turbo/gen": "^1.11.3",
+    "cross-env": "^7.0.3",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.3",
+    "typescript": "^5.3.3"
   },
   "prettier": "@acme/prettier-config"
 }

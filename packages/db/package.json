@@ -17,10 +17,10 @@
     "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
-    "@planetscale/database": "^1.10.0",
-    "kysely": "^0.26.1",
+    "@planetscale/database": "^1.13.0",
+    "kysely": "^0.27.2",
     "kysely-planetscale": "^1.4.0",
-    "nanoid": "^4.0.2"
+    "nanoid": "^5.0.4"
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.2.0",
@@ -28,10 +28,10 @@
     "@acme/tsconfig": "^0.1.0",
     "dotenv-cli": "^7.2.1",
     "eslint": "^8.52.0",
-    "prettier": "^3.0.2",
+    "prettier": "^3.1.1",
     "prisma": "^5.1.1",
-    "prisma-kysely": "^1.5.0",
-    "typescript": "^5.2.2"
+    "prisma-kysely": "^1.7.1",
+    "typescript": "^5.3.3"
   },
   "eslintConfig": {
     "extends": [
