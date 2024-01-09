@@ -113,8 +113,8 @@ export const mergeRouters = t.mergeRouters;
 export const publicProcedure = t.procedure;
 
 /**
- * Reusable middleware that enforces users are logged in before running the
- * procedure
+ * Reusable procedure that enforces users are logged in before running the
+ * code
  */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.auth?.userId) {
@@ -129,7 +129,10 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
     },
   });
 });
-
+/**
+ * Reusable procedure that enforces users are part of an organization before
+ * running the code
+ */
 export const protectedOrgProcedure = protectedProcedure.use(({ ctx, next }) => {
   if (!ctx.auth?.orgId) {
     throw new TRPCError({
@@ -146,7 +149,10 @@ export const protectedOrgProcedure = protectedProcedure.use(({ ctx, next }) => {
     },
   });
 });
-
+/**
+ * Procedure that enforces users are admins of an organization before running
+ * the code
+ */
 export const protectedAdminProcedure = protectedOrgProcedure.use(
   ({ ctx, next }) => {
     if (ctx.auth.orgRole !== "admin") {
@@ -168,9 +174,9 @@ export const protectedAdminProcedure = protectedOrgProcedure.use(
 );
 
 /**
- * Middleware to authenticate API requests with an API key
+ * Procedure to authenticate API requests with an API key
  */
-const enforceApiKey = t.middleware(async ({ ctx, next }) => {
+export const protectedApiProcedure = t.procedure.use(async ({ ctx, next }) => {
   if (!ctx.apiKey) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
@@ -201,27 +207,15 @@ const enforceApiKey = t.middleware(async ({ ctx, next }) => {
 });
 
 /**
- * Middleware to parse form data and put it in the rawInput
+ * Procedure to parse form data and put it in the rawInput and authenticate requests with an API key
  */
-export const formdataMiddleware = t.middleware(async (opts) => {
-  const formData = await opts.ctx.req?.formData?.();
-  if (!formData) throw new TRPCError({ code: "BAD_REQUEST" });
+export const protectedApiFormDataProcedure = protectedApiProcedure.use(
+  async function formData(opts) {
+    const formData = await opts.ctx.req?.formData?.();
+    if (!formData) throw new TRPCError({ code: "BAD_REQUEST" });
 
-  return opts.next({
-    input: formData,
-  });
-});
-/**
- * Protected (authed) procedure
- *
- * If you want a query or mutation to ONLY be accessible to logged in users, use
- * this. It verifies the session is valid and guarantees ctx.session.user is not
- * null
- *
- * @see https://trpc.io/docs/procedures
- */
-
-export const protectedApiProcedure = t.procedure.use(enforceApiKey);
-export const protectedApiFormDataProcedure = t.procedure
-  .use(formdataMiddleware)
-  .use(enforceApiKey);
+    return opts.next({
+      input: formData,
+    });
+  },
+);
