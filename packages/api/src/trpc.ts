@@ -7,7 +7,10 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import type { NextRequest } from "next/server";
-import type { getAuth } from "@clerk/nextjs/server";
+import type {
+  SignedInAuthObject,
+  SignedOutAuthObject,
+} from "@clerk/nextjs/server";
 import { initTRPC, TRPCError } from "@trpc/server";
 import { ZodError } from "zod";
 
@@ -15,8 +18,7 @@ import { db } from "@acme/db";
 
 import { transformer } from "./transformer";
 
-type AuthObject = ReturnType<typeof getAuth>;
-
+type AuthContext = SignedInAuthObject | SignedOutAuthObject;
 /**
  * 1. CONTEXT
  *
@@ -28,7 +30,7 @@ type AuthObject = ReturnType<typeof getAuth>;
  */
 interface CreateContextOptions {
   headers: Headers;
-  auth: AuthObject;
+  auth: AuthContext;
   apiKey?: string | null;
   req?: NextRequest;
 }
@@ -54,9 +56,9 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = (opts: {
+export const createTRPCContext = async (opts: {
   headers: Headers;
-  auth: AuthObject;
+  auth: AuthContext;
   req?: NextRequest;
 }) => {
   const apiKey = opts.req?.headers.get("x-acme-api-key");

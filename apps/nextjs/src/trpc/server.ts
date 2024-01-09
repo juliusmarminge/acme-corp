@@ -1,7 +1,6 @@
 import { cache } from "react";
 import { cookies, headers } from "next/headers";
-import { NextRequest } from "next/server";
-import { getAuth } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs";
 import { createTRPCClient, loggerLink, TRPCClientError } from "@trpc/client";
 import { callProcedure } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
@@ -18,9 +17,7 @@ const createContext = cache(() => {
       cookie: cookies().toString(),
       "x-trpc-source": "server",
     }),
-    auth: getAuth(
-      new NextRequest("https://notused.com", { headers: headers() }),
-    ),
+    auth: auth(),
   });
 });
 
@@ -48,7 +45,6 @@ export const api = createTRPCClient<AppRouter>({
     () =>
       ({ op }) =>
         observable((observer) => {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-call
           createContext()
             .then((ctx) => {
               return callProcedure({
