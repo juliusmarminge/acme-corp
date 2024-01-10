@@ -16,7 +16,7 @@ import { DeleteProject } from "./delete-project";
 import { TransferProjectToOrganization } from "./transfer-to-organization";
 import { TransferProjectToPersonal } from "./transfer-to-personal";
 
-// export const runtime = "edge";
+export const runtime = "edge";
 
 export default async function DangerZonePage(props: {
   params: { projectId: string; workspaceId: string };

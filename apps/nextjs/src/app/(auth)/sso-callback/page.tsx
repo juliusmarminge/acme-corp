@@ -6,7 +6,7 @@ import type { HandleOAuthCallbackParams } from "@clerk/types";
 
 import * as Icons from "@acme/ui/icons";
 
-// export const runtime = "edge";
+export const runtime = "edge";
 
 export default function SSOCallback(props: {
   searchParams: HandleOAuthCallbackParams;

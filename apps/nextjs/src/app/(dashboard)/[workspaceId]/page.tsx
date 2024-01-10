@@ -7,7 +7,7 @@ import { api } from "~/trpc/server";
 import { DashboardShell } from "../_components/dashboard-shell";
 import { ProjectCard } from "./_components/project-card";
 
-// export const runtime = "edge";
+export const runtime = "edge";
 
 export default async function Page(props: { params: { workspaceId: string } }) {
   const { projects, limitReached } =

@@ -4,7 +4,7 @@ import { api } from "~/trpc/server";
 import { DataTable } from "./data-table";
 import { NewApiKeyDialog } from "./new-api-key-dialog";
 
-// export const runtime = "edge";
+export const runtime = "edge";
 
 export default async function ApiKeysPage(props: {
   params: { projectId: string; workspaceId: string };
