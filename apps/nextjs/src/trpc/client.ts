@@ -1,5 +1,4 @@
 import { createTRPCClient, loggerLink } from "@trpc/client";
-import { experimental_createTRPCNextAppDirClient } from "@trpc/next/app-dir/client";
 
 import type { AppRouter } from "@acme/api";
 
