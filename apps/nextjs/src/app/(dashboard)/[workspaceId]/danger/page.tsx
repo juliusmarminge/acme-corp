@@ -1,7 +1,7 @@
 import { DashboardShell } from "../../_components/dashboard-shell";
 import { DeleteWorkspace } from "./delete-workspace";
 
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export default function DangerZonePage() {
   return (
