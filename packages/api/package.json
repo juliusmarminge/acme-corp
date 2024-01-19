@@ -27,9 +27,9 @@
   "dependencies": {
     "@acme/db": "^0.1.0",
     "@acme/stripe": "^0.1.0",
-    "@clerk/nextjs": "^4.29.1",
+    "@clerk/nextjs": "^4.29.4",
     "@dinero.js/currencies": "2.0.0-alpha.14",
-    "@t3-oss/env-nextjs": "^0.7.1",
+    "@t3-oss/env-nextjs": "^0.7.3",
     "@trpc/client": "next",
     "@trpc/server": "next",
     "dinero.js": "2.0.0-alpha.14",
@@ -42,7 +42,7 @@
     "@acme/prettier-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
     "eslint": "^8.56.0",
-    "prettier": "^3.1.1",
+    "prettier": "^3.2.4",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {
