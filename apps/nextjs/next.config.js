@@ -1,4 +1,4 @@
-import "./src/env.mjs";
+import "./src/env.js";
 import "@acme/api/env";
 import "@acme/stripe/env";
 

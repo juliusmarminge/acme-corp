@@ -1,6 +1,7 @@
 {
   "name": "@acme/nextjs",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "pnpm with-env next build",
