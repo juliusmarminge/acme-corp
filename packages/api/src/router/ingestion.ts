@@ -1,4 +1,3 @@
-import { File } from "undici";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
 
@@ -10,7 +9,6 @@ import {
   protectedProcedure,
 } from "../trpc";
 
-// @ts-expect-error - zfd needs a File on the global scope
 globalThis.File = File;
 
 const myFileValidator = z.preprocess(

@@ -8,7 +8,7 @@ export { createTRPCContext, createInnerTRPCContext } from "./trpc";
 export { t } from "./trpc";
 
 export type { AppRouter } from "./root";
-
+export { appRouter } from "./root";
 /**
  * Inference helpers for input types
  * @example type HelloInput = RouterInputs['example']['hello']

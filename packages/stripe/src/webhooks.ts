@@ -6,7 +6,7 @@ import { db, genId } from "@acme/db";
 import { stripe } from ".";
 import { stripePriceToSubscriptionPlan } from "./plans";
 
-export async function handleEvent(event: Stripe.DiscriminatedEvent) {
+export async function handleEvent(event: Stripe.Event) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;

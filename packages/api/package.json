@@ -27,23 +27,23 @@
   "dependencies": {
     "@acme/db": "^0.1.0",
     "@acme/stripe": "^0.1.0",
-    "@clerk/nextjs": "^4.26.1",
+    "@clerk/nextjs": "^4.29.1",
     "@dinero.js/currencies": "2.0.0-alpha.14",
-    "@t3-oss/env-nextjs": "^0.6.0",
+    "@t3-oss/env-nextjs": "^0.7.1",
     "@trpc/client": "next",
     "@trpc/server": "next",
     "dinero.js": "2.0.0-alpha.14",
-    "superjson": "1.13.1",
-    "zod": "^3.22.3",
-    "zod-form-data": "^2.0.1"
+    "superjson": "2.2.1",
+    "zod": "^3.22.4",
+    "zod-form-data": "^2.0.2"
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.2.0",
     "@acme/prettier-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
-    "eslint": "^8.52.0",
-    "prettier": "^3.0.2",
-    "typescript": "^5.2.2"
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
   },
   "eslintConfig": {
     "root": true,

@@ -10,13 +10,12 @@
     "types": ["nativewind/types"]
   },
   "include": [
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "expo-plugins",
+    "src",
     "*.ts",
-    "*.js",
     "index.tsx",
-    "src"
+    "*.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
   ],
   "exclude": ["node_modules"]
 }

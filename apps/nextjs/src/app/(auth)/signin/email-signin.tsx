@@ -71,8 +71,9 @@ export function EmailSignIn() {
 
       magicFlow.cancelMagicLinkFlow();
       if (response?.status === "complete") {
-        await setActive({ session: response.createdSessionId });
-        router.push(`/dashboard`);
+        await setActive({ session: response.createdSessionId }).then(() =>
+          router.push(`/dashboard`),
+        );
       }
     } else {
       if (!signUpLoaded) return null;
@@ -99,8 +100,9 @@ export function EmailSignIn() {
         .then((res) => res);
 
       if (response?.status === "complete") {
-        await setActive({ session: response.createdSessionId });
-        router.push(`/dashboard`);
+        await setActive({ session: response.createdSessionId }).then(() =>
+          router.push(`/dashboard`),
+        );
         return;
       }
     }

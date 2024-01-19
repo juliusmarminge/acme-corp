@@ -148,12 +148,12 @@ export const projectRouter = createTRPCRouter({
       const project = await opts.ctx.db
         .selectFrom("Project")
         .select(["id", "userId", "organizationId"])
-        .where(({ cmpr, and, or }) =>
+        .where(({ eb, and, or }) =>
           and([
-            cmpr("id", "=", opts.input.projectId),
+            eb("id", "=", opts.input.projectId),
             or([
-              cmpr("userId", "=", userId),
-              cmpr("organizationId", "=", userOrgId ?? ""),
+              eb("userId", "=", userId),
+              eb("organizationId", "=", userOrgId ?? ""),
             ]),
           ]),
         )
@@ -231,15 +231,15 @@ export const projectRouter = createTRPCRouter({
       const query = opts.ctx.db
         .selectFrom("Project")
         .select(["id", "name", "url", "tier", "organizationId"])
-        .where(({ cmpr, and, or }) =>
+        .where(({ eb, and, or }) =>
           and([
-            cmpr("id", "=", id),
+            eb("id", "=", id),
             orgIds.length > 0
               ? or([
-                  cmpr("userId", "=", userId),
-                  cmpr("organizationId", "in", orgIds),
+                  eb("userId", "=", userId),
+                  eb("organizationId", "in", orgIds),
                 ])
-              : cmpr("userId", "=", userId),
+              : eb("userId", "=", userId),
           ]),
         );
 
@@ -285,8 +285,8 @@ export const projectRouter = createTRPCRouter({
             .then(3)
             .when(
               eb.and([
-                eb.cmpr("expiresAt", "is not", null),
-                eb.cmpr("expiresAt", "<", new Date()),
+                eb("expiresAt", "is not", null),
+                eb("expiresAt", "<", new Date()),
               ]),
             )
             .then(2)
