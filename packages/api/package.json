@@ -1,28 +1,53 @@
 {
   "name": "@acme/api",
   "private": true,
+  "type": "module",
   "version": "0.1.0",
   "exports": {
-    ".": "./src/index.ts",
-    "./env": "./src/env.mjs",
-    "./edge": "./src/edge.ts",
-    "./lambda": "./src/lambda.ts",
-    "./transformer": "./src/transformer.ts",
-    "./validators": "./src/validators.ts"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "src/*"
-      ]
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./src/index.ts"
+      }
+    },
+    "./env": {
+      "import": {
+        "types": "./dist/env.d.ts",
+        "default": "./src/env.js"
+      }
+    },
+    "./edge": {
+      "import": {
+        "types": "./dist/edge.d.ts",
+        "default": "./src/edge.ts"
+      }
+    },
+    "./lambda": {
+      "import": {
+        "types": "./dist/lambda.d.ts",
+        "default": "./src/lambda.ts"
+      }
+    },
+    "./transformer": {
+      "import": {
+        "types": "./dist/transformer.d.ts",
+        "default": "./src/transformer.ts"
+      }
+    },
+    "./validators": {
+      "import": {
+        "types": "./dist/validators.d.ts",
+        "default": "./src/validators.ts"
+      }
     }
   },
   "license": "MIT",
   "scripts": {
+    "dev": "tsc --watch",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,json}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
     "@acme/db": "^0.1.0",

@@ -5,7 +5,7 @@ import * as z from "zod";
 
 import { PLANS, stripe } from "@acme/stripe";
 
-import { env } from "../env.mjs";
+import { env } from "../env";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 import { purchaseOrgSchema } from "../validators";
 

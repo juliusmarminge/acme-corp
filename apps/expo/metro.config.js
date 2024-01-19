@@ -22,7 +22,6 @@ if (config.resolver) {
   config.resolver.disableHierarchicalLookup = true;
 }
 
-// @ts-expect-error - FIXME: type is mismatching?
 module.exports = withNativeWind(config, {
   input: "./src/styles.css",
   configPath: "./tailwind.config.ts",

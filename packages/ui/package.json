@@ -86,12 +86,5 @@
     "./tabs": "./src/tabs.tsx",
     "./toaster": "./src/toaster.tsx",
     "./use-toast": "./src/use-toast.tsx"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "src/*"
-      ]
-    }
   }
 }
