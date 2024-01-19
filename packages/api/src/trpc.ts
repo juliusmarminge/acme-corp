@@ -60,6 +60,7 @@ export const createTRPCContext = async (opts: {
   headers: Headers;
   auth: AuthContext;
   req?: NextRequest;
+  // eslint-disable-next-line @typescript-eslint/require-await
 }) => {
   const apiKey = opts.req?.headers.get("x-acme-api-key");
 
