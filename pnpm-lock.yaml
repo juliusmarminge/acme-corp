@@ -43,13 +43,13 @@ importers:
         version: 5.17.15(react@18.2.0)
       '@trpc/client':
         specifier: next
-        version: 11.0.0-next-beta.216
+        version: 11.0.0-next.327(@trpc/server@11.0.0-next.327)
       '@trpc/react-query':
         specifier: next
-        version: 11.0.0-next-beta.216(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next-beta.216)(react-dom@18.2.0)(react@18.2.0)
+        version: 11.0.0-next.327(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next.327)(@trpc/server@11.0.0-next.327)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
         specifier: next
-        version: 11.0.0-next-beta.216
+        version: 11.0.0-next.327
       expo:
         specifier: ^49.0.22
         version: 49.0.22(@babel/core@7.23.7)
@@ -61,7 +61,7 @@ importers:
         version: 5.0.2(expo@49.0.22)
       expo-router:
         specifier: 2.0.14
-        version: 2.0.14(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.10.2)(expo-status-bar@1.7.1)(expo@49.0.22)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.73.1)(react@18.2.0)
+        version: 2.0.14(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.10.2)(expo-status-bar@1.7.1)(expo@49.0.22)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.16.0)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.73.1)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.22.0
         version: 0.22.0(expo-modules-autolinking@1.10.2)(expo@49.0.22)
@@ -81,8 +81,8 @@ importers:
         specifier: 0.73.1
         version: 0.73.1(@babel/core@7.23.7)(@babel/preset-env@7.23.8)(react@18.2.0)
       react-native-gesture-handler:
-        specifier: ~2.12.0
-        version: 2.12.1(react-native@0.73.1)(react@18.2.0)
+        specifier: ~2.16.0
+        version: 2.16.0(react-native@0.73.1)(react@18.2.0)
       react-native-reanimated:
         specifier: ~3.3.0
         version: 3.3.0(@babel/core@7.23.7)(@babel/plugin-proposal-nullish-coalescing-operator@7.18.6)(@babel/plugin-proposal-optional-chaining@7.21.0)(@babel/plugin-transform-arrow-functions@7.23.3)(@babel/plugin-transform-shorthand-properties@7.23.3)(@babel/plugin-transform-template-literals@7.23.3)(react-native@0.73.1)(react@18.2.0)
@@ -179,16 +179,16 @@ importers:
         version: 8.11.3(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
         specifier: next
-        version: 11.0.0-next-beta.216
+        version: 11.0.0-next.327(@trpc/server@11.0.0-next.327)
       '@trpc/next':
         specifier: next
-        version: 11.0.0-next-beta.216(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next-beta.216)(@trpc/react-query@11.0.0-next-beta.216)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+        version: 11.0.0-next.327(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next.327)(@trpc/react-query@11.0.0-next.327)(@trpc/server@11.0.0-next.327)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/react-query':
         specifier: next
-        version: 11.0.0-next-beta.216(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next-beta.216)(react-dom@18.2.0)(react@18.2.0)
+        version: 11.0.0-next.327(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next.327)(@trpc/server@11.0.0-next.327)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
         specifier: next
-        version: 11.0.0-next-beta.216
+        version: 11.0.0-next.327
       '@vercel/analytics':
         specifier: ^1.1.2
         version: 1.1.2
@@ -300,10 +300,10 @@ importers:
         version: 0.7.3(typescript@5.3.3)(zod@3.22.4)
       '@trpc/client':
         specifier: next
-        version: 11.0.0-next-beta.216
+        version: 11.0.0-next.327(@trpc/server@11.0.0-next.327)
       '@trpc/server':
         specifier: next
-        version: 11.0.0-next-beta.216
+        version: 11.0.0-next.327
       dinero.js:
         specifier: 2.0.0-alpha.14
         version: 2.0.0-alpha.14
@@ -5012,22 +5012,21 @@ packages:
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
     dev: false
 
-  /@trpc/client@11.0.0-next-beta.216:
-    resolution: {integrity: sha512-u3+G3vHVffX2X3cvIQsDJ/fcxLusntARd2be0PPLHJcy58HK/qdHkpu2cuILmLo0xHxcBQGQYNaHybKS1Z0JKg==}
-    dependencies:
-      '@trpc/core': 11.0.0-next-beta.216
-    dev: false
-
-  /@trpc/core@11.0.0-next-beta.216:
-    resolution: {integrity: sha512-dmdSFeSzArkmdZvnymoQwAju0QBODC3PhLgBKTYgVIj0HATE/OJsPAKOxiqdcgm3YyN/zABm+ntiYmjLBJzTCA==}
-    dev: false
-
-  /@trpc/next@11.0.0-next-beta.216(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next-beta.216)(@trpc/react-query@11.0.0-next-beta.216)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-VP3KViLY6XtNjZcjfZmIhthRLOFNH0i5B1IH32prlXE6qKQr2LLSjM8ptrEDiWytVyznuoUBHZxVsqEVunJ27g==}
+  /@trpc/client@11.0.0-next.327(@trpc/server@11.0.0-next.327):
+    resolution: {integrity: sha512-5Vhem/cavPizA0+CdGDWfJR0XSdljjf927BpKyRt6NfdQP539tP8s0wZsGq/+s9S79hucsDQkh0MoP0Ki3UO4g==}
     peerDependencies:
-      '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-next-beta.216+ccd4f1b0e
-      '@trpc/react-query': 11.0.0-next-beta.216+ccd4f1b0e
+      '@trpc/server': 11.0.0-next.327+1c757e8d3
+    dependencies:
+      '@trpc/server': 11.0.0-next.327
+    dev: false
+
+  /@trpc/next@11.0.0-next.327(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next.327)(@trpc/react-query@11.0.0-next.327)(@trpc/server@11.0.0-next.327)(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Ks/HRhBiAu46qn2YZxq/t7sllJyO2bktoGZT2g3g28ESK7WuGznbv/hIZYq0TlbPkP/AEQMjP7w9X86E5aG5lA==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.25.0
+      '@trpc/client': 11.0.0-next.327+1c757e8d3
+      '@trpc/react-query': 11.0.0-next.327+1c757e8d3
+      '@trpc/server': 11.0.0-next.327+1c757e8d3
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
@@ -5038,33 +5037,32 @@ packages:
         optional: true
     dependencies:
       '@tanstack/react-query': 5.17.15(react@18.2.0)
-      '@trpc/client': 11.0.0-next-beta.216
-      '@trpc/core': 11.0.0-next-beta.216
-      '@trpc/react-query': 11.0.0-next-beta.216(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next-beta.216)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/client': 11.0.0-next.327(@trpc/server@11.0.0-next.327)
+      '@trpc/react-query': 11.0.0-next.327(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next.327)(@trpc/server@11.0.0-next.327)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server': 11.0.0-next.327
       next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/react-query@11.0.0-next-beta.216(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next-beta.216)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-H7GECSVmFrt9Uc0XyK/IvmwzjfFMaHqS2v6g8ilm74Z0CpniRnPCnj1U2x7LVkJIvx/gAvlH+OxrINW92keX0Q==}
+  /@trpc/react-query@11.0.0-next.327(@tanstack/react-query@5.17.15)(@trpc/client@11.0.0-next.327)(@trpc/server@11.0.0-next.327)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-B077KFeI2APLVTsXdIMbArb8j7ZwgIE6vlvEKiM0q2cftckgKV0WclUYboZ9Ldd/AFJ8k8Lz92Ot3CroSUg5vA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-next-beta.216+ccd4f1b0e
+      '@tanstack/react-query': ^5.25.0
+      '@trpc/client': 11.0.0-next.327+1c757e8d3
+      '@trpc/server': 11.0.0-next.327+1c757e8d3
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
       '@tanstack/react-query': 5.17.15(react@18.2.0)
-      '@trpc/client': 11.0.0-next-beta.216
-      '@trpc/core': 11.0.0-next-beta.216
+      '@trpc/client': 11.0.0-next.327(@trpc/server@11.0.0-next.327)
+      '@trpc/server': 11.0.0-next.327
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@11.0.0-next-beta.216:
-    resolution: {integrity: sha512-Cm1DwGm9yLApL7IBVoKYpsn1zq6LxV/CR4kwNNFS/uhe/zqsWP1lATdlLza+4SZe+jEEUrM/DRwd/h+pZrmiaw==}
-    dependencies:
-      '@trpc/core': 11.0.0-next-beta.216
+  /@trpc/server@11.0.0-next.327:
+    resolution: {integrity: sha512-Lw4knzW1z0RpiGjur5gU/d67pl1NEkpIokTefuPqb63FlWCfwfHG3FHfvOaNoQ1lt3xMlw/A+pAMeU/q8YWp4Q==}
     dev: false
 
   /@tsconfig/node10@1.0.9:
@@ -7957,7 +7955,7 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.14(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.10.2)(expo-status-bar@1.7.1)(expo@49.0.22)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.73.1)(react@18.2.0):
+  /expo-router@2.0.14(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.10.2)(expo-status-bar@1.7.1)(expo@49.0.22)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.16.0)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.73.1)(react@18.2.0):
     resolution: {integrity: sha512-F5dP4WMe+zQLzlGSbC+NT9/67FGgwmUCJuPGD4BkK0eRt0uga+y53vQ59m5MCOebqE0N9Ukr/Jz8Num16iGqZA==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
@@ -7994,7 +7992,7 @@ packages:
       metro: 0.76.8
       query-string: 7.1.3
       react-helmet-async: 1.3.0(react-dom@18.2.0)(react@18.2.0)
-      react-native-gesture-handler: 2.12.1(react-native@0.73.1)(react@18.2.0)
+      react-native-gesture-handler: 2.16.0(react-native@0.73.1)(react@18.2.0)
       react-native-reanimated: 3.3.0(@babel/core@7.23.7)(@babel/plugin-proposal-nullish-coalescing-operator@7.18.6)(@babel/plugin-proposal-optional-chaining@7.21.0)(@babel/plugin-transform-arrow-functions@7.23.3)(@babel/plugin-transform-shorthand-properties@7.23.3)(@babel/plugin-transform-template-literals@7.23.3)(react-native@0.73.1)(react@18.2.0)
       react-native-safe-area-context: 4.6.3(react-native@0.73.1)(react@18.2.0)
       react-native-screens: 3.22.1(react-native@0.73.1)(react@18.2.0)
@@ -12056,8 +12054,8 @@ packages:
       - supports-color
     dev: false
 
-  /react-native-gesture-handler@2.12.1(react-native@0.73.1)(react@18.2.0):
-    resolution: {integrity: sha512-deqh36bw82CFUV9EC4tTo2PP1i9HfCOORGS3Zmv71UYhEZEHkzZv18IZNPB+2Awzj45vLIidZxGYGFxHlDSQ5A==}
+  /react-native-gesture-handler@2.16.0(react-native@0.73.1)(react@18.2.0):
+    resolution: {integrity: sha512-1hFkx7RIfeJSyTQQ0Nkv4icFVZ5+XjQkd47OgZMBFzoB7ecL+nFSz8KLi3OCWOhq+nbHpSPlSG5VF3CQNCJpWA==}
     peerDependencies:
       react: '*'
       react-native: '*'
