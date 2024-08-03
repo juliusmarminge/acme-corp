@@ -23,7 +23,7 @@
     "@next/mdx": "^14.1.0",
     "@t3-oss/env-nextjs": "^0.7.3",
     "@tanstack/react-query": "^5.17.15",
-    "@tanstack/react-table": "^8.11.3",
+    "@tanstack/react-table": "^8.20.1",
     "@trpc/client": "next",
     "@trpc/next": "next",
     "@trpc/react-query": "next",
