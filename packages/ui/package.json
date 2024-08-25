@@ -23,7 +23,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^0.2.0",
-    "lucide-react": "0.307.0",
+    "lucide-react": "0.436.0",
     "tailwind-merge": "^2.2.0",
     "zod": "^3.22.4"
   },
