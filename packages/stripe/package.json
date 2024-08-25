@@ -25,7 +25,7 @@
   "dependencies": {
     "@acme/db": "^0.1.0",
     "@clerk/nextjs": "^4.29.4",
-    "@t3-oss/env-nextjs": "^0.7.3",
+    "@t3-oss/env-nextjs": "^0.11.1",
     "stripe": "^14.13.0"
   },
   "devDependencies": {
