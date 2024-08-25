@@ -21,7 +21,7 @@
     "@dinero.js/currencies": "2.0.0-alpha.14",
     "@hookform/resolvers": "^3.3.4",
     "@next/mdx": "^14.1.0",
-    "@t3-oss/env-nextjs": "^0.7.3",
+    "@t3-oss/env-nextjs": "^0.11.1",
     "@tanstack/react-query": "^5.17.15",
     "@tanstack/react-table": "^8.11.3",
     "@trpc/client": "next",
