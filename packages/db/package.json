@@ -27,7 +27,7 @@
     "@acme/prettier-config": "^0.1.0",
     "@acme/tsconfig": "^0.1.0",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^8.56.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.2.4",
     "prisma": "^5.8.1",
     "prisma-kysely": "^1.7.1",
