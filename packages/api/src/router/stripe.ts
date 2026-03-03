@@ -1,5 +1,5 @@
 import { currentUser } from "@clerk/nextjs";
-import * as currencies from "@dinero.js/currencies";
+import * as currencies from "dinero.js/currencies";
 import { dinero } from "dinero.js";
 import * as z from "zod";
 
